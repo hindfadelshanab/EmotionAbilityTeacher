@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.nuwa.robot.r2022.emotionalability.viewModel.GameViewModel" />
+    </data>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".view.GameActivity"
+>
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnGameNext"
+        android:layout_marginBottom="@dimen/_12sdp"
+
+        />
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/sViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnGameNext"
+        android:layout_marginBottom="@dimen/_12sdp"
+
+        >
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+
+    <ImageView
+        android:id="@+id/imageHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:src="@drawable/home_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGameNext"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:background="@drawable/button_gradient_red"
+        android:padding="@dimen/_6sdp"
+        android:text="NEXT"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/btnGamePrevious"
+        android:textSize="@dimen/_16ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:onClick="@{() -> vm.onNextButtonClicked()}"
+        app:layout_constraintEnd_toStartOf="@id/imageView"
+        app:layout_constraintVertical_bias="0.78" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGamePrevious"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:background="@drawable/button_gradient_red"
+        android:padding="@dimen/_6sdp"
+        android:text="PREVIOUS"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_16ssp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:onClick="@{() -> vm.onPreviousButtonClicked()}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnGameNext"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toEndOf="@id/imageHome"
+        app:layout_constraintVertical_bias="0.78" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:src="@drawable/robot_image"
+        android:layout_marginBottom="@dimen/_12sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

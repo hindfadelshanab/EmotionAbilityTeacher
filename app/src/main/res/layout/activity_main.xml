@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/background"
+    android:fillViewport="true"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/patientInfoLayout"
+        android:layout_width="@dimen/_180sdp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:background="@drawable/paient_info_background"
+        android:orientation="vertical"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        >
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSelectPatient"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@drawable/button_gradient_purple"
+            android:padding="@dimen/_4sdp"
+            android:text="@string/select_patient"
+            android:textColor="@color/white"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rememberMeLayout" />
+
+
+        <FrameLayout
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_gravity="center"
+
+            android:layout_marginTop="@dimen/_8sdp"
+            android:paddingBottom="@dimen/_4sdp"
+
+            android:background="@drawable/patient_image_background">
+
+            <ImageView
+                android:id="@+id/imagePatient"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_gravity="bottom|center"
+                android:src="@drawable/patient"
+
+                />
+        </FrameLayout>
+        <EditText
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:text="John Doe"
+            android:textAlignment="center"
+            android:textSize="@dimen/_10ssp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:background="@drawable/paient_name_background"
+
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSelectTerm"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:background="@drawable/button_gradient_purple"
+            android:text="@string/select_term"
+            android:textColor="@color/white"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rememberMeLayout" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnFirstTerm"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:background="@drawable/button_gradient_green"
+            android:text="@string/first_term"
+            android:textColor="@color/white"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rememberMeLayout" />
+<!--        <com.github.mikephil.charting.charts.HorizontalBarChart-->
+<!--            android:id="@+id/chart"-->
+<!--            android:layout_width="@dimen/_150sdp"-->
+
+<!--            android:visibility="gone"-->
+<!--            android:layout_height="@dimen/_120sdp" />-->
+<!--        <me.ithebk.barchart.BarChart-->
+<!--            android:id="@+id/bar_chart_vertical"-->
+<!--            app:bar_type="horizontal"-->
+<!--            app:bar_width="15dp"-->
+<!--            app:bar_color="@color/main_color"-->
+<!--            app:bar_text_color="#808080"-->
+<!--            app:bar_text_size="10sp"-->
+<!--            app:bar_show_auto_color="false"-->
+<!--            app:bar_max_value="100"-->
+
+<!--            app:bar_spaces = "2dp"-->
+<!--            app:bar_show_value="true"-->
+<!--            app:bar_show_animation="true"-->
+<!--            android:layout_width="@dimen/_150sdp"-->
+<!--            android:layout_height="150dp"/>-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/_4sdp"
+            android:background="@drawable/patient_skils_background"
+
+            >
+
+            <TextView
+                android:id="@+id/txtSkills"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/skills"
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/txtCommunication"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:text="Communication"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_8ssp"
+
+                app:layout_constraintBottom_toTopOf="@id/txtCognition"
+                app:layout_constraintEnd_toStartOf="@id/bar_chart_vertical"
+                app:layout_constraintStart_toStartOf="@id/txtSkills"
+                app:layout_constraintTop_toBottomOf="@id/txtSkills"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/txtCognition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cognition"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@id/txtSocial"
+                android:layout_marginBottom="@dimen/_4sdp"
+
+                android:textSize="@dimen/_8ssp"
+                app:layout_constraintEnd_toStartOf="@id/bar_chart_vertical"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/txtCommunication"
+                app:layout_constraintTop_toBottomOf="@id/txtCommunication" />
+
+            <TextView
+                android:id="@+id/txtSocial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Social"
+                android:textColor="@color/black"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:textSize="@dimen/_8ssp"
+                app:layout_constraintBottom_toTopOf="@id/txtEmotional"
+                app:layout_constraintEnd_toStartOf="@id/bar_chart_vertical"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/txtCognition"
+                app:layout_constraintTop_toBottomOf="@id/txtCognition"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/txtEmotional"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:text="Emotional"
+                android:textColor="@color/black"
+
+                android:textSize="@dimen/_8ssp"
+                app:layout_constraintBottom_toTopOf="@id/txtPhysical"
+                app:layout_constraintEnd_toStartOf="@id/bar_chart_vertical"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/txtSocial"
+                app:layout_constraintTop_toBottomOf="@id/txtSocial" />
+
+            <TextView
+                android:id="@+id/txtPhysical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:text="Physical"
+
+                android:textColor="@color/black"
+                android:textSize="@dimen/_8ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/bar_chart_vertical"
+                app:layout_constraintEnd_toStartOf="@id/bar_chart_vertical"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/txtEmotional"
+                app:layout_constraintTop_toBottomOf="@id/txtEmotional"
+             />
+
+            <LinearLayout
+                android:id="@+id/layoutt"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+
+                android:orientation="horizontal"
+                android:padding="@dimen/_4sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_height="@dimen/_130sdp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/impact"
+                        />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/white_indc"
+                        android:backgroundTint="@color/white"
+                        />
+                    <View
+                        android:layout_width="@dimen/_1sdp"
+                        android:layout_height="@dimen/_130sdp"
+                        android:layout_gravity="center"
+                        android:background="#BDB9B9" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="@dimen/_16sdp"
+
+                    android:layout_height="@dimen/_130sdp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/impact"
+                        />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/dark_blue_indc"
+                        android:backgroundTint="@color/white"
+                        />
+                    <View
+                        android:layout_width="@dimen/_1sdp"
+                        android:layout_height="@dimen/_130sdp"
+                        android:layout_gravity="center"
+                        android:background="#BDB9B9" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="@dimen/_16sdp"
+
+                    android:layout_height="@dimen/_130sdp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/impact"
+                        />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/bink_indc"
+                        android:backgroundTint="@color/white"
+                        />
+                    <View
+                        android:layout_width="@dimen/_1sdp"
+                        android:layout_height="@dimen/_130sdp"
+                        android:layout_gravity="center"
+                        android:background="#BDB9B9" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="@dimen/_16sdp"
+
+                    android:layout_height="@dimen/_130sdp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/impact"
+                        />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/light_blue_indc"
+                        android:backgroundTint="@color/white"
+                        />
+                    <View
+                        android:layout_width="@dimen/_1sdp"
+                        android:layout_height="@dimen/_130sdp"
+                        android:layout_gravity="center"
+                        android:background="#BDB9B9" />
+                </LinearLayout>
+
+<!--                <View-->
+<!--                    android:layout_width="@dimen/_1sdp"-->
+<!--                    android:layout_height="@dimen/_100sdp"-->
+<!--                    android:layout_marginStart="@dimen/_16sdp"-->
+<!--                    android:background="#BDB9B9"-->
+
+<!--                    />-->
+
+<!--                <View-->
+<!--                    android:layout_width="@dimen/_1sdp"-->
+<!--                    android:layout_height="@dimen/_100sdp"-->
+<!--                    android:layout_marginStart="@dimen/_16sdp"-->
+<!--                    android:background="#BDB9B9"-->
+
+<!--                    />-->
+
+<!--                <View-->
+<!--                    android:layout_width="@dimen/_1sdp"-->
+<!--                    android:layout_height="@dimen/_100sdp"-->
+<!--                    android:layout_marginStart="@dimen/_16sdp"-->
+<!--                    android:background="#BDB9B9"-->
+
+<!--                    />-->
+
+            </LinearLayout>
+
+                    <me.ithebk.barchart.BarChart
+                        android:id="@+id/bar_chart_vertical"
+                        app:bar_type="horizontal"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        app:bar_width="15dp"
+                        app:bar_text_size="10sp"
+                        app:bar_show_auto_color="false"
+                        app:bar_max_value="100"
+
+                        android:paddingStart="@dimen/_16sdp"
+                        app:bar_spaces = "@dimen/_6sdp"
+                        app:bar_show_value="true"
+                        app:layout_constraintTop_toTopOf="@id/txtCommunication"
+                        app:layout_constraintEnd_toEndOf="@id/layoutt"
+                        app:layout_constraintStart_toStartOf="@id/layoutt"
+                        app:bar_show_animation="true"
+                        android:layout_width="@dimen/_100sdp"
+                        app:layout_constraintBottom_toBottomOf="@id/txtPhysical"
+                        android:layout_height="@dimen/_70sdp"/>
+
+            <TextView
+                android:id="@+id/txtNotDeveloped"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1-Not Developed"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@id/txtPhysical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/txtDeveloped"
+
+                />
+            <TextView
+                android:id="@+id/txtDeveloped"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2- Developed "
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/txtNotDeveloped"
+                app:layout_constraintStart_toEndOf="@id/txtNotDeveloped"
+
+                />
+
+            <TextView
+                android:id="@+id/txtEstablished"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_12ssp"
+                android:text="3-Established"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/txtGeneralized"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtNotDeveloped"
+
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/txtGeneralized"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:text="4-Generalized"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/txtEstablished"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/txtEstablished"
+                app:layout_constraintTop_toBottomOf="@id/txtPhysical"
+                app:layout_constraintTop_toTopOf="@id/txtEstablished"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtLogOut"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/log_out"
+        android:padding="@dimen/_2sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="@drawable/log_out_background"
+
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:paddingStart="@dimen/_12sdp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/log_out_icon"
+        app:layout_constraintBottom_toBottomOf="@id/txtLogOut"
+        app:layout_constraintEnd_toEndOf="@id/txtLogOut"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="@id/txtLogOut"
+
+        app:layout_constraintTop_toTopOf="@id/txtLogOut" />
+
+    <TextView
+        android:id="@+id/txtLesson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QLICKHEALTH LESSON GENERATOR"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_18ssp"
+        android:fontFamily="@font/impact"
+        app:layout_constraintStart_toEndOf="@id/patientInfoLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtLogOut"
+        android:layout_marginTop="@dimen/_12sdp"
+
+        />
+
+    <LinearLayout
+        android:id="@+id/layoutObjective1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/_6sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="@drawable/log_out_background"
+        app:layout_constraintStart_toEndOf="@id/patientInfoLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtLesson"
+        >
+
+        <androidx.appcompat.widget.AppCompatButton
+
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/button_gradient_purple"
+            android:padding="@dimen/_6sdp"
+            android:textColor="@color/white"
+            android:text="CURRICULUM"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rememberMeLayout" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnModuleCurriculum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_gradient_green"
+            android:padding="@dimen/_6sdp"
+            android:text="@string/select_term"
+            android:textColor="@color/white"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rememberMeLayout" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layoutObjective2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/_6sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="@drawable/log_out_background"
+        app:layout_constraintStart_toEndOf="@id/patientInfoLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutObjective1"
+        >
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/button_gradient_purple"
+            android:padding="@dimen/_6sdp"
+            android:text="MODULE"
+            android:textColor="@color/white"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rememberMeLayout" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnModuleNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_gradient_green"
+            android:padding="@dimen/_6sdp"
+            android:text="@string/select_term"
+            android:textColor="@color/white"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rememberMeLayout" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layoutObjective3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/_6sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="@drawable/log_out_background"
+        app:layout_constraintStart_toEndOf="@id/patientInfoLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutObjective2"
+        >
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/button_gradient_purple"
+            android:padding="@dimen/_6sdp"
+            android:text="AREA OF SPECIALIZATION"
+            android:textColor="@color/white"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rememberMeLayout" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnModuleArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_gradient_green"
+            android:padding="@dimen/_6sdp"
+            android:text="@string/select_term"
+            android:textColor="@color/white"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rememberMeLayout" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layoutObjective4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/_6sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+
+        android:background="@drawable/log_out_background"
+        app:layout_constraintStart_toEndOf="@id/patientInfoLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutObjective3"
+        >
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/button_gradient_purple"
+            android:padding="@dimen/_6sdp"
+            android:text="OBJECTIVES"
+            android:textColor="@color/white"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rememberMeLayout" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnModuleObjective"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_gradient_green"
+            android:padding="@dimen/_6sdp"
+            android:text="@string/select_term"
+            android:textColor="@color/white"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rememberMeLayout" />
+
+
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnStart"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/button_gradient_bink"
+        android:padding="@dimen/_8sdp"
+        android:text="@string/start"
+        android:textColor="@color/white"
+        android:textColorHint="@color/black"
+
+        android:textSize="@dimen/_8ssp"
+        app:layout_constraintTop_toBottomOf="@id/layoutObjective4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/patientInfoLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

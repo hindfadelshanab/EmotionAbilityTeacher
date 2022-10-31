@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_blue"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/_12sdp"
+
+        android:background="@drawable/patient_skils_background"
+
+        >
+
+        <LinearLayout
+            android:id="@+id/layoutt"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_260sdp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+
+
+            android:layout_gravity="center"
+            >
+            <View
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="@dimen/_250sdp"
+                android:background="@color/grey"
+                android:layout_marginStart="@dimen/_32sdp"
+                />
+            <View
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="@dimen/_250sdp"
+                android:background="@color/grey"
+                android:layout_marginStart="@dimen/_32sdp"
+
+                />
+            <View
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="@dimen/_250sdp"
+                android:background="@color/grey"
+                android:layout_marginStart="@dimen/_32sdp"
+
+                />
+            <View
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="@dimen/_250sdp"
+                android:background="@color/grey"
+                android:layout_marginStart="@dimen/_32sdp"
+
+                />
+
+        </LinearLayout>
+        <me.ithebk.barchart.BarChart
+            android:id="@+id/bar_chart_vertical"
+            app:bar_type="horizontal"
+            app:bar_width="15dp"
+            app:bar_color="@color/main_color"
+            app:bar_text_color="#808080"
+            app:bar_text_size="10sp"
+            app:bar_show_auto_color="false"
+            app:bar_max_value="100"
+
+            android:paddingStart="@dimen/_32sdp"
+            app:layout_constraintTop_toTopOf="@id/layoutt"
+            app:layout_constraintEnd_toEndOf="@id/layoutt"
+            app:layout_constraintStart_toStartOf="@id/layoutt"
+            android:layout_gravity="center"
+            app:bar_spaces = "2dp"
+            android:elevation="@dimen/_2sdp"
+            app:bar_show_value="true"
+            app:bar_show_animation="true"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_250sdp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

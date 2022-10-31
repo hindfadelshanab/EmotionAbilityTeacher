@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">EmotionalAbility</string>
+    <string name="log_in_as_therapist">LOG-IN AS THERAPIST</string>
+    <string name="log_in_as_a_student">LOG-IN AS A STUDENT</string>
+    <string name="select_patient">Select Patient</string>
+    <string name="select_term">Select Term</string>
+    <string name="first_term">First Term</string>
+    <string name="skills">Skills</string>
+    <string name="log_out">Log Out</string>
+    <string name="start">Start</string>
+    <string name="emotional_ability_curriculum">Emotional Ability \n Curriculum</string>
+    <string name="level_desc">Imitation of Facial Expressions: Practicing imitation of facial expressions of emotions, Joint attention, following directions, and practicing receptive language related to emotions</string>
+    <string name="next">NEXT</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

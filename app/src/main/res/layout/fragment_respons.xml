@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout android:id="@+id/questionTitleLayout"
+    android:layout_width="@dimen/_250sdp"
+    android:layout_height="@dimen/_200sdp"
+    android:layout_gravity="center"
+
+
+    android:background="@drawable/dialog_box"
+    app:layout_constraintBottom_toTopOf="@id/btnGameNext"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/txtQuestionTitle"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_32sdp"
+        android:layout_marginBottom="@dimen/_32sdp"
+        android:fontFamily="@font/impact"
+        android:paddingStart="@dimen/_12sdp"
+        android:paddingTop="@dimen/_46sdp"
+        android:paddingEnd="@dimen/_12sdp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+
+        android:textSize="@dimen/_18ssp"
+        tools:text="Let’s play the EMOTION IMITATION Game!"
+
+
+        >
+
+    </TextView>
+
+</FrameLayout>
+

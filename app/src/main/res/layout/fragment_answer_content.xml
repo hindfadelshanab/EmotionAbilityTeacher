@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.AnswerContentFragment">
+
+    <LinearLayout
+        android:id="@+id/layoutCorrectAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:padding="@dimen/_12sdp"
+
+        >
+        <ImageView
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:src="@drawable/ic_baseline_check_24"
+            android:padding="@dimen/_8sdp"
+            android:background="@drawable/level_background_green"
+
+            />
+        <Button
+            android:id="@+id/txtCorrect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:background="#ACCAE1"
+            android:padding="@dimen/_16sdp"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/black"
+
+            android:text="The child was able to show the correct face."
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layoutWrongAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_12sdp"
+        android:visibility="gone"
+
+        >
+        <ImageView
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:src="@drawable/ic_baseline_close_24"
+            android:padding="@dimen/_8sdp"
+            android:background="@drawable/wrong_red"
+
+            />
+        <Button
+            android:id="@+id/txtWrong"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:background="#ACCAE1"
+            android:padding="@dimen/_16sdp"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/black"
+
+            android:text="The child was NOT able to show the correct face/ doesn’t have any response at all."
+            />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageForShow"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        tools:src="@drawable/scared_child"
+        android:visibility="gone"
+        android:background="@drawable/image_option_rectangle_background"
+        android:padding="@dimen/_12sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_12sdp"
+
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/imageList"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120sdp"
+        android:visibility="gone"
+
+        android:paddingStart="@dimen/_24sdp"
+        android:paddingEnd="@dimen/_16sdp"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+
+
+
+        />
+
+    <LinearLayout
+        android:id="@+id/layoutSelectSadFace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/_12sdp"
+        android:gravity="center"
+        android:visibility="gone"
+        >
+        <ImageView
+            android:id="@+id/imageWrongOption"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:background="@drawable/level_background_green"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:padding="@dimen/_16sdp"
+            />
+        <ImageView
+            android:id="@+id/imageCorrectOption"
+
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:background="@drawable/level_background_red"
+            android:padding="@dimen/_16sdp"
+            />
+    </LinearLayout>
+
+</LinearLayout>
