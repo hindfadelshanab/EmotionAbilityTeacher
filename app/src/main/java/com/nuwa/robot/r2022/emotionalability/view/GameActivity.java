@@ -116,7 +116,7 @@ public class GameActivity extends AppCompatActivity implements OnMessageReciveLi
 
         questionAdapter = new QuestionAdapter(this ,level);
         binding.sViewPager.setAdapter(questionAdapter);
-        binding.imageHome.setOnClickListener(view -> startActivity(new Intent(GameActivity.this, GameLevelActivity.class)));
+//        binding.imageHome.setOnClickListener(view -> startActivity(new Intent(GameActivity.this, GameLevelActivity.class)));
 
 
 

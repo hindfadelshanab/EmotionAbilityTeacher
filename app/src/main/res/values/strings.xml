@@ -9,8 +9,13 @@
     <string name="log_out">Log Out</string>
     <string name="start">Start</string>
     <string name="emotional_ability_curriculum">Emotional Ability \n Curriculum</string>
-    <string name="level_desc">Imitation of Facial Expressions: Practicing imitation of facial expressions of emotions, Joint attention, following directions, and practicing receptive language related to emotions</string>
+    <string name="level_desc">Imitation of Facial Expressions: Practicing imitation of facial expressions of emotions, Joint attention, following directions</string>
     <string name="next">NEXT</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="exit">EXit</string>
+    <string name="let_s_play_the">Let’s play the</string>
+    <string name="emotion_imitation">EMOTION IMITATION</string>
+    <string name="game">Game!</string>
+    <string name="previous">PREVIOUS</string>
 </resources>

@@ -54,14 +54,13 @@ public class QuestionAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                Log.d("TAG", "createFragment: "+level.getName());
 
-                return new QuestionContentFragment(level.getGameName());
+                return new QuestionContentFragment(level.getGameName() ,0);
             case 1:
-                return new QuestionContentFragment(level.getGameDescription());
+                return new QuestionContentFragment(level.getGameDescription() ,1);
 
             case 2:
-                return new QuestionContentFragment(Constants.LET_IS_BEGIN_VALUE);
+                return new QuestionContentFragment(Constants.LET_IS_BEGIN_VALUE,2);
 
             case 3:
                 return new PhaseFragment(level.getIdLevel(), level.getUnitId() , fragmentActivity);

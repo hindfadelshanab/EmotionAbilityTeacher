@@ -25,4 +25,6 @@ public class Constants {
     public final static String MESSAGE_FOR_ANSWERED_KEY ="messageForPhaseAnsweredKey";
     public final static String CORRECT_ANSWER_VALUE ="CorrectAnswerValue";
     public final static String WRONG_ANSWER_VALUE ="WrongAnswerValue";
+    public final static int ANSWERED_WAY_TRU_FALSE =1;
+    public final static int ANSWERED_WAY_SELECT =2;
 }

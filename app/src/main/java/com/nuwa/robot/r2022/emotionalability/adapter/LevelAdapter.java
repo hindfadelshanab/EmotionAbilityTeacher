@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.nuwa.robot.r2022.emotionalability.R;
 import com.nuwa.robot.r2022.emotionalability.databinding.LevelItemBinding;
 import com.nuwa.robot.r2022.emotionalability.model.Level;
+import com.nuwa.robot.r2022.emotionalability.model.Phase;
 import com.nuwa.robot.r2022.emotionalability.utils.Constants;
 import com.nuwa.robot.r2022.emotionalability.view.GameActivity;
 import com.nuwa.robot.r2022.emotionalability.view.StartLevelActivity;
@@ -41,9 +42,28 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull LevelAdapter.ViewHolder viewHolder, int i) {
         Level level = levels.get(i);
+        int count =0;
+        for (Phase p :level.getPhases()) {
+            if (p.isAnswered()){
+                count ++;
 
+            }
+        }
+
+        if (count ==level.getPhases().size()){
+            Log.d("TAG", "onBindViewHolder: count ==level.getPhases().size()");
+            viewHolder.binding.imagePlay.setImageResource(R.drawable.ic_baseline_check_circle_outline_24);
+
+        }else {
+            viewHolder.binding.imageLevel.setImageResource(R.drawable.play_icon);
+
+        }
+        Log.d("TAG", "onBindViewHolder:count " +count +"level id :" +level.getIdLevel()
+        +"phases count "+level.getPhases().size()
+        );
         viewHolder.binding.txtLevelName.setText(level.getName());
         viewHolder.binding.imageLevel.setImageResource(R.drawable.level_image);
+
 
 //        Glide.with(context).load(level.getImage()).into(viewHolder.binding.imageLevel);
 
@@ -58,6 +78,9 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.ViewHolder>{
                 context.startActivity(intent);
             }
         });
+
+
+
 
     }
 

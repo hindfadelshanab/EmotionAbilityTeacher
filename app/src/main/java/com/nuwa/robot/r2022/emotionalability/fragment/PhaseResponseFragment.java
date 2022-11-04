@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.nuwa.robot.r2022.emotionalability.R;
 import com.nuwa.robot.r2022.emotionalability.databinding.FragmentResponsBinding;
 import com.nuwa.robot.r2022.emotionalability.model.Phase;
 import com.nuwa.robot.r2022.emotionalability.model.PhaseAnswered;
@@ -27,6 +26,7 @@ public class PhaseResponseFragment extends Fragment {
     FragmentResponsBinding binding;
     FragmentActivity fragmentActivity ;
     Phase phase;
+    public String TAG ="PhaseResponseFragment";
 
     public PhaseResponseFragment(Phase phase , FragmentActivity fragmentActivity) {
 
@@ -43,27 +43,27 @@ public class PhaseResponseFragment extends Fragment {
         binding = FragmentResponsBinding.inflate(inflater, container, false);
 
         if (phase !=null){
+
+            Log.d("PhaseResponseFragment", "onCreateView: phase" +phase.toString());
+            if ( phase.isAnswered()) {
+                handleRightRespond(phase.getResponse());
+            } else if (!phase.isAnswered()) {
+                Log.d(TAG, "onCreateView: " +phase.isAnswered());
+                handleWrongRespond();
+
+            }
                 PhaseAnsweredLiveData.get().observe((LifecycleOwner) fragmentActivity, new Observer<StateData<PhaseAnswered>>() {
                     @Override
                     public void onChanged(StateData<PhaseAnswered> phaseAnsweredStateData) {
 
                         PhaseAnswered phaseAnswered = phaseAnsweredStateData.getData();
-                        Log.d("TAG", "onChanged observe: " + phaseAnswered.isAnswered());
-                        Log.d("TAG", "onChanged observe: " + phaseAnswered.getPhaseId());
-                        if ((phaseAnswered.getPhaseId() == phase.getId() && phaseAnswered.isAnswered()) || phase.isAnswered()) {
+                        if ((phaseAnswered.getPhaseId() == phase.getId() && phaseAnswered.isAnswered()) ) {
+                            handleRightRespond(phase.getResponse());
 
 
-                            Log.d("TAG", "onChanged: " +phase.isAnswered());
-                            Log.d("TAG", "onChanged: " +phase.getResponse());
-                            binding.txtQuestionTitle.setText(phase.getResponse());
-//                            robotController.sendMessageToRobot(phase.getResponse());
-//                    updatePhase(phase.getId() ,phase.getLevelId() , phase.getUnitId() ,true);
+                        } else if ((phaseAnswered.getPhaseId() == phase.getId() && !phaseAnswered.isAnswered()) ) {
+                            handleWrongRespond();
 
-//                    phase.setAnswered(false);
-                        } else if ((phaseAnswered.getPhaseId() == phase.getId() && !phaseAnswered.isAnswered()) || !phase.isAnswered()) {
-                            binding.txtQuestionTitle.setText(Constants.LET_IS_TRY_AGAIN_VALUE);
-//                            robotController.sendMessageToRobot(Constants.LET_IS_BEGIN_VALUE);
-//                    updatePhase(phase.getId() ,phase.getLevelId() , phase.getUnitId() ,false);
 
                         }
                     }
@@ -72,5 +72,21 @@ public class PhaseResponseFragment extends Fragment {
         }
 
         return binding.getRoot();
+    }
+
+    private void handleWrongRespond() {
+
+        binding.txtIntro.setText("Let’s");
+        binding.txtQuestionTitle.setText("try again.");
+    }
+
+    private void handleRightRespond(String phaseResponse) {
+
+        String responseIntro = phaseResponse.substring(0 , phaseResponse.indexOf("!"));
+        String response = phaseResponse.substring(phaseResponse.indexOf("!")+1 );
+
+        binding.txtIntro.setText(responseIntro);
+        binding.txtQuestionTitle.setText(response);
+
     }
 }

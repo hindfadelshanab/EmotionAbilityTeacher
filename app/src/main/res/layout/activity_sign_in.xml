@@ -93,7 +93,7 @@
         android:id="@+id/btnSigIn"
         android:layout_width="@dimen/_250sdp"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_gradient_purple"
+        android:background="@drawable/button_purple"
         android:padding="@dimen/_8sdp"
         android:text="Sign In"
         android:textColor="@color/white"

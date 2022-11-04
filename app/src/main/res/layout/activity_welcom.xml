@@ -12,25 +12,25 @@
         android:id="@+id/imageLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
         android:src="@drawable/click_health_logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
 
 
-        />
+        app:layout_constraintTop_toTopOf="parent" />
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_56sdp"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:layout_marginEnd="@dimen/_56sdp"
-        android:background="@drawable/button_gradient_purple"
+        android:layout_marginStart="@dimen/_64sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_64sdp"
+        android:background="@drawable/button_purple"
         android:padding="@dimen/_12sdp"
         android:text="@string/log_in_as_therapist"
         android:textColor="@color/white"
-        android:textSize="@dimen/_20ssp"
+        android:textSize="@dimen/_16ssp"
         app:layout_constraintBottom_toTopOf="@id/btnLogInAsStudent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -43,12 +43,12 @@
         android:id="@+id/btnLogInAsStudent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_gradient_green"
+        android:background="@drawable/button_orange"
         android:padding="@dimen/_12sdp"
         android:text="@string/log_in_as_a_student"
-        android:layout_marginTop="@dimen/_8sdp"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_20ssp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_16ssp"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@id/btnNext"
         app:layout_constraintStart_toStartOf="@id/btnNext"
@@ -57,9 +57,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_100sdp"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
         android:src="@drawable/robot_image"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLogInAsStudent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -206,9 +206,9 @@ public class PhaseAdapter extends FragmentStateAdapter {
         switch (position) {
             case 0:
 
-                return new PhaseQuestionContentFragment(phase);
+                return new PhaseQuestionContentFragment(phase );
             case 1:
-                return new AnswerContentFragment(phase);
+                return new AnswerContentFragment(phase , fragmentActivity);
             case 2:
 
                 return new PhaseResponseFragment(phase, fragmentActivity);

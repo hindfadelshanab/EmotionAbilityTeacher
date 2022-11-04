@@ -26,6 +26,12 @@
 
     <color name="orangeStartColor">#e5ba9d</color>
     <color name="orangeCenterColor">#cb753b</color>
+    <color name="orangeColor">#fe8f61</color>
+    <color name="blueColor">#2cc2ff</color>
+    <color name="darkBlueColor">#445a81</color>
+    <color name="greenColor">#01b59a</color>
+    <color name="pinkColor">#ff6968</color>
+    <color name="purpleColor">#a882bb</color>
 
 
 </resources>

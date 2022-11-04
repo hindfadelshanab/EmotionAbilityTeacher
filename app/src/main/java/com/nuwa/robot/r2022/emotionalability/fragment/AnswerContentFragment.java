@@ -3,6 +3,9 @@ package com.nuwa.robot.r2022.emotionalability.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,26 +18,47 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.nuwa.robot.r2022.emotionalability.R;
 import com.nuwa.robot.r2022.emotionalability.adapter.ImageOptionAdapter;
 import com.nuwa.robot.r2022.emotionalability.databinding.FragmentAnswerContentBinding;
 import com.nuwa.robot.r2022.emotionalability.listener.OnImageOptionSelectedListener;
+import com.nuwa.robot.r2022.emotionalability.listener.OnMessageReciveListener;
 import com.nuwa.robot.r2022.emotionalability.model.AnswerContent;
 import com.nuwa.robot.r2022.emotionalability.model.ImageOption;
 import com.nuwa.robot.r2022.emotionalability.model.Phase;
 import com.nuwa.robot.r2022.emotionalability.model.PhaseAnswered;
 import com.nuwa.robot.r2022.emotionalability.model.PhaseAnsweredLiveData;
+import com.nuwa.robot.r2022.emotionalability.networking.TeacherClient;
+import com.nuwa.robot.r2022.emotionalability.utils.Constants;
+import com.nuwa.robot.r2022.emotionalability.utils.PreferenceManager;
+import com.nuwa.robot.r2022.emotionalability.utils.RobotController;
+import com.nuwa.robot.r2022.emotionalability.utils.StateData;
+import com.nuwa.robot.r2022.emotionalability.viewModel.GameViewModel;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import io.realm.Realm;
 
 
-public class AnswerContentFragment extends Fragment {
+public class AnswerContentFragment extends Fragment implements OnMessageReciveListener {
 
     private FragmentAnswerContentBinding binding ;
     private Phase phase ;
-    private     PhaseAnswered phaseAnswered ;
-    public AnswerContentFragment(Phase phase){
+    RobotController robotController ;
+    Gson gson;
+    private Realm realm ;
+    private PreferenceManager preferenceManager;
+    TeacherClient teacherClient;
+    private GameViewModel gameViewModel;
+    private FragmentActivity fragmentActivity ;
+    public AnswerContentFragment(Phase phase , FragmentActivity fragmentActivity){
         this.phase = phase;
+        this.fragmentActivity = fragmentActivity ;
 
     }
 
@@ -42,21 +66,32 @@ public class AnswerContentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding =FragmentAnswerContentBinding.inflate(inflater , container , false);
+
+
+
+
+        initialization();
+
+        initConnection();
+        return binding.getRoot();
+    }
+
+    private void initialization(){
+        robotController = new RobotController(getContext());
+        realm = Realm.getDefaultInstance();
+        gson = new Gson();
+        preferenceManager= new PreferenceManager(getContext());
+        gameViewModel = new ViewModelProvider(fragmentActivity).get(GameViewModel.class);
         if (phase!=null){
             Log.d("TAG", "AnswerContentFragment: " +phase);
             showAnswerContent(phase.getAnswerContent());
         }
-        return binding.getRoot();
     }
+
 
     private void showAnswerContent(AnswerContent answerContent) {
 
-//        LinearLayout linearLayout = view.findViewById(R.id.layoutCorrectAnswer);
-//        LinearLayout linearLayout2 = view.findViewById(R.id.layoutWrongAnswer);
-//        Button textView = view.findViewById(R.id.txtCorrect);
-//        Button textViewWrong = view.findViewById(R.id.txtWrong);
-//        RecyclerView listView = view.findViewById(R.id.imageList);
-//        ImageView imageForShow = view.findViewById(R.id.imageForShow);
+             PhaseAnswered     phaseAnswered = new PhaseAnswered();
 
 
         if (answerContent.isHaveImageForShow() && answerContent.getImageForShow().equals("ScaredChild")) {
@@ -65,9 +100,9 @@ public class AnswerContentFragment extends Fragment {
         }
 
 
-        if (answerContent.getAnswerWay() == 1) {
+        if (answerContent.getAnswerWay() ==Constants.ANSWERED_WAY_TRU_FALSE) {
 
-             phaseAnswered = new PhaseAnswered();
+
             phaseAnswered.setPhaseId(phase.getId());
             phaseAnswered.setLevelId(phase.getLevelId());
             phaseAnswered.setUnitId(phase.getUnitId());
@@ -98,22 +133,22 @@ public class AnswerContentFragment extends Fragment {
                 }
             });
 
-        } else if (answerContent.getAnswerWay() == 2) {
+        } else if (answerContent.getAnswerWay() == Constants.ANSWERED_WAY_SELECT) {
             binding.layoutCorrectAnswer.setVisibility(View.GONE);
             binding.layoutWrongAnswer.setVisibility(View.GONE);
             binding.imageList.setVisibility(View.VISIBLE);
             String phaseJson = "";
 
-//            if (phase2 != null) {
-//                phase2 = realm.copyFromRealm(phase2); //detach from Realm, copy values to fields
-//                phaseJson = gson.toJson(phase2);
-//            }
+            if (phase != null) {
+                phase = realm.copyFromRealm(phase); //detach from Realm, copy values to fields
+                phaseJson = gson.toJson(phase);
+            }
 
-            Log.d("TAG", "showAnswerContent ==phase: " + phase.toString());
-            Log.d("TAG", "showAnswerContent ==phaseJson: " + phaseJson);
+            Log.d("TAG AnswerContent", "showAnswerContent ==phase: " + phase.toString());
+            Log.d("TAG AnswerContent", "showAnswerContent ==phaseJson: " + phaseJson);
 
-//            robotController.sendMessageForStudent(phaseJson);
-            Log.d("TAG", "showAnswerContent message Send: ");
+            robotController.sendMessageForStudent(phaseJson);
+            Log.d("TAG AnswerContent", "showAnswerContent message Send: ");
 
 
             ImageOptionAdapter adapter = new ImageOptionAdapter(getActivity(), answerContent.getImageOptions(), new OnImageOptionSelectedListener() {
@@ -155,6 +190,69 @@ public class AnswerContentFragment extends Fragment {
             }
         });
 
+
+    }
+
+
+    private void initConnection() {
+
+        String serverIp = preferenceManager.getString(Constants.IPKEY);
+        if (serverIp != null) {
+            try {
+                Log.d("TAG", "RobotController: " + serverIp);
+                teacherClient = new TeacherClient(new URI("ws://" + serverIp + ":8887"), this);
+
+
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+            try {
+                teacherClient.connectBlocking();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+    @Override
+    public void OnMessageRecive(String Message) {
+        try {
+            JSONObject jObj = new JSONObject(Message);
+            String action = jObj.getString(Constants.MESSAGE_FOR_ANSWERED_KEY);
+
+            PhaseAnswered phaseAnswered = gson.fromJson(action, PhaseAnswered.class);
+
+            phaseAnswered.isAnswered();
+
+            if(phaseAnswered.isAnswered()) {
+                Log.d("TAG AnswerContent", "OnMessageRecive: phaseAnswered.isAnswered() "+phaseAnswered.isAnswered());
+                Log.d("TAG AnswerContent", "OnMessageRecive: phaseAnswered.isAnswered() "+phaseAnswered);
+
+
+                gameViewModel.updatePhase(phaseAnswered.getPhaseId(),
+                        phaseAnswered.getLevelId(), phaseAnswered.getUnitId(), true).observe(this, new Observer<StateData<Phase>>() {
+                    @Override
+                    public void onChanged(StateData<Phase> phaseStateData) {
+                        Log.d("TAG AnswerContent", "onChanged: "+phaseStateData.getData().toString());
+                    }
+                });
+                PhaseAnsweredLiveData.reset().postLoading();
+
+                PhaseAnsweredLiveData.reset().postSuccess(phaseAnswered);
+
+
+            } else {
+                gameViewModel.updatePhase(phaseAnswered.getPhaseId(),
+                        phaseAnswered.getLevelId(), phaseAnswered.getUnitId(), false);
+                PhaseAnsweredLiveData.get().postSuccess(phaseAnswered);
+
+            }
+            Log.d("TAG AnswerContent", "OnMessageRecive phaseAnswered: " + phaseAnswered.isAnswered());
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 

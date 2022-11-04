@@ -17,15 +17,15 @@
           "image":  "",
           "name": "EMOTIONS IMITATION LEVEL 1",
           "objective": "Imitation of Facial Expressions: Practicing imitation of facial expressions of emotions, Joint attention  following directions, and practicing receptive language related to emotions",
-          "gameName": "Let’s play the EMOTION IMITATION Game!",
-          "gameDescription": "You will see pictures of different facial expressions. Copy the emotion you see from the picture.\n",
+          "gameName": "Let’s play the ? EMOTION IMITATION ?Game!",
+          "gameDescription": "You will see pictures of different ? facial expressions ?. Copy the emotion you see from the picture.\n",
           "phases": [
             {
               "id": 1,
               "levelId": 1 ,
               "unitId": 1 ,
               "questioncontent": {
-                "title": "Look at the face. Copy the happy face",
+                "title": "Look at the face ? Copy the happy face ?",
                 "image": "HappyFace",
                 "faceExpression": "",
                 "bodyMotion": ""
@@ -39,7 +39,7 @@
                 "imageOptions": []
               },
               "point": 1,
-              "response": "That’s awesome! That’s a happy face."
+              "response": "That’s awesome! That’s a happy face"
             }
 
           ],
@@ -61,15 +61,15 @@
           "image":"",
           "name": "EMOTIONS IMITATION LEVEL 2",
           "objective": " Recognition of Basic Emotion: Practicing recognition of basic emotions (happy, sad, angry & scared) from smileys, practicing the receptive language of emotions.",
-          "gameName": "Let’s play the “Find the Right Emotion Game”!",
-          "gameDescription": "Look at the pictures carefully. Tap the correct emotion we are looking for. ",
+          "gameName": "Let’s play the ? Find the Right Emotion ?",
+          "gameDescription": "Look at the pictures carefully Tap the ? correct emotion ? we are looking for ",
           "phases": [
             {
               "id": 2,
               "levelId": 2 ,
               "unitId": 2 ,
               "questioncontent": {
-                "title": "Where is the sad face?",
+                "title": "Where is the ? sad face ?",
                 "image": "",
                 "faceExpression": "",
                 "bodyMotion": ""
@@ -97,7 +97,7 @@
                 ]
               },
               "point": 1,
-              "response": "You’re right! That is a sad face."
+              "response": "You’re right! That is a sad face"
             }
 
           ],
@@ -111,15 +111,15 @@
           "image":"",
           "name": " EMOTIONS IMITATION LEVEL 3",
           "objective": "Recognition of Basic Emotion: Practicing recognition of basic emotions (happy, sad, angry & scared) from smileys, practicing the receptive language of emotions.",
-          "gameName": "Let’s play the “Find the Right Emotion Game”!",
-          "gameDescription": "Look at the pictures carefully. Tap the correct emotion we are looking for. ",
+          "gameName": "Let’s play the ? Find the Right Emotion ?",
+          "gameDescription": "Look at the pictures carefully. Tap the? correct emotion ? we are looking for. ",
           "phases": [
             {
               "id": 3,
               "levelId": 3 ,
               "unitId":2 ,
               "questioncontent": {
-                "title": "Where is the happy face?",
+                "title": "Where is the ? happy face?",
                 "image": "",
                 "faceExpression": "",
                 "bodyMotion": ""
@@ -146,7 +146,7 @@
                 ]
               },
               "point": 1,
-              "response": "You’re right! That is a happy face."
+              "response": "You’re right! That is a happy face"
             }
 
           ],
@@ -159,15 +159,15 @@
           "image":"",
           "name": "FIND THE RIGHT EMOTION LEVEL 1",
           "objective": "Recognition of Basic Emotion:\nPracticing recognition of basic emotions (happy, sad, angry & scared) from smileys, practicing the receptive language of emotions.",
-          "gameName": "Let’s play the “Find the Right Emotion Game”!",
-          "gameDescription": "Look at the pictures carefully. Tap the correct emotion we are looking for. ",
+          "gameName": "Let’s play the ? Find the Right Emotion Game?!",
+          "gameDescription": "Look at the pictures carefully Tap the? correct emotion ?we are looking for ",
           "phases": [
             {
               "id": 4,
               "levelId": 4 ,
               "unitId": 2 ,
               "questioncontent": {
-                "title": "How does the child feel?",
+                "title": "How does ? the child feel?",
                 "image": "",
                 "faceExpression": "",
                 "bodyMotion": ""
@@ -199,7 +199,46 @@
                 ]
               },
               "point": 1,
-              "response": "You’re right! The child feels scared."
+              "response": "You’re right! The child feels scared"
+            }
+ ,            {
+              "id": 5,
+              "levelId": 4 ,
+              "unitId": 2 ,
+              "questioncontent": {
+                "title": "How does ? the child feel?222",
+                "image": "",
+                "faceExpression": "",
+                "bodyMotion": ""
+              },
+              "answerContent": {
+                "answerWay": 2,
+                "dragBy": 0,
+                "isHaveImageForShow": true ,
+                "ImageForShow": "ScaredChild",
+                "kind": {},
+                "imageOptions": [
+                  {
+                    "image":"ScaredBoy" ,
+                    "isCorrect": 1 ,
+                    "description":"scared"
+
+                  }  ,
+                  {
+                    "image":"AngryBoy" ,
+                    "isCorrect":0 ,
+                    "description":"angry"
+                  } ,
+                  {
+                    "image":"HappyBoy" ,
+                    "isCorrect":0 ,
+                    "description":"happy"
+                  }
+
+                ]
+              },
+              "point": 1,
+              "response": "You’re right! The child feels scared"
             }
 
           ],

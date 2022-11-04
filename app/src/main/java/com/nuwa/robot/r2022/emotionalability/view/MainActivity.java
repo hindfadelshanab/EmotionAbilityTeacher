@@ -174,20 +174,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void successCase(Module data) {
         module =data;
+        Module module = realm.where(Module.class).equalTo("id",data.getId())
+                .findFirst();
+        if (module ==null){
+            realm.executeTransaction(new Realm.Transaction() {
+                @Override
+                public void execute(Realm realm) {
 
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                // inside on execute method we are calling a method
-                // to copy to real m database from our modal class.
-//                realm.beginTransaction();
+
+                    realm.insert(data);
+
+                }
+            });
+        }
 
 
-           realm.insertOrUpdate(data );
-
-//                Log.d("TAG", "execute: "+m.toString());
-            }
-        });
 
         Log.d("TAG", "successCase:  " + data.toString());
         binding.btnModuleArea.setText(data.getAreaOfSpecialization());
