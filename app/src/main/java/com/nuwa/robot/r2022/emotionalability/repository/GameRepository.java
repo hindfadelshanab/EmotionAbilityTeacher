@@ -12,7 +12,6 @@ import com.nuwa.robot.r2022.emotionalability.model.Module;
 import com.nuwa.robot.r2022.emotionalability.model.Phase;
 import com.nuwa.robot.r2022.emotionalability.model.Unit;
 import com.nuwa.robot.r2022.emotionalability.model.relation.FilterPhase;
-import com.nuwa.robot.r2022.emotionalability.utils.ReaderGame;
 import com.nuwa.robot.r2022.emotionalability.utils.StateLiveData;
 import com.nuwa.robot.r2022.emotionalability.utils.Utils;
 
@@ -127,6 +126,29 @@ public class GameRepository {
                 phase.setAnswered(isAnswered);
                Phase phase1=realm.copyToRealmOrUpdate(phase);
                 Log.d("TAG", "updatePhase:GameRepository after update " +phase.toString());
+
+                stateLiveDataPhase.postSuccess(phase1);
+            }
+        });
+
+        return stateLiveDataPhase;
+    }
+public StateLiveData<Phase> updatePhase(int phaseId , int levelId , int unitId  , String  response){
+
+        Realm realm =Realm.getDefaultInstance();
+
+        Phase phase2 = realm.where(Phase.class).equalTo("id", phaseId)
+                .equalTo("levelId" ,levelId)
+                .equalTo("unitId" ,unitId)
+                .findFirst();
+
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+
+                phase2.setResponse(response);
+               Phase phase1=realm.copyToRealmOrUpdate(phase2);
+                Log.d("TAG", "updatePhase Response:GameRepository after update " +phase2.toString());
 
                 stateLiveDataPhase.postSuccess(phase1);
             }

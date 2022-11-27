@@ -9,20 +9,28 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.amrdeveloper.lottiedialog.LottieDialog;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.conn.util.InetAddressUtils;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.nuwa.robot.r2022.emotionalability.R;
 import com.nuwa.robot.r2022.emotionalability.networking.ClientThread;
 import com.nuwa.robot.r2022.emotionalability.networking.TeacherClient;
+import com.nuwa.robot.r2022.emotionalability.networking.TeacherSocketClient;
 import com.nuwa.robot.r2022.emotionalability.utils.Constants;
 import com.nuwa.robot.r2022.emotionalability.utils.PreferenceManager;
 
 import org.java_websocket.client.WebSocketClient;
 
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collections;
+import java.util.List;
 
 public class MakeConnectionWithRobotActivity extends AppCompatActivity {
     public   String SERVER_IP ;
@@ -47,20 +55,26 @@ public class MakeConnectionWithRobotActivity extends AppCompatActivity {
         if (result != null) {
             SERVER_IP = result.getContents();
             preferenceManager.putString(Constants.IPKEY , SERVER_IP);
-            WebSocketClient client = null;
+            TeacherSocketClient client = null;
             try {
+                client = new TeacherSocketClient(new URI("ws://"+SERVER_IP+":8887"));
+                client.connect();
 
-                Log.d("TAG", "onActivityResult:SERVER_IP "+SERVER_IP);
-                client = new TeacherClient(new URI("ws://"+SERVER_IP+":8887"));
 
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }
-            client.connect();
-//
-//            ClientThread clientThread = ClientThread.getInstance();
-//            clientThread.init(SERVER_IP , null);
-            showDialog();
+            String myIp = getMyIPAddress().substring(0,getMyIPAddress().lastIndexOf("."));
+            String serverIp = SERVER_IP.substring(0,SERVER_IP.lastIndexOf("."));
+            if (myIp.equals(serverIp)){
+                showDialog();
+            }else {
+                Toast.makeText(this, "Please make sure that the device is connected to the same network as the robot app", Toast.LENGTH_LONG).show();
+                IntentIntegrator intentIntegrator = new IntentIntegrator(MakeConnectionWithRobotActivity.this);
+                intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
+                intentIntegrator.initiateScan();
+            }
+
 
         }
     }
@@ -94,5 +108,27 @@ public class MakeConnectionWithRobotActivity extends AppCompatActivity {
                 ;
 
         dialog.show();
+    }
+
+    public static String getMyIPAddress() {//P.S there might be better way to get your IP address (NetworkInfo) could do it.
+        String myIP = null;
+        try {
+            List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
+            for (NetworkInterface intf : interfaces) {
+                List<InetAddress> addrs = Collections.list(intf.getInetAddresses());
+                for (InetAddress addr : addrs) {
+                    if (!addr.isLoopbackAddress()) {
+                        String sAddr = addr.getHostAddress().toUpperCase();
+                        boolean isIPv4 = InetAddressUtils.isIPv4Address(sAddr);
+                        if (isIPv4)
+                            myIP = sAddr;
+                    }
+                }
+            }
+
+        } catch (SocketException e) {
+            e.printStackTrace();
+        }
+        return myIP;
     }
 }

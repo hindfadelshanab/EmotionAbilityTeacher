@@ -34,6 +34,7 @@
         android:id="@+id/sViewPager"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="@dimen/_12sdp"
         app:layout_constraintBottom_toTopOf="@id/btnGameNext"
         app:layout_constraintEnd_toStartOf="@id/imageView"
         app:layout_constraintHorizontal_bias="0.0"

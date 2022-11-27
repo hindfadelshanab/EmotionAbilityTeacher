@@ -10,6 +10,8 @@ import com.nuwa.robot.r2022.emotionalability.model.Module;
 import com.nuwa.robot.r2022.emotionalability.repository.MainRepository;
 import com.nuwa.robot.r2022.emotionalability.utils.StateLiveData;
 
+import java.util.List;
+
 import kotlinx.coroutines.Dispatchers;
 
 public class MainViewModel extends AndroidViewModel {

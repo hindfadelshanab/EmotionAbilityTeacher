@@ -455,10 +455,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/patientInfoLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="@dimen/_12ssp"
+        android:padding="@dimen/_8ssp"
+        android:layout_marginEnd="@dimen/_12sdp"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_12sdp"
         android:layout_marginStart="@dimen/_12ssp"
         >
         <ImageView
@@ -516,14 +517,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_12sdp"
         android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
         android:background="@drawable/board_background"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/btnStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/patientInfoLayout"
-        app:layout_constraintTop_toBottomOf="@id/layoutLesson"
 
-        app:layout_constraintVertical_bias="0.26">
+        app:layout_constraintTop_toBottomOf="@id/layoutLesson"
+        app:layout_constraintVertical_bias="0.110000014">
 
 
         <LinearLayout
@@ -704,7 +706,7 @@
     </LinearLayout>
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnStart"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/_120sdp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:paddingStart="@dimen/_16sdp"
@@ -724,16 +726,17 @@
         app:layout_constraintStart_toEndOf="@id/patientInfoLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="@dimen/_60sdp"
         android:layout_height="@dimen/_60sdp"
-        android:src="@drawable/robot_image"
+        android:layout_marginEnd="@dimen/_12ssp"
         android:layout_marginBottom="@dimen/_12ssp"
+        android:src="@drawable/robot_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="@dimen/_12ssp"
 
-       />
+        app:layout_constraintTop_toBottomOf="@+id/layoutContainer" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

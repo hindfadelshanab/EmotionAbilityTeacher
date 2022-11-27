@@ -16,28 +16,12 @@ import java.util.List;
 
 public class MainRepository {
 
-    GameDao gameDao ;
-//    public MainRepository(Context context) {
-//        gameDao = GameDatabase.getInstance(context).gameDao();
-//
-//    }
     private StateLiveData<Module> stateLiveData = new StateLiveData<Module>();
 
     public StateLiveData<Module> getModule(Context context) {
-
         stateLiveData.postSuccess(loadJSONFromAsset(context));
         return stateLiveData;
-
     }
-//    public  void insertModule(Module module){
-//
-//        gameDao.insertModule(module);
-//
-//
-//    }
-//    public  Module getModule(int id){
-//        return  gameDao.getModule(id);
-//    }
 
     public Module loadJSONFromAsset(Context context) {
         String jsonFileString = Utils.getJsonFromAssets(context, "moduled.json");

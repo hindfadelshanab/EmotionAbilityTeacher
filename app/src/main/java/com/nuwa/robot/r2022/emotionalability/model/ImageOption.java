@@ -78,4 +78,14 @@ public class ImageOption extends RealmObject implements Parcelable {
         parcel.writeString(description);
         parcel.writeByte((byte) (isForShow ? 1 : 0));
     }
+
+    @Override
+    public String toString() {
+        return "ImageOption{" +
+                "image='" + image + '\'' +
+                ", isCorrect=" + isCorrect +
+                ", description='" + description + '\'' +
+                ", isForShow=" + isForShow +
+                '}';
+    }
 }

@@ -13,35 +13,48 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/_90sdp"
         android:layout_marginStart="@dimen/_32sdp"
-
         android:layout_marginTop="@dimen/_16sdp"
         android:layout_marginEnd="@dimen/_32sdp"
         android:background="@drawable/board_background"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:paddingBottom="@dimen/_12sdp"
         app:layout_constraintTop_toTopOf="parent"
+
+        android:gravity="center"
 
         app:layout_goneMarginEnd="@dimen/_12sdp"
         app:layout_goneMarginStart="@dimen/_12sdp">
 
 
-        <TextView
-            android:id="@+id/txtLevelName"
 
-            android:layout_width="@dimen/_300sdp"
+        <TextView
+        android:id="@+id/txtLevelName"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="M2 U2 Find The Right Emotion "
+        android:textColor="@color/purpleColor"
+        android:textSize="@dimen/_22ssp"
+        android:textStyle="bold"
+
+        />
+        <TextView
+            android:id="@+id/txtLevelNum"
+
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:gravity="center"
-            android:lineHeight="@dimen/_30sdp"
-            android:paddingEnd="@dimen/_32sdp"
-            android:text="M2 U2 Find The Right Emotion (Level1)"
-            android:textColor="@color/purpleColor"
+            android:gravity="bottom"
+            android:text="(Level1)"
+            android:textColor="@color/orangeColor"
             android:textSize="@dimen/_24ssp"
             android:textStyle="bold"
 
             />
+
 
 
     </LinearLayout>

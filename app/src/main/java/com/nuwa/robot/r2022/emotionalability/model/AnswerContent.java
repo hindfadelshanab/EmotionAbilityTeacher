@@ -8,15 +8,15 @@ import java.util.List;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 
-public class AnswerContent  extends RealmObject   {
+public class AnswerContent extends RealmObject {
 
-    private int answerWay; // true/false - select - drag - select character
-    private   int dragBy ; // size - kind - steps
+    private int answerWay; // true/false - select - drag - select character , selectEmotionTable(5)
+    private int dragBy; // size - kind - steps
 
-    private boolean isHaveImageForShow ;
-    private String ImageForShow ;
+    private boolean isHaveImageForShow;
+    private String ImageForShow;
     private Kind kind;
-    private RealmList<ImageOption> imageOptions ;
+    private RealmList<ImageOption> imageOptions;
 
     protected AnswerContent(Parcel in) {
         answerWay = in.readInt();
@@ -24,7 +24,7 @@ public class AnswerContent  extends RealmObject   {
 
         isHaveImageForShow = in.readByte() != 0;
         ImageForShow = in.readString();
-         in.readList(imageOptions ,ImageOption.class.getClassLoader());
+        in.readList(imageOptions, ImageOption.class.getClassLoader());
 //        kind =  in.readParcelable(Kind.class.getClassLoader());
 
 

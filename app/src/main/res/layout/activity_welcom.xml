@@ -19,18 +19,18 @@
 
 
         app:layout_constraintTop_toTopOf="parent" />
-    <androidx.appcompat.widget.AppCompatButton
+    <TextView
         android:id="@+id/btnNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_64sdp"
-        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_4sdp"
         android:layout_marginEnd="@dimen/_64sdp"
-        android:background="@drawable/button_purple"
-        android:padding="@dimen/_12sdp"
-        android:text="@string/log_in_as_therapist"
-        android:textColor="@color/white"
+        android:padding="@dimen/_8sdp"
+        android:text="Teacher App"
+        android:textColor="@color/purpleColor"
         android:textSize="@dimen/_16ssp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@id/btnLogInAsStudent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -45,8 +45,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_orange"
         android:padding="@dimen/_12sdp"
-        android:text="@string/log_in_as_a_student"
-        android:layout_marginTop="@dimen/_4sdp"
+        android:text="LOG IN"
         android:textColor="@color/white"
         android:textSize="@dimen/_16ssp"
         app:layout_constraintBottom_toTopOf="@+id/imageView"

@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private Module module ;
     private Realm realm;
     PreferenceManager preferenceManager;
-    RobotController robotController;
 
 
     @Override
@@ -66,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
     private void initialization() {
          realm = Realm.getDefaultInstance();
          preferenceManager = new PreferenceManager(this);
-        robotController = new RobotController(this);
 
 
 
@@ -75,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (module!=null){
-                    Toast.makeText(MainActivity.this, "module id" +module.getId(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, "module id" +module.getId(), Toast.LENGTH_SHORT).show();
 
 
                     Intent intent = new Intent(MainActivity.this , StartGameActivity.class);
@@ -174,27 +172,28 @@ public class MainActivity extends AppCompatActivity {
 
     private void successCase(Module data) {
         module =data;
-        Module module = realm.where(Module.class).equalTo("id",data.getId())
-                .findFirst();
-        if (module ==null){
-            realm.executeTransaction(new Realm.Transaction() {
-                @Override
-                public void execute(Realm realm) {
 
+            Module module2 = realm.where(Module.class).equalTo("id",data.getId())
+                    .findFirst();
+            if (module2 ==null){
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        realm.insert(data);
 
-                    realm.insert(data);
+                    }
+                });
 
-                }
-            });
         }
 
 
 
-        Log.d("TAG", "successCase:  " + data.toString());
-        binding.btnModuleArea.setText(data.getAreaOfSpecialization());
-        binding.btnModuleCurriculum.setText(data.getCurriculum());
-        binding.btnModuleNumber.setText(data.getModuleNumber());
-        binding.btnModuleObjective.setText(data.getObjectives());
+
+//        Log.d("TAG", "successCase:  " + data.toString());
+//        binding.btnModuleArea.setText(data.getAreaOfSpecialization());
+//        binding.btnModuleCurriculum.setText(data.getCurriculum());
+//        binding.btnModuleNumber.setText(data.getModuleNumber());
+//        binding.btnModuleObjective.setText(data.getObjectives());
 
 
     }

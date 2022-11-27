@@ -7,8 +7,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nuwa.robot.r2022.emotionalability.model.Level;
 import com.nuwa.robot.r2022.emotionalability.model.Module;
+import com.nuwa.robot.r2022.emotionalability.model.Phase;
 import com.nuwa.robot.r2022.emotionalability.model.Unit;
-import com.nuwa.robot.r2022.emotionalability.utils.ReaderGame;
 import com.nuwa.robot.r2022.emotionalability.utils.StateLiveData;
 import com.nuwa.robot.r2022.emotionalability.utils.Utils;
 
@@ -22,19 +22,43 @@ public class LevelRepository {
 
 
     private StateLiveData<List<Unit>> stateLiveData = new StateLiveData<List<Unit>>();
+    private StateLiveData<List<Module>> moduleListLiveData = new StateLiveData<List<Module>>();
+    private StateLiveData<List<Level>> levelListLiveData = new StateLiveData<List<Level>>();
     private Realm realm = Realm.getDefaultInstance();
 
-    public StateLiveData<List<Unit>> getUnit(Context context) {
+    public StateLiveData<List<Unit>> getUnit(Context context, int moduleId) {
 
-        stateLiveData.postSuccess(loadJSONFromAsset(context));
+        stateLiveData.postSuccess(loadJSONFromAsset(context, moduleId));
 
         return stateLiveData;
 
     }
 
-    public List<Unit> loadJSONFromAsset(Context context) {
+    public StateLiveData<List<Level>> getLevels(  int unitId) {
 
-        RealmResults<Unit> units=realm.where(Unit.class).findAll();
+        List<Level> levelList = realm.where(Level.class)
+            .equalTo("unitId", unitId)
+                .findAll();
+        Log.d("TAG" , "getLevels: levelList"+levelList.toString());
+        levelListLiveData.postSuccess(levelList);
+
+        return levelListLiveData;
+
+    }
+
+    public StateLiveData<List<Module>> getModule(Context context) {
+
+        List<Module> moduleList = realm.where(Module.class)
+                .findAll();
+        moduleListLiveData.postSuccess(moduleList);
+
+        return moduleListLiveData;
+
+    }
+
+    public List<Unit> loadJSONFromAsset(Context context, int moduleId) {
+
+        RealmResults<Unit> units = realm.where(Unit.class).equalTo("moduleId", moduleId).findAll();
 
 //        if (units!=null){
 //

@@ -47,7 +47,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/_12sdp"
 
         android:layout_marginTop="@dimen/_8sdp"
         android:background="@drawable/button_purple_border"
@@ -66,6 +65,21 @@
 
 
     </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSendResponseToRobot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_orange"
+        android:text="Send Response in Robot"
+        android:layout_gravity="end"
+        android:textColor="@color/white"
+        android:padding="@dimen/_4sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:visibility="gone"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        />
 
 
 </LinearLayout>

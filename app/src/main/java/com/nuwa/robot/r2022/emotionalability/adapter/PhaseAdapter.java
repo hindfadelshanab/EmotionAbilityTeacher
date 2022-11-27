@@ -67,27 +67,14 @@ public class PhaseAdapter extends FragmentStateAdapter {
     //    PreferenceManager preferenceManager;
     Realm realm = Realm.getDefaultInstance();
 
-    public PhaseAdapter(Phase phase, @NonNull FragmentActivity fragmentActivity) {
+    public PhaseAdapter(Phase phase, @NonNull FragmentActivity fragmentActivity ) {
         super(fragmentActivity);
         this.phase = phase;
         this.fragmentActivity = fragmentActivity;
     }
 
 
-//
-//    public PhaseAdapter(Phase phase, fragmentActivity fragmentActivity  ) {
-//        this.phase = phase;
-//        this.fragmentActivity = fragmentActivity;
-////        preferenceManager = new PreferenceManager(fragmentActivity);
-//        gson = new Gson();
-//
-////        robotController = new RobotController(fragmentActivity);
-//        phase2 = realm.where(Phase.class).equalTo("id", phase.getId())
-//                .equalTo("levelId", phase.getLevelId())
-//                .equalTo("unitId", phase.getUnitId())
-//                .findFirst();
-//
-//    }
+
 
     private void showAnswerContent(AnswerContent answerContent, View view) {
 
@@ -156,7 +143,7 @@ public class PhaseAdapter extends FragmentStateAdapter {
             Log.d("TAG", "showAnswerContent message Send: ");
 
 
-            ImageOptionAdapter adapter = new ImageOptionAdapter(fragmentActivity, answerContent.getImageOptions(), new OnImageOptionSelectedListener() {
+            ImageOptionAdapter adapter = new ImageOptionAdapter(fragmentActivity, answerContent.getImageOptions(),answerContent.getAnswerWay(), new OnImageOptionSelectedListener() {
                 @Override
                 public void OnImageOptionSelected(ImageOption imageOption) {
 
@@ -205,13 +192,11 @@ public class PhaseAdapter extends FragmentStateAdapter {
 
         switch (position) {
             case 0:
-
-                return new PhaseQuestionContentFragment(phase );
+                return new PhaseQuestionContentFragment(phase , fragmentActivity );
             case 1:
                 return new AnswerContentFragment(phase , fragmentActivity);
             case 2:
-
-                return new PhaseResponseFragment(phase, fragmentActivity);
+                return new PhaseResponseFragment(phase, fragmentActivity , 2);
         }
         return null;
     }

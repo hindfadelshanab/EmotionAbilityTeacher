@@ -70,7 +70,7 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.ViewHolder>{
         viewHolder.binding.getRoot().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(context , GameActivity.class);
+                Intent intent =new Intent(context , StartLevelActivity.class);
                 intent.putExtra(Constants.LEVEL_ID_Key, level.getIdLevel());
                 intent.putExtra(Constants.UNIT_ID_KEY, level.getUnitId());
                 Log.d("TAG", "onClick getAnswerContent: " +level.getPhases().get(0).getAnswerContent().toString());

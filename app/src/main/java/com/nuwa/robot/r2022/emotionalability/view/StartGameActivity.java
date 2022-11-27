@@ -28,6 +28,10 @@ public class StartGameActivity extends AppCompatActivity {
             Intent intent = new Intent(StartGameActivity.this, GameLevelActivity.class);
             startActivity(intent);
 
+        });        binding.btnPrevious.setOnClickListener(view -> {
+            Intent intent = new Intent(StartGameActivity.this, MainActivity.class);
+            startActivity(intent);
+
         });
 
 

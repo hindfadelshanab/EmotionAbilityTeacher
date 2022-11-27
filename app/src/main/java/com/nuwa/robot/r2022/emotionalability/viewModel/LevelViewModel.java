@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
 import com.nuwa.robot.r2022.emotionalability.model.Level;
+import com.nuwa.robot.r2022.emotionalability.model.Module;
 import com.nuwa.robot.r2022.emotionalability.model.Unit;
 import com.nuwa.robot.r2022.emotionalability.repository.LevelRepository;
 import com.nuwa.robot.r2022.emotionalability.utils.StateLiveData;
@@ -25,13 +26,16 @@ public class LevelViewModel extends AndroidViewModel {
         this.context =application;
     }
 
-    public StateLiveData<List<Unit>> getUnit() {
-        return levelRepository.getUnit(context);
+    public StateLiveData<List<Unit>> getUnit(int moduleID) {
+        return levelRepository.getUnit(context , moduleID);
+    }
+    public StateLiveData<List<Level>> getLevels( int unitID) {
+        return levelRepository.getLevels( unitID);
     }
 
-//    public List createGame(Level level){
-//        return levelRepository.createGame(level);
-//    }
+    public StateLiveData<List<Module>> getModule() {
+        return levelRepository.getModule(context);
+    }
 
 
 }

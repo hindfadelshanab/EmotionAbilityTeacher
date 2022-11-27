@@ -1,251 +1,565 @@
-{
-  "id": 1,
-  "moduleName": "Emotional Ability Curriculum",
-  "moduleNumber": "Module 1",
-  "curriculum": "Emotional Ability",
-  "areaOfSpecialization": "Dealing with Emotions",
-  "objectives": "Identify the different types of emotions",
-  "units": [
-    {
-      "idUnit": 1,
-      "unitName": "Emotion Imitation",
-      "moduleId": 1,
-      "levels": [
-        {
-          "idLevel": 1,
-          "color": "#62c879",
-          "image":  "",
-          "name": "EMOTIONS IMITATION LEVEL 1",
-          "objective": "Imitation of Facial Expressions: Practicing imitation of facial expressions of emotions, Joint attention  following directions, and practicing receptive language related to emotions",
-          "gameName": "Let’s play the ? EMOTION IMITATION ?Game!",
-          "gameDescription": "You will see pictures of different ? facial expressions ?. Copy the emotion you see from the picture.\n",
-          "phases": [
-            {
-              "id": 1,
-              "levelId": 1 ,
-              "unitId": 1 ,
-              "questioncontent": {
-                "title": "Look at the face ? Copy the happy face ?",
-                "image": "HappyFace",
-                "faceExpression": "",
-                "bodyMotion": ""
+
+  {
+    "id": 1,
+    "moduleName": "Emotional Ability Curriculum",
+    "moduleNumber": "Module 1",
+    "curriculum": "Emotional Ability",
+    "areaOfSpecialization": "Dealing with Emotions",
+    "objectives": "Identify the different types of emotions",
+    "units": [
+      {
+        "idUnit": 1,
+        "unitName": "Emotion Imitation",
+        "moduleId": 1,
+        "levels": [
+          {
+            "idLevel": 1,
+            "color": "#62c879",
+            "image": "",
+            "moduleId": 1 ,
+            "name": "EMOTIONS IMITATION ? LEVEL 1",
+            "objective": "Imitation of Facial Expressions: Practicing imitation of facial expressions of emotions, Joint attention  following directions, and practicing receptive language related to emotions",
+            "gameName": "Let’s play the ? EMOTION IMITATION ?Game!",
+            "gameDescription": "You will see pictures of different ? facial expressions * Copy the emotion you see from the picture",
+            "phases": [
+              {
+                "id": 1,
+                "levelId": 1,
+                "unitId": 1,
+                "questioncontent": {
+                  "title": "Look at the face ? Copy the happy face ?",
+                  "image": "HappyFace",
+                  "faceExpression": "",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 1,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kind": {},
+                  "imageOptions": []
+                },
+                "point": 1,
+                "response": "That’s awesome! That’s a happy face"
+              }
+            ],
+            "unitId": 1
+          }
+        ]
+      },
+      {
+        "idUnit": 2,
+        "unitName": "Find the Right Emotion",
+        "moduleId": 1,
+        "levels": [
+          {
+            "idLevel": 2,
+            "color": "#62c879",
+            "image": "",
+            "moduleId": 1 ,
+            "name": "EMOTIONS IMITATION ? LEVEL 2",
+            "objective": " Recognition of Basic Emotion: Practicing recognition of basic emotions (happy, sad, angry & scared) from smileys, practicing the receptive language of emotions.",
+            "gameName": "Let’s play the ? Find the Right Emotion ?",
+            "gameDescription": "Look at the pictures carefully Tap the ? correct emotion * we are looking for ",
+            "phases": [
+              {
+                "id": 2,
+                "levelId": 2,
+                "unitId": 2,
+                "questioncontent": {
+                  "title": "Where is the ? sad face ?",
+                  "image": "",
+                  "faceExpression": "",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 2,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kind": {},
+                  "imageOptions": [
+                    {
+                      "image": "AngryFace",
+                      "isCorrect": 0,
+                      "description": ""
+                    },
+                    {
+                      "image": "SadFace",
+                      "isCorrect": 1,
+                      "description": ""
+                    }
+                  ]
+                },
+                "point": 1,
+                "response": "You’re right! That is a sad face"
+              }
+            ],
+            "unitId": 2
+          },
+          {
+            "idLevel": 3,
+            "color": "#62c879",
+            "image": "",
+            "moduleId": 1 ,
+            "name": " EMOTIONS IMITATION ? LEVEL 3",
+            "objective": "Recognition of Basic Emotion: Practicing recognition of basic emotions (happy, sad, angry & scared) from smileys, practicing the receptive language of emotions.",
+            "gameName": "Let’s play the ? Find the Right Emotion ?",
+            "gameDescription": "Look at the pictures carefully Tap the ? correct emotion * we are looking for. ",
+            "phases": [
+              {
+                "id": 3,
+                "levelId": 3,
+                "unitId": 2,
+                "questioncontent": {
+                  "title": "Where is the ? happy face?",
+                  "image": "",
+                  "faceExpression": "",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 2,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kind": {},
+                  "imageOptions": [
+                    {
+                      "image": "HappyBoy",
+                      "isCorrect": 1,
+                      "description": ""
+                    },
+                    {
+                      "image": "SadBoy",
+                      "isCorrect": 0,
+                      "description": ""
+                    }
+                  ]
+                },
+                "point": 1,
+                "response": "You’re right! That is a happy face"
+              }
+            ],
+            "unitId": 2
+          },
+          {
+            "idLevel": 4,
+            "color": "#62c879",
+            "image": "",
+            "moduleId": 1 ,
+            "name": "FIND THE RIGHT EMOTION ? LEVEL 1",
+            "objective": "Recognition of Basic Emotion:\nPracticing recognition of basic emotions (happy, sad, angry & scared) from smileys, practicing the receptive language of emotions.",
+            "gameName": "Let’s play the ? Find the Right Emotion Game?!",
+            "gameDescription": "Look at the pictures carefully Tap the ? correct emotion * we are looking for ",
+            "phases": [
+              {
+                "id": 4,
+                "levelId": 4,
+                "unitId": 2,
+                "questioncontent": {
+                  "title": "How does ? the child feel?",
+                  "image": "",
+                  "faceExpression": "",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 2,
+                  "dragBy": 0,
+                  "isHaveImageForShow": true,
+                  "ImageForShow": "ScaredChild",
+                  "kind": {},
+                  "imageOptions": [
+                    {
+                      "image": "ScaredBoy",
+                      "isCorrect": 1,
+                      "description": "scared"
+                    },
+                    {
+                      "image": "AngryBoy",
+                      "isCorrect": 0,
+                      "description": "angry"
+                    },
+                    {
+                      "image": "HappyBoy",
+                      "isCorrect": 0,
+                      "description": "happy"
+                    }
+                  ]
+                },
+                "point": 1,
+                "response": "You’re right! The child feels scared"
+              }
+            ],
+            "unitId": 2
+          }
+        ]
+      },
+      {
+        "idUnit": 3,
+        "unitName": "Emotion Generation",
+        "moduleId": 1,
+        "levels": [
+          {
+            "idLevel": 5,
+            "color": "#62c879",
+            "image": "",
+            "moduleId": 1 ,
+            "name": "GUESS THE FACIAL EXPRESSION ? LEVEL 1",
+            "objective": " Guess the Facial Expression",
+            "gameName": "Let’s play ? Guess the Facial Expression ?",
+            "gameDescription": " We will take turns in guessing the ? facial expression * each of us will do",
+            "phases": [
+              {
+                "id": 5,
+                "levelId": 5,
+                "unitId": 3,
+                "questioncontent": {
+                  "title": "What ? emotion is this?",
+                  "image": "",
+                  "faceExpression": "666_EM_Fear02",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 1,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kind": {},
+                  "imageOptions": []
+                },
+                "point": 1,
+                "response": "Correct! I was scared."
               },
-              "answerContent": {
-                "answerWay": 1,
-                "dragBy": 0,
-                "isHaveImageForShow": false ,
-                "ImageForShow": "",
-                "kind": {},
-                "imageOptions": []
+              {
+                "id": 6,
+                "levelId": 5,
+                "unitId": 3,
+                "questioncontent": {
+                  "title": "Now it’s your turn ? Do an emotion ?",
+                  "image": "",
+                  "faceExpression": "",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 5,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kind": {},
+                  "imageOptions": [
+                    {
+                      "image": "happy or \nexcited\n",
+                      "isCorrect": 0,
+                      "description": "happy"
+                    },
+                    {
+                      "image": "proud",
+                      "isCorrect": 0,
+                      "description": "proud"
+                    },
+                    {
+                      "image": "sad",
+                      "isCorrect": 0,
+                      "description": "sad"
+                    },
+                    {
+                      "image": "confused",
+                      "isCorrect": 0,
+                      "description": "confused"
+                    },
+                    {
+                      "image": "angry",
+                      "isCorrect": 0,
+                      "description": "angry"
+                    },
+                    {
+                      "image": "worried",
+                      "isCorrect": 0,
+                      "description": "worried"
+                    },
+                    {
+                      "image": "scared",
+                      "isCorrect": 0,
+                      "description": "scared"
+                    },
+                    {
+                      "image": "surprised",
+                      "isCorrect": 0,
+                      "description": "surprised"
+                    },
+                    {
+                      "image": "shy",
+                      "isCorrect": 0,
+                      "description": "shy"
+                    },
+                    {
+                      "image": "tired or \nsleepy\n",
+                      "isCorrect": 0,
+                      "description": "tired"
+                    }
+                  ]
+                },
+                "point": 1,
+                "response": "You are "
+              }
+            ],
+            "unitId": 3
+          },
+          {
+            "idLevel": 6,
+            "color": "#62c879",
+            "image": "",
+            "moduleId": 1 ,
+            "name": "GUESS THE FACIAL EXPRESSION ? LEVEL 2",
+            "objective": " Guess the Facial Expression",
+            "gameName": "Let’s play ? Guess the Facial Expression ?",
+            "gameDescription": " We will take turns in guessing the ? facial expression * each of us will do",
+            "phases": [
+              {
+                "id": 7,
+                "levelId": 6,
+                "unitId": 3,
+                "questioncontent": {
+                  "title": "What ? emotion is this?",
+                  "image": "",
+                  "faceExpression": "666_EM_Happy01",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 1,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kind": {},
+                  "imageOptions": []
+                },
+                "point": 1,
+                "response": "Correct! I was happy"
               },
-              "point": 1,
-              "response": "That’s awesome! That’s a happy face"
-            }
-
-          ],
-          "unitId": 1
-        }
-      ]
-    },
-
-
-    {
-      "idUnit": 2,
-      "unitName": "Find the Right Emotion",
-      "moduleId": 1,
-
-      "levels": [
-        {
-          "idLevel": 2,
-          "color": "#62c879",
-          "image":"",
-          "name": "EMOTIONS IMITATION LEVEL 2",
-          "objective": " Recognition of Basic Emotion: Practicing recognition of basic emotions (happy, sad, angry & scared) from smileys, practicing the receptive language of emotions.",
-          "gameName": "Let’s play the ? Find the Right Emotion ?",
-          "gameDescription": "Look at the pictures carefully Tap the ? correct emotion ? we are looking for ",
-          "phases": [
-            {
-              "id": 2,
-              "levelId": 2 ,
-              "unitId": 2 ,
-              "questioncontent": {
-                "title": "Where is the ? sad face ?",
-                "image": "",
-                "faceExpression": "",
-                "bodyMotion": ""
+              {
+                "id": 8,
+                "levelId": 6,
+                "unitId": 3,
+                "questioncontent": {
+                  "title": "Now it’s your turn ? Do an emotion ?",
+                  "image": "",
+                  "faceExpression": "",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 5,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kind": {},
+                  "imageOptions": [
+                    {
+                      "image": "happy or \nexcited\n",
+                      "isCorrect": 0,
+                      "description": "happy"
+                    },
+                    {
+                      "image": "proud",
+                      "isCorrect": 0,
+                      "description": "proud"
+                    },
+                    {
+                      "image": "sad",
+                      "isCorrect": 0,
+                      "description": "sad"
+                    },
+                    {
+                      "image": "confused",
+                      "isCorrect": 0,
+                      "description": "confused"
+                    },
+                    {
+                      "image": "angry",
+                      "isCorrect": 0,
+                      "description": "angry"
+                    },
+                    {
+                      "image": "worried",
+                      "isCorrect": 0,
+                      "description": "worried"
+                    },
+                    {
+                      "image": "scared",
+                      "isCorrect": 0,
+                      "description": "scared"
+                    },
+                    {
+                      "image": "surprised",
+                      "isCorrect": 0,
+                      "description": "surprised"
+                    },
+                    {
+                      "image": "shy",
+                      "isCorrect": 0,
+                      "description": "shy"
+                    },
+                    {
+                      "image": "tired or \nsleepy\n",
+                      "isCorrect": 0,
+                      "description": "tired"
+                    }
+                  ]
+                },
+                "point": 1,
+                "response": "You are "
+              }
+            ],
+            "unitId": 3
+          }
+        ]
+      },
+      {
+        "idUnit": 4,
+        "unitName": "GENERATION OF BODY LANGUAGE",
+        "moduleId": 1,
+        "levels": [
+          {
+            "idLevel": 7,
+            "color": "#62c879",
+            "image": "",
+            "moduleId": 1 ,
+            "name": "CHARADES GAME ? LEVEL 1",
+            "objective": "Charades Game (Guess the Emotion)",
+            "gameName": "Let’s play ? Charades! ?",
+            "gameDescription": " We will take turns in guessing the ? the facial expression with body language * each of us will do",
+            "phases": [
+              {
+                "id": 9,
+                "levelId": 7,
+                "unitId": 4,
+                "questioncontent": {
+                  "title": "What ? emotion is this?",
+                  "image": "",
+                  "faceExpression": "666_EM_Mad02",
+                  "bodyMotion": "666_EM_Mad02"
+                },
+                "answerContent": {
+                  "answerWay": 1,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kind": {},
+                  "imageOptions": []
+                },
+                "point": 1,
+                "response": "Correct! I was angry."
               },
-              "answerContent": {
-                "answerWay": 2,
-                "dragBy": 0,
-                "isHaveImageForShow": false ,
-                "ImageForShow": "",
-                "kind": {},
-                "imageOptions": [
-                  {
-                    "image":"AngryFace" ,
-                    "isCorrect": 0 ,
-                    "description":""
-
-                  }  ,
-                  {
-                    "image":"SadFace" ,
-                    "isCorrect":1 ,
-                    "description":""
-
-                  }
-
-                ]
-              },
-              "point": 1,
-              "response": "You’re right! That is a sad face"
-            }
-
-          ],
-          "unitId": 2
-        } ,
-
-
-        {
-          "idLevel": 3,
-          "color": "#62c879",
-          "image":"",
-          "name": " EMOTIONS IMITATION LEVEL 3",
-          "objective": "Recognition of Basic Emotion: Practicing recognition of basic emotions (happy, sad, angry & scared) from smileys, practicing the receptive language of emotions.",
-          "gameName": "Let’s play the ? Find the Right Emotion ?",
-          "gameDescription": "Look at the pictures carefully. Tap the? correct emotion ? we are looking for. ",
-          "phases": [
-            {
-              "id": 3,
-              "levelId": 3 ,
-              "unitId":2 ,
-              "questioncontent": {
-                "title": "Where is the ? happy face?",
-                "image": "",
-                "faceExpression": "",
-                "bodyMotion": ""
-              },
-              "answerContent": {
-                "answerWay": 2,
-                "dragBy": 0,
-                "isHaveImageForShow": false ,
-                "ImageForShow": "",
-                "kind": {},
-                "imageOptions": [
-                  {
-                    "image":"HappyBoy" ,
-                    "isCorrect": 1 ,
-                    "description":""
-
-                  }  ,
-                  {
-                    "image":"SadBoy" ,
-                    "isCorrect":0 ,
-                    "description":""
-                  }
-
-                ]
-              },
-              "point": 1,
-              "response": "You’re right! That is a happy face"
-            }
-
-          ],
-          "unitId": 2
-        } ,
-
-        {
-          "idLevel": 4,
-          "color": "#62c879",
-          "image":"",
-          "name": "FIND THE RIGHT EMOTION LEVEL 1",
-          "objective": "Recognition of Basic Emotion:\nPracticing recognition of basic emotions (happy, sad, angry & scared) from smileys, practicing the receptive language of emotions.",
-          "gameName": "Let’s play the ? Find the Right Emotion Game?!",
-          "gameDescription": "Look at the pictures carefully Tap the? correct emotion ?we are looking for ",
-          "phases": [
-            {
-              "id": 4,
-              "levelId": 4 ,
-              "unitId": 2 ,
-              "questioncontent": {
-                "title": "How does ? the child feel?",
-                "image": "",
-                "faceExpression": "",
-                "bodyMotion": ""
-              },
-              "answerContent": {
-                "answerWay": 2,
-                "dragBy": 0,
-                "isHaveImageForShow": true ,
-                "ImageForShow": "ScaredChild",
-                "kind": {},
-                "imageOptions": [
-                  {
-                    "image":"ScaredBoy" ,
-                    "isCorrect": 1 ,
-                    "description":"scared"
-
-                  }  ,
-                  {
-                    "image":"AngryBoy" ,
-                    "isCorrect":0 ,
-                    "description":"angry"
-                  } ,
-                  {
-                    "image":"HappyBoy" ,
-                    "isCorrect":0 ,
-                    "description":"happy"
-                  }
-
-                ]
-              },
-              "point": 1,
-              "response": "You’re right! The child feels scared"
-            }
- ,            {
-              "id": 5,
-              "levelId": 4 ,
-              "unitId": 2 ,
-              "questioncontent": {
-                "title": "How does ? the child feel?222",
-                "image": "",
-                "faceExpression": "",
-                "bodyMotion": ""
-              },
-              "answerContent": {
-                "answerWay": 2,
-                "dragBy": 0,
-                "isHaveImageForShow": true ,
-                "ImageForShow": "ScaredChild",
-                "kind": {},
-                "imageOptions": [
-                  {
-                    "image":"ScaredBoy" ,
-                    "isCorrect": 1 ,
-                    "description":"scared"
-
-                  }  ,
-                  {
-                    "image":"AngryBoy" ,
-                    "isCorrect":0 ,
-                    "description":"angry"
-                  } ,
-                  {
-                    "image":"HappyBoy" ,
-                    "isCorrect":0 ,
-                    "description":"happy"
-                  }
-
-                ]
-              },
-              "point": 1,
-              "response": "You’re right! The child feels scared"
-            }
-
-          ],
-          "unitId": 2
-        }
-      ]
-    }
-  ]
-}
-
+              {
+                "id": 10,
+                "levelId": 7,
+                "unitId": 4,
+                "questioncontent": {
+                  "title": "Now it’s your turn ? Do an emotion ?",
+                  "image": "",
+                  "faceExpression": "",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 5,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kind": {},
+                  "imageOptions": [
+                    {
+                      "image": "happy",
+                      "isCorrect": 0,
+                      "description": "happy or \nexcited\n"
+                    },
+                    {
+                      "image": "proud",
+                      "isCorrect": 0,
+                      "description": "proud"
+                    },
+                    {
+                      "image": "sad",
+                      "isCorrect": 0,
+                      "description": "sad"
+                    },
+                    {
+                      "image": "confused",
+                      "isCorrect": 0,
+                      "description": "confused"
+                    },
+                    {
+                      "image": "angry",
+                      "isCorrect": 0,
+                      "description": "angry"
+                    },
+                    {
+                      "image": "worried",
+                      "isCorrect": 0,
+                      "description": "worried"
+                    },
+                    {
+                      "image": "scared",
+                      "isCorrect": 0,
+                      "description": "scared"
+                    },
+                    {
+                      "image": "surprised",
+                      "isCorrect": 0,
+                      "description": "surprised"
+                    },
+                    {
+                      "image": "shy",
+                      "isCorrect": 0,
+                      "description": "shy"
+                    },
+                    {
+                      "image": "tired",
+                      "isCorrect": 0,
+                      "description": "tired or \nsleepy\n"
+                    }
+                  ]
+                },
+                "point": 1,
+                "response": "You are "
+              }
+            ],
+            "unitId": 4
+          },
+          {
+            "idLevel": 8,
+            "color": "#62c879",
+            "image": "",
+            "moduleId": 1 ,
+            "name": "CHARADES GAME ? LEVEL 2",
+            "objective": " Charades Game (Guess the Emotion)",
+            "gameName": "Let’s play ? Charades! ?",
+            "gameDescription": " We will take turns in guessing the ? the facial expression with body language * each of us will do",
+            "phases": [
+              {
+                "id": 11,
+                "levelId": 8,
+                "unitId": 4,
+                "questioncontent": {
+                  "title": "What ? emotion is this?",
+                  "image": "",
+                  "faceExpression": "666_DA_Applaud",
+                  "bodyMotion": "666_DA_Applaud"
+                },
+                "answerContent": {
+                  "answerWay": 1,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kind": {},
+                  "imageOptions": []
+                },
+                "point": 1,
+                "response": "You are right ! I was surprised."
+              }
+            ],
+            "unitId": 4
+          }
+        ]
+      }
+    ]
+  }

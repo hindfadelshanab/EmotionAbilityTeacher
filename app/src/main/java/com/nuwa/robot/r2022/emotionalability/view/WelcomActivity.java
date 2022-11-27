@@ -14,7 +14,7 @@ public class WelcomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcom);
-        findViewById(R.id.btnNext).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnLogInAsStudent).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(WelcomActivity.this,SignInActivity.class ));

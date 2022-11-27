@@ -18,30 +18,31 @@ import io.realm.annotations.PrimaryKey;
 
 public class Level extends RealmObject   {
 
-
-
     @PrimaryKey
     private int idLevel;
     private int unitId ;
+    private int moduleId ;
     private String color;
     private String image;
     private String name;
     private String objective;
     private String gameName;
     private String gameDescription;
-
     private RealmList<Phase> phases  ;
 
     public Level() {
     }
 
-
-
-
-
-
     public int getIdLevel() {
         return idLevel;
+    }
+
+    public int getModuleId() {
+        return moduleId;
+    }
+
+    public void setModuleId(int moduleId) {
+        this.moduleId = moduleId;
     }
 
     public void setIdLevel(int idLevel) {
@@ -103,19 +104,6 @@ public class Level extends RealmObject   {
     public void setPhases(RealmList<Phase> phases) {
         this.phases = phases;
     }
-//    public List<Phase> getPhases() {
-//        return phases;
-//    }
-
-//    public void setPhases(List<Phase> phases) {
-//        this.phases = phases;
-//    }
-
-//    public Level setPhases(ArrayList<Phase> phases) {
-//        this.phases = new RealmList<>();
-//        this.phases.addAll(phases);
-//        return this;
-//    }
 
     public int getUnitId() {
         return unitId;

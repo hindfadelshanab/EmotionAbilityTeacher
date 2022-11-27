@@ -16,6 +16,7 @@ public class TeacherClient extends WebSocketClient {
         super(serverUri, draft);
     }
 
+
     public TeacherClient(URI serverURI) {
         super(serverURI);
     }

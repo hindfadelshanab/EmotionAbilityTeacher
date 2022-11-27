@@ -1,6 +1,8 @@
 package com.nuwa.robot.r2022.emotionalability.view;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
@@ -22,6 +24,7 @@ import com.nuwa.robot.r2022.emotionalability.model.Phase;
 import com.nuwa.robot.r2022.emotionalability.model.PhaseAnswered;
 import com.nuwa.robot.r2022.emotionalability.model.PhaseAnsweredLiveData;
 import com.nuwa.robot.r2022.emotionalability.networking.TeacherClient;
+import com.nuwa.robot.r2022.emotionalability.networking.TeacherSocketClient;
 import com.nuwa.robot.r2022.emotionalability.utils.Constants;
 import com.nuwa.robot.r2022.emotionalability.utils.PreferenceManager;
 import com.nuwa.robot.r2022.emotionalability.utils.StateData;
@@ -32,10 +35,11 @@ import org.json.JSONObject;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.ByteBuffer;
 
 import io.realm.Realm;
 
-public class GameActivity extends AppCompatActivity implements OnMessageReciveListener {
+public class GameActivity extends AppCompatActivity implements TeacherSocketClient.IOnMessageListener {
 
     private ActivityGameBinding binding;
     private Level level;
@@ -44,8 +48,9 @@ public class GameActivity extends AppCompatActivity implements OnMessageReciveLi
     private GameViewModel gameViewModel;
     private PreferenceManager preferenceManager;
     private Realm realm;
-    TeacherClient teacherClient;
+    TeacherSocketClient teacherClient;
     Gson gson;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,24 +88,29 @@ public class GameActivity extends AppCompatActivity implements OnMessageReciveLi
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        TeacherSocketClient.addIOnMessageListener(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        TeacherSocketClient.removeIOnMessageListener(this);
+
+        super.onDestroy();
+    }
+
     private void initConnection() {
 
         String serverIp = preferenceManager.getString(Constants.IPKEY);
         if (serverIp != null) {
             try {
-                Log.d("TAG", "RobotController: " + serverIp);
-                teacherClient = new TeacherClient(new URI("ws://" + serverIp + ":8887"), this);
-
-
+                teacherClient =  new TeacherSocketClient(new URI("ws://" + serverIp + ":8887"));
+                teacherClient.connect();
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }
-            try {
-                teacherClient.connectBlocking();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
         }
     }
 
@@ -108,16 +118,12 @@ public class GameActivity extends AppCompatActivity implements OnMessageReciveLi
         preferenceManager = new PreferenceManager(this);
         realm = Realm.getDefaultInstance();
         gson = new Gson();
-
         gameViewModel = new ViewModelProvider(this).get(GameViewModel.class);
         int levelId = getIntent().getIntExtra(Constants.LEVEL_ID_Key, 0);
         int unitId = getIntent().getIntExtra(Constants.UNIT_ID_KEY, 0);
         level = realm.where(Level.class).equalTo("idLevel", levelId).equalTo("unitId", unitId).findFirst();
-
         questionAdapter = new QuestionAdapter(this ,level);
         binding.sViewPager.setAdapter(questionAdapter);
-//        binding.imageHome.setOnClickListener(view -> startActivity(new Intent(GameActivity.this, GameLevelActivity.class)));
-
 
 
     }
@@ -127,25 +133,7 @@ public class GameActivity extends AppCompatActivity implements OnMessageReciveLi
 
     public void next(ViewPager2 viewPager) {
         int position = viewPager.getCurrentItem();
-        Log.d("TAG", "ViewPager2: getCurrentItem=" + position);
         goPosition(viewPager, position + 1);
-
-//        if (position == 3 ){
-//                if (!gameViewModel.isPhaseFragmentLaunched()) {
-//                    Toast.makeText(this, "Not found", Toast.LENGTH_SHORT).show();
-//                    Log.d("TAG", "fragmentManager: not fond ");
-//                    binding.sViewPager.setVisibility(View.GONE);
-//                    binding.container.setVisibility(View.VISIBLE);
-//                    getSupportFragmentManager()
-//                            .beginTransaction()
-//                            .replace(R.id.container, new PhaseFragment(level.getIdLevel(),level.getUnitId()))
-//                            .commit();
-//                }
-//
-//        }else {
-//            goPosition(viewPager, position + 1);
-//        }
-
 
 
     }
@@ -159,16 +147,10 @@ public class GameActivity extends AppCompatActivity implements OnMessageReciveLi
             if (levelStateData.getStatus() == StateData.DataStatus.SUCCESS) {
                 if (levelStateData.getData() != null) {
                     level = levelStateData.getData();
-                    Log.d("TAG", "launchNewLevel getName: " + level.getName());
                     questionAdapter = new QuestionAdapter(this , level);
                     binding.sViewPager.setAdapter(questionAdapter);
                 }
             }
-//            if (levelStateData.getStatus() == StateData.DataStatus.COMPLETE) {
-//                Toast.makeText(this, "Finish", Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(GameActivity.this, GameLevelActivity.class));
-//                this.finish();
-//            }
         });
 
     }
@@ -177,9 +159,15 @@ public class GameActivity extends AppCompatActivity implements OnMessageReciveLi
 
 
 
-    public static void last(ViewPager2 viewPager) {
-        int position = viewPager.getCurrentItem();
-        goPosition(viewPager, position - 1);
+    public  void last(ViewPager2 viewPager) {
+        Boolean isFirst = gameViewModel.getISFirstItemInPhase().getValue().getData() ;
+       if (isFirst!=null){
+           if (!isFirst){
+               int position = viewPager.getCurrentItem();
+               goPosition(viewPager, position - 1);
+
+           }
+       }
     }
 
     public static void goPosition(ViewPager2 viewPager, int position) {
@@ -197,44 +185,15 @@ public class GameActivity extends AppCompatActivity implements OnMessageReciveLi
     }
 
     @Override
-    public void OnMessageRecive(String Message) {
-        try {
-            JSONObject jObj = new JSONObject(Message);
-            String action = jObj.getString(Constants.MESSAGE_FOR_ANSWERED_KEY);
-
-            PhaseAnswered phaseAnswered = gson.fromJson(action, PhaseAnswered.class);
-
-            phaseAnswered.isAnswered();
-
-            if(phaseAnswered.isAnswered()) {
-                Log.d("TAG", "OnMessageRecive: phaseAnswered.isAnswered() "+phaseAnswered.isAnswered());
-
-
-                gameViewModel.updatePhase(phaseAnswered.getPhaseId(),
-                        phaseAnswered.getLevelId(), phaseAnswered.getUnitId(), true).observe(this, new Observer<StateData<Phase>>() {
-                    @Override
-                    public void onChanged(StateData<Phase> phaseStateData) {
-                        Log.d("TAG", "onChanged: "+phaseStateData.getData().toString());
-                    }
-                });
-                PhaseAnsweredLiveData.reset().postLoading();
-
-                PhaseAnsweredLiveData.reset().postSuccess(phaseAnswered);
-
-
-            } else {
-                gameViewModel.updatePhase(phaseAnswered.getPhaseId(),
-                        phaseAnswered.getLevelId(), phaseAnswered.getUnitId(), false);
-                PhaseAnsweredLiveData.get().postSuccess(phaseAnswered);
-
-            }
-            Log.d("TAG", "OnMessageRecive phaseAnswered: " + phaseAnswered.isAnswered());
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+    public void onMessage(String Message) {
 
     }
 
+    @Override
+    public void onMessage(ByteBuffer message) {
+    }
+
+    @Override
+    public void onError(Exception ex) {
+    }
 }

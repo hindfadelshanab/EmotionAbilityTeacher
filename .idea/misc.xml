@@ -29,19 +29,21 @@
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable/patient_image_background.xml" value="0.1545" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable/patient_skils_background.xml" value="0.1415" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_game.xml" value="0.10208333333333333" />
-        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_game_level.xml" value="0.10208333333333333" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_game_level.xml" value="0.18" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_make_connection_with_robot.xml" value="0.10208333333333333" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_sign_in.xml" value="0.10208333333333333" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_start_game.xml" value="0.1" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_start_level.xml" value="0.1" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_welcom.xml" value="0.10208333333333333" />
-        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/fragment_answer_content.xml" value="0.1" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/custom_spinner.xml" value="0.1015625" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/fragment_answer_content.xml" value="0.12" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/fragment_phase.xml" value="0.10208333333333333" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/fragment_phase_question_content.xml" value="0.10208333333333333" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/fragment_question_content.xml" value="0.1" />
-        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/fragment_respons.xml" value="0.10208333333333333" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/fragment_respons.xml" value="0.22" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/image_option_item.xml" value="0.1" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/item_emotion.xml" value="0.10208333333333333" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/level_item.xml" value="0.10208333333333333" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/question_content_item.xml" value="0.1" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/testt.xml" value="0.18" />

@@ -2,10 +2,10 @@ package com.nuwa.robot.r2022.emotionalability.model;
 
 public class PhaseAnswered {
 
-    int phaseId ;
-    int levelId ;
-    int unitId ;
-    boolean isAnswered ;
+    private int phaseId;
+    private int levelId;
+    private int unitId;
+    private boolean isAnswered;
 
     public PhaseAnswered() {
     }
@@ -16,6 +16,8 @@ public class PhaseAnswered {
         this.unitId = unitId;
         this.isAnswered = isAnswered;
     }
+
+
 
     public int getPhaseId() {
         return phaseId;
@@ -47,5 +49,15 @@ public class PhaseAnswered {
 
     public void setAnswered(boolean answered) {
         isAnswered = answered;
+    }
+
+    @Override
+    public String toString() {
+        return "PhaseAnswered{" +
+                "phaseId=" + phaseId +
+                ", levelId=" + levelId +
+                ", unitId=" + unitId +
+                ", isAnswered=" + isAnswered +
+                '}';
     }
 }

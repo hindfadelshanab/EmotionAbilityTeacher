@@ -55,12 +55,12 @@ public class QuestionAdapter extends FragmentStateAdapter {
         switch (position) {
             case 0:
 
-                return new QuestionContentFragment(level.getGameName() ,0);
+                return new QuestionContentFragment(level.getGameName() ,0 , fragmentActivity);
             case 1:
-                return new QuestionContentFragment(level.getGameDescription() ,1);
+                return new QuestionContentFragment(level.getGameDescription() ,1,fragmentActivity);
 
             case 2:
-                return new QuestionContentFragment(Constants.LET_IS_BEGIN_VALUE,2);
+                return new QuestionContentFragment(Constants.LET_IS_BEGIN_VALUE,2,fragmentActivity);
 
             case 3:
                 return new PhaseFragment(level.getIdLevel(), level.getUnitId() , fragmentActivity);

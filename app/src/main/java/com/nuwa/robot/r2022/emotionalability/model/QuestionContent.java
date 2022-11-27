@@ -22,37 +22,6 @@ public class QuestionContent  extends   RealmObject  {
         this.bodyMotion = bodyMotion;
     }
 
-    //    protected QuestionContent(Parcel in) {
-//        title = in.readString();
-//        image = in.readString();
-//        faceExpression = in.readString();
-//        bodyMotion = in.readString();
-//    }
-//
-//    public static final Creator<QuestionContent> CREATOR = new Creator<QuestionContent>() {
-//        @Override
-//        public QuestionContent createFromParcel(Parcel in) {
-//            return new QuestionContent(in);
-//        }
-//
-//        @Override
-//        public QuestionContent[] newArray(int size) {
-//            return new QuestionContent[size];
-//        }
-//    };
-//
-//    @Override
-//    public int describeContents() {
-//        return 0;
-//    }
-//
-//    @Override
-//    public void writeToParcel(Parcel parcel, int i) {
-//        parcel.writeString(title);
-//        parcel.writeString(image);
-//        parcel.writeString(faceExpression);
-//        parcel.writeString(bodyMotion);
-//    }
 
     public String getTitle() {
         return title;

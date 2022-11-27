@@ -13,10 +13,19 @@ public class Unit extends RealmObject {
 
     @PrimaryKey
     private int idUnit  ;
-
     private int moduleId ;
     private String unitName ;
     private RealmList<Level> levels ;
+
+    public Unit(int idUnit, int moduleId, String unitName, RealmList<Level> levels) {
+        this.idUnit = idUnit;
+        this.moduleId = moduleId;
+        this.unitName = unitName;
+        this.levels = levels;
+    }
+
+    public Unit() {
+    }
 
     public int getModuleId() {
         return moduleId;
