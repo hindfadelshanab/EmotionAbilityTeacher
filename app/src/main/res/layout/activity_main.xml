@@ -30,14 +30,15 @@
 
         >
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Spinner
             android:id="@+id/btnSelectPatient"
-            android:layout_width="@dimen/_100sdp"
+            android:layout_width="@dimen/_120sdp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:padding="@dimen/_8sdp"
+
             android:layout_marginTop="@dimen/_8sdp"
             android:background="@drawable/button_orange"
-            android:padding="@dimen/_4sdp"
             android:text="@string/select_patient"
             android:textColor="@color/white"
             android:textColorHint="@color/black"
@@ -47,26 +48,28 @@
             app:layout_constraintTop_toBottomOf="@id/rememberMeLayout" />
 
 
-        <FrameLayout
-            android:layout_width="@dimen/_70sdp"
-            android:layout_height="@dimen/_70sdp"
-            android:layout_gravity="center"
 
-            android:layout_marginTop="@dimen/_8sdp"
-            android:paddingBottom="@dimen/_4sdp"
-
-            android:background="@drawable/patient_image_background">
-
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
+                app:civ_border_width="12dp"
+                app:civ_border_color="@color/purpleColor"
                 android:id="@+id/imagePatient"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
                 android:layout_gravity="bottom|center"
-                android:src="@drawable/patient"
+                tools:src="@drawable/patient"
                 android:layout_marginBottom="@dimen/_4sdp"
-
                 />
-        </FrameLayout>
+<!--            <ImageView-->
+<!--                android:id="@+id/imagePatient"-->
+<!--                android:layout_width="@dimen/_50sdp"-->
+<!--                android:layout_height="@dimen/_50sdp"-->
+<!--                android:layout_gravity="bottom|center"-->
+<!--                android:src="@drawable/patient"-->
+<!--                android:layout_marginBottom="@dimen/_4sdp"-->
+
+<!--                />-->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,6 +84,7 @@
                 android:src="@drawable/main_arrow_orange"
                 />
             <TextView
+                android:id="@+id/txtPatientName"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
                 android:text="John Doe"
@@ -153,7 +157,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_12sdp"
-                android:text="Communication"
+                android:text="@string/communication"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_8ssp"
 
@@ -167,7 +171,7 @@
                 android:id="@+id/txtCognition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cognition"
+                android:text="@string/cognition"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@id/txtSocial"
                 android:layout_marginBottom="@dimen/_4sdp"
@@ -182,7 +186,7 @@
                 android:id="@+id/txtSocial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Social"
+                android:text="@string/social"
                 android:textColor="@color/black"
                 android:layout_marginBottom="@dimen/_4sdp"
                 android:textSize="@dimen/_8ssp"
@@ -198,7 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_4sdp"
-                android:text="Emotional"
+                android:text="@string/emotional"
                 android:textColor="@color/black"
 
                 android:textSize="@dimen/_8ssp"
@@ -213,7 +217,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_12sdp"
-                android:text="Physical"
+                android:text="@string/physical"
 
                 android:textColor="@color/black"
                 android:textSize="@dimen/_8ssp"
@@ -457,12 +461,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="@dimen/_8ssp"
         android:layout_marginEnd="@dimen/_12sdp"
-        android:gravity="center"
+        android:gravity="start"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/_12sdp"
         android:layout_marginStart="@dimen/_12ssp"
         >
         <ImageView
+            android:id="@+id/imageOrangeArrow2"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/main_arrow_orange"
@@ -473,13 +479,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_4sdp"
-            android:text="QLICKHEALTH LESSON GENERATOR"
+            android:text="@string/qlickhealth_lesson_generator"
             android:textColor="@color/black"
             android:textSize="@dimen/_8ssp"
 
 
             />
         <ImageView
+            android:id="@+id/imageOrangeArrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/main_arrow_orange"
@@ -488,7 +495,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dr.Subhi"
+            android:text="@string/dr_subhi"
             android:background="@drawable/button_purple_border"
 
             android:layout_marginStart="@dimen/_12sdp"
@@ -503,6 +510,7 @@
             android:text="@string/exit"
             android:textSize="@dimen/_8ssp"
             android:padding="@dimen/_2sdp"
+            android:visibility="gone"
             android:textColor="@color/white"
             android:gravity="center"
             android:background="@drawable/exit_button"
@@ -546,7 +554,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/button_purple"
                 android:padding="@dimen/_6sdp"
-                android:text="CURRICULUM"
+                android:text="@string/curriculum"
                 android:textColor="@color/white"
                 android:textColorHint="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/imageView2"
@@ -588,7 +596,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/button_purple"
                 android:padding="@dimen/_6sdp"
-                android:text="MODULE"
+                android:text="@string/module"
                 android:textColor="@color/white"
                 android:textColorHint="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/imageView2"
@@ -632,7 +640,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/button_purple"
                 android:padding="@dimen/_6sdp"
-                android:text="AREA OF SPECIALIZATION"
+                android:text="@string/area_of_specialization"
                 android:textColor="@color/white"
                 android:textColorHint="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/imageView2"
@@ -676,7 +684,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/button_purple"
                 android:padding="@dimen/_6sdp"
-                android:text="OBJECTIVES"
+                android:text="@string/objectives"
                 android:textColor="@color/white"
                 android:textColorHint="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/imageView2"

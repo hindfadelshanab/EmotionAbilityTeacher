@@ -1,4 +1,4 @@
-
+[
   {
     "id": 1,
     "moduleName": "Emotional Ability Curriculum",
@@ -19,13 +19,15 @@
             "moduleId": 1 ,
             "name": "EMOTIONS IMITATION ? LEVEL 1",
             "objective": "Imitation of Facial Expressions: Practicing imitation of facial expressions of emotions, Joint attention  following directions, and practicing receptive language related to emotions",
-            "gameName": "Let’s play the ? EMOTION IMITATION ?Game!",
+            "gameName": "Let is play the ? EMOTION IMITATION ? Game!",
             "gameDescription": "You will see pictures of different ? facial expressions * Copy the emotion you see from the picture",
+
             "phases": [
               {
                 "id": 1,
                 "levelId": 1,
                 "unitId": 1,
+                "moduleId": 1,
                 "questioncontent": {
                   "title": "Look at the face ? Copy the happy face ?",
                   "image": "HappyFace",
@@ -37,11 +39,11 @@
                   "dragBy": 0,
                   "isHaveImageForShow": false,
                   "ImageForShow": "",
-                  "kind": {},
+                  "kinds": [],
                   "imageOptions": []
                 },
                 "point": 1,
-                "response": "That’s awesome! That’s a happy face"
+                "response": "That is awesome! That’s a happy face"
               }
             ],
             "unitId": 1
@@ -60,13 +62,14 @@
             "moduleId": 1 ,
             "name": "EMOTIONS IMITATION ? LEVEL 2",
             "objective": " Recognition of Basic Emotion: Practicing recognition of basic emotions (happy, sad, angry & scared) from smileys, practicing the receptive language of emotions.",
-            "gameName": "Let’s play the ? Find the Right Emotion ?",
+            "gameName": "Let is play the ? Find the Right Emotion ?",
             "gameDescription": "Look at the pictures carefully Tap the ? correct emotion * we are looking for ",
             "phases": [
               {
                 "id": 2,
                 "levelId": 2,
                 "unitId": 2,
+                "moduleId": 1,
                 "questioncontent": {
                   "title": "Where is the ? sad face ?",
                   "image": "",
@@ -78,7 +81,7 @@
                   "dragBy": 0,
                   "isHaveImageForShow": false,
                   "ImageForShow": "",
-                  "kind": {},
+                  "kinds": [],
                   "imageOptions": [
                     {
                       "image": "AngryFace",
@@ -93,7 +96,7 @@
                   ]
                 },
                 "point": 1,
-                "response": "You’re right! That is a sad face"
+                "response": "You are right! That is a sad face"
               }
             ],
             "unitId": 2
@@ -105,13 +108,14 @@
             "moduleId": 1 ,
             "name": " EMOTIONS IMITATION ? LEVEL 3",
             "objective": "Recognition of Basic Emotion: Practicing recognition of basic emotions (happy, sad, angry & scared) from smileys, practicing the receptive language of emotions.",
-            "gameName": "Let’s play the ? Find the Right Emotion ?",
+            "gameName": "Let is play the ? Find the Right Emotion ?",
             "gameDescription": "Look at the pictures carefully Tap the ? correct emotion * we are looking for. ",
             "phases": [
               {
                 "id": 3,
                 "levelId": 3,
                 "unitId": 2,
+                "moduleId": 1,
                 "questioncontent": {
                   "title": "Where is the ? happy face?",
                   "image": "",
@@ -123,7 +127,7 @@
                   "dragBy": 0,
                   "isHaveImageForShow": false,
                   "ImageForShow": "",
-                  "kind": {},
+                  "kinds": [],
                   "imageOptions": [
                     {
                       "image": "HappyBoy",
@@ -138,7 +142,7 @@
                   ]
                 },
                 "point": 1,
-                "response": "You’re right! That is a happy face"
+                "response": "You are right! That is a happy face"
               }
             ],
             "unitId": 2
@@ -150,13 +154,14 @@
             "moduleId": 1 ,
             "name": "FIND THE RIGHT EMOTION ? LEVEL 1",
             "objective": "Recognition of Basic Emotion:\nPracticing recognition of basic emotions (happy, sad, angry & scared) from smileys, practicing the receptive language of emotions.",
-            "gameName": "Let’s play the ? Find the Right Emotion Game?!",
+            "gameName": "Let is play the ? Find the Right Emotion Game?!",
             "gameDescription": "Look at the pictures carefully Tap the ? correct emotion * we are looking for ",
             "phases": [
               {
                 "id": 4,
                 "levelId": 4,
                 "unitId": 2,
+                "moduleId": 1,
                 "questioncontent": {
                   "title": "How does ? the child feel?",
                   "image": "",
@@ -168,7 +173,7 @@
                   "dragBy": 0,
                   "isHaveImageForShow": true,
                   "ImageForShow": "ScaredChild",
-                  "kind": {},
+                  "kinds": [],
                   "imageOptions": [
                     {
                       "image": "ScaredBoy",
@@ -188,7 +193,7 @@
                   ]
                 },
                 "point": 1,
-                "response": "You’re right! The child feels scared"
+                "response": "You are right! The child feels scared"
               }
             ],
             "unitId": 2
@@ -207,13 +212,15 @@
             "moduleId": 1 ,
             "name": "GUESS THE FACIAL EXPRESSION ? LEVEL 1",
             "objective": " Guess the Facial Expression",
-            "gameName": "Let’s play ? Guess the Facial Expression ?",
+            "gameName": "Let is play ? Guess the Facial Expression ?",
             "gameDescription": " We will take turns in guessing the ? facial expression * each of us will do",
             "phases": [
               {
                 "id": 5,
                 "levelId": 5,
                 "unitId": 3,
+                "moduleId": 1,
+
                 "questioncontent": {
                   "title": "What ? emotion is this?",
                   "image": "",
@@ -225,18 +232,19 @@
                   "dragBy": 0,
                   "isHaveImageForShow": false,
                   "ImageForShow": "",
-                  "kind": {},
+                  "kinds": [],
                   "imageOptions": []
                 },
                 "point": 1,
-                "response": "Correct! I was scared."
+                "response": "Correct ! I was scared."
               },
               {
                 "id": 6,
                 "levelId": 5,
                 "unitId": 3,
+                "moduleId": 1,
                 "questioncontent": {
-                  "title": "Now it’s your turn ? Do an emotion ?",
+                  "title": "Now it is your turn ? Do an emotion ?",
                   "image": "",
                   "faceExpression": "",
                   "bodyMotion": ""
@@ -246,7 +254,7 @@
                   "dragBy": 0,
                   "isHaveImageForShow": false,
                   "ImageForShow": "",
-                  "kind": {},
+                  "kinds": [],
                   "imageOptions": [
                     {
                       "image": "happy or \nexcited\n",
@@ -313,13 +321,14 @@
             "moduleId": 1 ,
             "name": "GUESS THE FACIAL EXPRESSION ? LEVEL 2",
             "objective": " Guess the Facial Expression",
-            "gameName": "Let’s play ? Guess the Facial Expression ?",
+            "gameName": "Let is play ? Guess the Facial Expression ?",
             "gameDescription": " We will take turns in guessing the ? facial expression * each of us will do",
             "phases": [
               {
                 "id": 7,
                 "levelId": 6,
                 "unitId": 3,
+                "moduleId": 1,
                 "questioncontent": {
                   "title": "What ? emotion is this?",
                   "image": "",
@@ -331,18 +340,20 @@
                   "dragBy": 0,
                   "isHaveImageForShow": false,
                   "ImageForShow": "",
-                  "kind": {},
+                  "kinds": [],
                   "imageOptions": []
                 },
                 "point": 1,
-                "response": "Correct! I was happy"
+                "response": "Correct ! I was happy"
               },
               {
                 "id": 8,
                 "levelId": 6,
                 "unitId": 3,
+                "moduleId": 1,
+
                 "questioncontent": {
-                  "title": "Now it’s your turn ? Do an emotion ?",
+                  "title": "Now it is your turn ? Do an emotion ?",
                   "image": "",
                   "faceExpression": "",
                   "bodyMotion": ""
@@ -352,7 +363,7 @@
                   "dragBy": 0,
                   "isHaveImageForShow": false,
                   "ImageForShow": "",
-                  "kind": {},
+                  "kinds": [],
                   "imageOptions": [
                     {
                       "image": "happy or \nexcited\n",
@@ -426,13 +437,14 @@
             "moduleId": 1 ,
             "name": "CHARADES GAME ? LEVEL 1",
             "objective": "Charades Game (Guess the Emotion)",
-            "gameName": "Let’s play ? Charades! ?",
+            "gameName": "Let is play ? Charades! ?",
             "gameDescription": " We will take turns in guessing the ? the facial expression with body language * each of us will do",
             "phases": [
               {
                 "id": 9,
                 "levelId": 7,
                 "unitId": 4,
+                "moduleId": 1,
                 "questioncontent": {
                   "title": "What ? emotion is this?",
                   "image": "",
@@ -444,18 +456,20 @@
                   "dragBy": 0,
                   "isHaveImageForShow": false,
                   "ImageForShow": "",
-                  "kind": {},
+                  "kinds": [],
                   "imageOptions": []
                 },
                 "point": 1,
-                "response": "Correct! I was angry."
+                "response": "Correct ! I was angry."
               },
               {
                 "id": 10,
                 "levelId": 7,
                 "unitId": 4,
+                "moduleId": 1,
+
                 "questioncontent": {
-                  "title": "Now it’s your turn ? Do an emotion ?",
+                  "title": "Now it is your turn ? Do an emotion ?",
                   "image": "",
                   "faceExpression": "",
                   "bodyMotion": ""
@@ -465,7 +479,7 @@
                   "dragBy": 0,
                   "isHaveImageForShow": false,
                   "ImageForShow": "",
-                  "kind": {},
+                  "kinds": [],
                   "imageOptions": [
                     {
                       "image": "happy",
@@ -532,13 +546,15 @@
             "moduleId": 1 ,
             "name": "CHARADES GAME ? LEVEL 2",
             "objective": " Charades Game (Guess the Emotion)",
-            "gameName": "Let’s play ? Charades! ?",
+            "gameName": "Let is play ? Charades! ?",
             "gameDescription": " We will take turns in guessing the ? the facial expression with body language * each of us will do",
             "phases": [
               {
                 "id": 11,
                 "levelId": 8,
                 "unitId": 4,
+                "moduleId": 1,
+
                 "questioncontent": {
                   "title": "What ? emotion is this?",
                   "image": "",
@@ -550,7 +566,7 @@
                   "dragBy": 0,
                   "isHaveImageForShow": false,
                   "ImageForShow": "",
-                  "kind": {},
+                  "kinds": [],
                   "imageOptions": []
                 },
                 "point": 1,
@@ -563,3 +579,5 @@
       }
     ]
   }
+
+  ]

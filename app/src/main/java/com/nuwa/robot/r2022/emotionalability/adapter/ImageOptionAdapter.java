@@ -112,6 +112,27 @@ public class ImageOptionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             } else if (imageOption.getImage().equals("ScaredBoy")) {
                 binding.imageOption.setImageResource(R.drawable.sacared_boy);
 
+            }else if (imageOption.getImage().equals("largeCircle")){
+                binding.imageOption.setImageResource(R.drawable.large_circle);
+
+            }else if (imageOption.getImage().equals("mediumCircle")){
+                binding.imageOption.setImageResource(R.drawable.medium_circle);
+
+            }else if (imageOption.getImage().equals("smallCircle")){
+              binding.imageOption.setImageResource(R.drawable.small_circle);
+
+            }else if (imageOption.getImage().equals("pinkRectangle")) {
+                binding.imageOption.setImageResource(R.drawable.pink_rectangel);
+
+            } else if (imageOption.getImage().equals("orangeRectangle")) {
+               binding.imageOption.setImageResource(R.drawable.orange_rectangle);
+
+            } else if (imageOption.getImage().equals("lightBlueRectangle")) {
+                binding.imageOption.setImageResource(R.drawable.light_blue_rectangle);
+
+            } else if (imageOption.getImage().equals("darkBlueRectangle")) {
+               binding.imageOption.setImageResource(R.drawable.dark_blue_rectangle);
+
             }
 
 

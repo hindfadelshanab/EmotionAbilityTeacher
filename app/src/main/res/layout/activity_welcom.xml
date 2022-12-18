@@ -16,22 +16,22 @@
         android:src="@drawable/click_health_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
-
         app:layout_constraintTop_toTopOf="parent" />
     <TextView
-        android:id="@+id/btnNext"
+        android:id="@+id/btnBack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_64sdp"
         android:layout_marginTop="@dimen/_4sdp"
         android:layout_marginEnd="@dimen/_64sdp"
         android:padding="@dimen/_8sdp"
-        android:text="Teacher App"
+        android:text="مرحبا بك"
         android:textColor="@color/purpleColor"
         android:textSize="@dimen/_16ssp"
+        android:visibility="gone"
+
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@id/btnLogInAsStudent"
+        app:layout_constraintBottom_toTopOf="@id/languageSpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,19 +39,41 @@
         app:layout_constraintTop_toBottomOf="@id/imageLogo"
         app:layout_constraintVertical_bias="1.0" />
 
+
+
+
+    <Button
+        android:id="@+id/languageSpinner"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_24sdp"
+        android:layout_marginEnd="@dimen/_24sdp"
+        android:padding="@dimen/_8sdp"
+        android:text="@string/choose_langouge"
+        app:layout_constraintBottom_toTopOf="@id/btnLogInAsStudent"
+        android:textColor="@color/black"
+        android:background="@drawable/spinner__background"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageLogo"
+         />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogInAsStudent"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/_150sdp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_orange"
-        android:padding="@dimen/_12sdp"
-        android:text="LOG IN"
+        android:padding="@dimen/_4sdp"
+        android:text="@string/next"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/imageView"
         android:textSize="@dimen/_16ssp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@id/btnNext"
-        app:layout_constraintStart_toStartOf="@id/btnNext"
-        app:layout_constraintTop_toBottomOf="@id/btnNext" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/languageSpinner"
+      />
 
 
     <ImageView

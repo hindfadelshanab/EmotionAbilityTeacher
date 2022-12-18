@@ -36,7 +36,7 @@
             android:textColor="@color/white"
 
 
-            android:text="The child was able to show the correct face."
+            android:text="@string/the_child_was_able_to_show_the_correct_face"
             />
 
     </LinearLayout>
@@ -71,7 +71,7 @@
             android:textColor="@color/white"
 
 
-            android:text="The child was NOT able to show face/ doesn’t have any response at all."
+            android:text="@string/the_child_was_not_able_to_show_face_doesn_t_have_any_response_at_all"
             />
 
     </LinearLayout>

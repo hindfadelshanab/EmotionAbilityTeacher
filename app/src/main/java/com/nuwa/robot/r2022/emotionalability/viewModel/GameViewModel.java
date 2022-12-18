@@ -9,8 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.nuwa.robot.r2022.emotionalability.model.BaselineResultInfo;
 import com.nuwa.robot.r2022.emotionalability.model.Level;
 import com.nuwa.robot.r2022.emotionalability.model.Phase;
+import com.nuwa.robot.r2022.emotionalability.model.ResultInfo;
 import com.nuwa.robot.r2022.emotionalability.repository.GameRepository;
 import com.nuwa.robot.r2022.emotionalability.utils.StateLiveData;
 
@@ -21,8 +23,8 @@ public class GameViewModel extends AndroidViewModel {
 
     private GameRepository gameRepository;
     private Context context;
-    private boolean isPhaseFragmentLaunched = false ;
-    private boolean isStudentAnsweredPhase = false ;
+    private boolean isPhaseFragmentLaunched = false;
+    private boolean isStudentAnsweredPhase = false;
     private final MutableLiveData<Integer> phaseCompletedLiveData = new MutableLiveData<>();
 
     private final MutableLiveData<Boolean> nextButtonLiveData = new MutableLiveData<>();
@@ -37,23 +39,24 @@ public class GameViewModel extends AndroidViewModel {
 
     public GameViewModel(@NonNull Application application) {
         super(application);
-        gameRepository = new GameRepository();
+        gameRepository = new GameRepository(application);
         this.context = application;
     }
 
 
-    public  StateLiveData<List<Phase>> getPhaseList (int levelId , int unitId){
-        return  gameRepository.getPhaseList(levelId , unitId);
+    public StateLiveData<List<Phase>> getPhaseList(int levelId, int unitId) {
+        return gameRepository.getPhaseList(levelId, unitId);
     }
 
-    public  StateLiveData<Phase> getPhase(int id , int levelId , int unitId){
-        return  gameRepository.getPhase(id , levelId , unitId);
+    public StateLiveData<Phase> getPhase(int id, int levelId, int unitId) {
+        return gameRepository.getPhase(id, levelId, unitId);
     }
 
     public void onNextButtonClicked() {
         nextButtonLiveData.postValue(true);
 
     }
+
     public void onPreviousButtonClicked() {
         previousButtonLiveData.postValue(true);
     }
@@ -61,23 +64,21 @@ public class GameViewModel extends AndroidViewModel {
     public MutableLiveData<Boolean> getNextButtonClickedLiveData() {
         return nextButtonLiveData;
     }
+
     public MutableLiveData<Boolean> getPreviousButtonClickedLiveData() {
         return previousButtonLiveData;
     }
 
 
-
-
-
-    public StateLiveData<Phase> updatePhase(int phaseId ,int levelId ,int unitId ,boolean isAnswered){
+    public StateLiveData<Phase> updatePhase(int phaseId, int levelId, int unitId, boolean isAnswered) {
         Log.d("TAG", "updatePhase:GameViewModel ");
-        return gameRepository.updatePhase(phaseId , levelId , unitId ,isAnswered);
+        return gameRepository.updatePhase(phaseId, levelId, unitId, isAnswered);
     }
 
 
-    public StateLiveData<Phase> updatePhase(int phaseId ,int levelId ,int unitId ,String response){
+    public StateLiveData<Phase> updatePhase(int phaseId, int levelId, int unitId, String response) {
         Log.d("TAG", "updatePhase:GameViewModel ");
-        return gameRepository.updatePhase(phaseId , levelId , unitId ,response);
+        return gameRepository.updatePhase(phaseId, levelId, unitId, response);
     }
 
     public StateLiveData<Level> getNextLevel(int currentLevelId, int currentUnitId) {
@@ -93,7 +94,6 @@ public class GameViewModel extends AndroidViewModel {
     }
 
 
-
     public StateLiveData<Boolean> getStudentAnsweredPhase() {
         return studentAnsweredLiveData;
     }
@@ -101,13 +101,14 @@ public class GameViewModel extends AndroidViewModel {
     public void setStudentAnsweredPhase(boolean studentAnsweredPhase) {
         studentAnsweredLiveData.postSuccess(studentAnsweredPhase);
     }
+
     public void setIsRobotAnsweredEmotion(String emotionName) {
         robotAnsweredLiveData.postSuccess(emotionName);
     }
+
     public StateLiveData<String> getIsRobotAnsweredEmotion() {
         return robotAnsweredLiveData;
     }
-
 
 
     public StateLiveData<Boolean> getISFirstItemInPhase() {
@@ -118,5 +119,24 @@ public class GameViewModel extends AndroidViewModel {
         isFirstItemLiveData.postSuccess(isFirstItemInPhase);
     }
 
+    public StateLiveData<ResultInfo> sendAnswerResult(String Patient_Id,
+                                                      String doctorId,
+                                                      String Curriculum_Id,
+                                                      String Module_Id,
+                                                      String Objectives_Id,
+                                                      String Specialization_Id,
+                                                      String Term,
+                                                      String Date,
+                                                      String AET_Autism_Baseline_Id,
+                                                      String Created
+    ) {
+        return gameRepository.sendAnswerResult(Patient_Id, doctorId, Curriculum_Id,
+                Module_Id, Objectives_Id, Specialization_Id, Term, Date, AET_Autism_Baseline_Id,
+                Created);
+    }
+
+    public StateLiveData<BaselineResultInfo> getAutismBaseline(String language){
+        return gameRepository.getAutismBaseline(language);
+    }
 }
 

@@ -1,31 +1,43 @@
 package com.nuwa.robot.r2022.emotionalability.view;
 
+import static com.nuwa.robot.r2022.emotionalability.utils.Constants.LANGUAGE;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.AdapterView;
 
+import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.nuwa.robot.r2022.emotionalability.R;
+import com.nuwa.robot.r2022.emotionalability.adapter.LevelSpinnerAdapter;
+import com.nuwa.robot.r2022.emotionalability.adapter.PatientSpinnerAdapter;
 import com.nuwa.robot.r2022.emotionalability.databinding.ActivityMainBinding;
-import com.nuwa.robot.r2022.emotionalability.model.Level;
+import com.nuwa.robot.r2022.emotionalability.model.AutismCurriculumInfo;
+import com.nuwa.robot.r2022.emotionalability.model.Patient;
 import com.nuwa.robot.r2022.emotionalability.model.Module;
-import com.nuwa.robot.r2022.emotionalability.model.Phase;
+import com.nuwa.robot.r2022.emotionalability.model.PatientInfo;
 import com.nuwa.robot.r2022.emotionalability.utils.Constants;
+import com.nuwa.robot.r2022.emotionalability.utils.LocaleHelper;
 import com.nuwa.robot.r2022.emotionalability.utils.PreferenceManager;
 import com.nuwa.robot.r2022.emotionalability.utils.RobotController;
+import com.nuwa.robot.r2022.emotionalability.utils.StateData;
 import com.nuwa.robot.r2022.emotionalability.viewModel.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import io.realm.ImportFlag;
 import io.realm.Realm;
-import io.realm.RealmResults;
 import me.ithebk.barchart.BarChart;
 import me.ithebk.barchart.BarChartModel;
 
@@ -33,10 +45,15 @@ public class MainActivity extends AppCompatActivity {
 
     private MainViewModel mainViewModel;
     private ActivityMainBinding binding;
-    private Module module ;
     private Realm realm;
     PreferenceManager preferenceManager;
-
+    Context context;
+    Resources resources;
+    RobotController robotController;
+    Gson gson;
+    Patient patient;
+    PatientSpinnerAdapter patientSpinnerAdapter;
+    Module module;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,70 +61,141 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         initialization();
-
         getModule();
-        chart();
-
-        binding.btnSelectPatient.setOnClickListener(new View.OnClickListener() {
+        getCurrentModule();
+        getPatients();
+        getAutismCurriculum();
+        checkSelectedLanguage();
+        binding.btnSelectPatient.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-//                robotController.sendMessage("Message From Teacher");
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Patient patient = (Patient) binding.btnSelectPatient.getSelectedItem();
 
+                if (patient != null) {
+
+                    binding.txtPatientName.setText(patient.getUsername());
+                    Glide.with(MainActivity.this).load(patient.getImage()).into(binding.imagePatient);
+                    preferenceManager.putString(Constants.PATIENT_ID, patient.getId());
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
-
-
+        chart();
 
 
     }
 
+    private void getCurrentModule() {
+        mainViewModel.getModuleById(1).observe(this, new Observer<StateData<Module>>() {
+            @Override
+            public void onChanged(StateData<Module> moduleStateData) {
+                if (moduleStateData.getStatus() == StateData.DataStatus.SUCCESS) {
+                    module = moduleStateData.getData();
+                    setModuleData(module);
+                }
+            }
+        });
+    }
+
+    private void checkSelectedLanguage() {
+        if (preferenceManager.getString(LANGUAGE) != null) {
+            if (preferenceManager.getString(LANGUAGE).equals(Constants.ENGLISH)) {
+                context = LocaleHelper.setLocale(this, "en");
+                resources = context.getResources();
+            } else if (preferenceManager.getString(LANGUAGE).equals(Constants.ARABIC)) {
+                context = LocaleHelper.setLocale(this, "ar");
+                resources = context.getResources();
+                Drawable img = resources.getDrawable(R.drawable.ic_baseline_keyboard_arrow_left_24);
+                binding.btnStart.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+
+            }
+
+        }
+    }
+
+    private void getPatients() {
+        if (preferenceManager.getString(Constants.DOCTOR_ID) != null) {
+
+            mainViewModel.getPatientList(preferenceManager.getString(Constants.DOCTOR_ID)).observe(this, new Observer<StateData<PatientInfo>>() {
+                @Override
+                public void onChanged(StateData<PatientInfo> listStateData) {
+                    if (listStateData.getStatus() == StateData.DataStatus.SUCCESS) {
+                        PatientInfo patientInfo = listStateData.getData();
+
+                        List<Patient> patients = patientInfo.getDetails();
+                        patient = patients.get(0);
+                        Log.d("main", "onChanged: patient " + patients.toString());
+                        patientSpinnerAdapter = new PatientSpinnerAdapter(MainActivity.this, patients);
+                        binding.btnSelectPatient.setAdapter(patientSpinnerAdapter);
+                    }
+
+                }
+            });
+        }
+    }
+
+    private void getAutismCurriculum() {
+        if (preferenceManager.getString(Constants.DOCTOR_ID) != null) {
+            mainViewModel.getAutismCurriculum("en", "1").observe(this, new Observer<StateData<AutismCurriculumInfo>>() {
+                @Override
+                public void onChanged(StateData<AutismCurriculumInfo> autismCurriculumInfoStateData) {
+                    if (autismCurriculumInfoStateData.getStatus() == StateData.DataStatus.SUCCESS) {
+                        AutismCurriculumInfo autismCurriculumInfo = autismCurriculumInfoStateData.getData();
+
+                        Log.d("TAG5", "onChanged: autismCurriculumInfo" + autismCurriculumInfo.toString());
+                        Log.d("TAG5", "onChanged: getDetails " + autismCurriculumInfo.getDetails().toString());
+                    }
+                }
+            });
+        }
+    }
+
     private void initialization() {
-         realm = Realm.getDefaultInstance();
-         preferenceManager = new PreferenceManager(this);
 
-
-
+        preferenceManager = new PreferenceManager(this);
+        realm = Realm.getDefaultInstance();
+        gson = new Gson();
+        robotController = new RobotController(this);
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         binding.btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (module!=null){
-//                    Toast.makeText(MainActivity.this, "module id" +module.getId(), Toast.LENGTH_SHORT).show();
-
-
-                    Intent intent = new Intent(MainActivity.this , StartGameActivity.class);
-                    intent.putExtra(Constants.ModuleNameKEY ,module.getModuleName());
-                    startActivity(intent);
-
+                if (preferenceManager.getString(LANGUAGE) != null) {
+                    if (preferenceManager.getString(LANGUAGE).equals(Constants.ENGLISH)) {
+                        sendMessageToRobot(Constants.ENGLISH);
+                    } else if (preferenceManager.getString(LANGUAGE).equals(Constants.ARABIC)) {
+                        sendMessageToRobot(Constants.ARABIC);
+                    }
+                }
+                Intent intent = new Intent(MainActivity.this, StartGameActivity.class);
+                if (module != null) {
+                    intent.putExtra(Constants.ModuleNameKEY, module.getModuleName());
+                }else {
+                    intent.putExtra(Constants.ModuleNameKEY,"Emotional Ability");
 
                 }
+                startActivity(intent);
+
+                //  }
 
             }
         });
 
-        RealmResults<Module> mmmm=realm.where(Module.class).findAll();
-        if (mmmm!=null){
-//            Log.d("TAG", "initialization spacecrafts : "+spacecrafts.get(0).getQuestioncontent().getTitle());
-            Log.d("TAG", "initialization mmmm : "+mmmm.size());
-        }
-        RealmResults<Level> levels=realm.where(Level.class).findAll();
 
-        if (levels!=null){
-            for (Level le :levels) {
-                Log.d("TAG", "initialization le: ." + le.toString());
-            }
-//            Log.d("TAG", "initialization spacecrafts : "+spacecrafts.get(0).getQuestioncontent().getTitle());
-            Log.d("TAG", "initialization  reee levels : "+levels.size());
-//            Log.d("TAG", "initialization spacecrafts : "+spacecrafts.get(0).toString());
-        }
-        RealmResults<Phase> spacecrafts=realm.where(Phase.class).findAll();
-        if (spacecrafts!=null){
-//            Log.d("TAG", "initialization spacecrafts : "+spacecrafts.get(0).getQuestioncontent().getTitle());
-            Log.d("TAG", "initialization spacecrafts : "+spacecrafts.size());
-//            Log.d("TAG", "initialization spacecrafts : "+spacecrafts.get(0).toString());
-        }
+    }
 
+    private void setModuleData(Module module) {
+        if (module!=null) {
+            binding.btnModuleNumber.setText(module.getModuleNumber());
+            binding.btnModuleObjective.setText(module.getObjectives());
+            binding.btnModuleCurriculum.setText(module.getCurriculum());
+            binding.btnModuleArea.setText(module.getAreaOfSpecialization());
+        }
     }
 
     private void chart() {
@@ -152,50 +240,80 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getModule() {
-        mainViewModel.getModule().observe(this, moduleStateData -> {
-            switch (moduleStateData.getStatus()) {
-                case COMPLETE:
-                    break;
-                case ERROR:
-                    break;
+        if (preferenceManager.getString(Constants.LANGUAGE).equals(Constants.ARABIC)) {
+            mainViewModel.getModule_AR().observe(this, moduleStateData -> {
+                switch (moduleStateData.getStatus()) {
+                    case COMPLETE:
+                        break;
+                    case ERROR:
+                        break;
 
-                case LOADING:
-                    break;
-                case SUCCESS:
-                    assert moduleStateData.getData() != null;
-                    successCase(moduleStateData.getData());
-                    break;
+                    case LOADING:
+                        break;
+                    case SUCCESS:
+                        assert moduleStateData.getData() != null;
+                        successCase(moduleStateData.getData());
+                        Log.d("TAGH", "getModule: getModule_AR  " + moduleStateData.getData());
 
-            }
-        });
+                        break;
+
+                }
+            });
+        } else if (preferenceManager.getString(Constants.LANGUAGE).equals(Constants.ENGLISH)) {
+            mainViewModel.getModule().observe(this, moduleStateData -> {
+                switch (moduleStateData.getStatus()) {
+                    case COMPLETE:
+                        break;
+                    case ERROR:
+                        break;
+
+                    case LOADING:
+                        break;
+                    case SUCCESS:
+                        assert moduleStateData.getData() != null;
+                        successCase(moduleStateData.getData());
+                        Log.d("TAGH", "getModule: getModule  " + moduleStateData.getData());
+
+                        break;
+
+                }
+            });
+        }
+
     }
 
-    private void successCase(Module data) {
-        module =data;
+    private void successCase(List<Module> data) {
+        Log.d("TAG5", "successCase:data " + data);
+        for (Module m : data) {
 
-            Module module2 = realm.where(Module.class).equalTo("id",data.getId())
-                    .findFirst();
-            if (module2 ==null){
-                realm.executeTransaction(new Realm.Transaction() {
-                    @Override
-                    public void execute(Realm realm) {
-                        realm.insert(data);
+            realm.executeTransaction(new Realm.Transaction() {
+                @Override
+                public void execute(Realm realm) {
+                    realm.insertOrUpdate(m);
 
-                    }
-                });
+                }
+            });
 
         }
 
-
-
-
-//        Log.d("TAG", "successCase:  " + data.toString());
-//        binding.btnModuleArea.setText(data.getAreaOfSpecialization());
-//        binding.btnModuleCurriculum.setText(data.getCurriculum());
-//        binding.btnModuleNumber.setText(data.getModuleNumber());
-//        binding.btnModuleObjective.setText(data.getObjectives());
-
-
     }
+
+
+    private void sendMessageToRobot(String content) {
+        String messageJSon = "{\"lang\":" + content + "}";
+        Log.d("TAG", "sendMessageToRobot:messageJSon " + messageJSon);
+        robotController.sendMessageForRobot(messageJSon);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
+
 
 }

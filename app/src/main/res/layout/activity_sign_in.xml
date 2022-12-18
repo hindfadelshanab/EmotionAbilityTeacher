@@ -95,7 +95,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_purple"
         android:padding="@dimen/_8sdp"
-        android:text="Sign In"
+        android:text="@string/sign_in"
         android:textColor="@color/white"
         android:textColorHint="@color/black"
         android:textSize="@dimen/_18ssp"

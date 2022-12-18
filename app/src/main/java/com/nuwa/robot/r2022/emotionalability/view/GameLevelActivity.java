@@ -266,18 +266,18 @@ public class GameLevelActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-         if (i==1){
-             Unit selectedUnit = (Unit) binding.unitSpinner.getItemAtPosition(i);
+                if (i==1){
+                    Unit selectedUnit = (Unit) binding.unitSpinner.getItemAtPosition(i);
 //                 binding.unitSpinner.setSelection(i, true);
-             preferenceManager.putInt(Constants.LEVEL_ENDED_ID_Key, 0);
-             preferenceManager.putInt(Constants.UNIT_ENDED_ID_KEY, 0);
-               initLevelSpinner(selectedUnit.getIdUnit(), 0);
-     } else if (i > 0) {
+                    preferenceManager.putInt(Constants.LEVEL_ENDED_ID_Key, 0);
+                    preferenceManager.putInt(Constants.UNIT_ENDED_ID_KEY, 0);
+                    initLevelSpinner(selectedUnit.getIdUnit(), 0);
+                } else if (i > 0) {
                     Unit selectedUnit = (Unit) binding.unitSpinner.getItemAtPosition(i);
                     Log.d("TAGg", " 2onItemSelected:  " +i);
                     Log.d("TAGg", " 2 onItemSelected:  getIdUnit " +selectedUnit.getIdUnit());
                     initLevelSpinner(selectedUnit.getIdUnit(), endedLevelPosition);
-             }
+                }
 
             }
 
@@ -309,7 +309,7 @@ public class GameLevelActivity extends AppCompatActivity {
 
 
 
-                            binding.levelSpinner.setSelection(levelIndex, true);
+                        binding.levelSpinner.setSelection(levelIndex, true);
 
 
                         levelSpinnerAdapter.notifyDataSetChanged();

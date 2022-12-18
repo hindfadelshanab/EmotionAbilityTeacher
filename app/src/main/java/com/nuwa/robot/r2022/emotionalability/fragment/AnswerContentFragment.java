@@ -36,7 +36,7 @@ import com.nuwa.robot.r2022.emotionalability.viewModel.GameViewModel;
 import io.realm.Realm;
 
 
-public class AnswerContentFragment extends Fragment {
+public class AnswerContentFragment extends Fragment implements View.OnClickListener {
 
     private FragmentAnswerContentBinding binding;
     private Phase phase;
@@ -56,7 +56,13 @@ public class AnswerContentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentAnswerContentBinding.inflate(inflater, container, false);
-        initialization();
+
+        try {
+            initialization();
+        }catch (Exception e){
+            Log.d("TAG8", "onCreateView:  Exception "+e.getMessage());
+        }
+
 
         return binding.getRoot();
     }
@@ -83,6 +89,9 @@ public class AnswerContentFragment extends Fragment {
             case Constants.ANSWERED_WAY_SELECT:
                 showSelectContent(answerContent);
                 break;
+            case Constants.ANSWERED_WAY_DRAG:
+                showDragContent(answerContent);
+                break;
             case Constants.ANSWERED_WAY_SELECT_FROM_TABLE:
                 showEmotionTable();
                 break;
@@ -90,12 +99,35 @@ public class AnswerContentFragment extends Fragment {
 
 
 
-        if (answerContent.isHaveImageForShow() && answerContent.getImageForShow().equals("ScaredChild")) {
+        if (answerContent.isHaveImageForShow() ) {
             binding.imageForShow.setVisibility(View.VISIBLE);
-            binding.imageForShow.setImageResource(R.drawable.scared_child);
+            switch (answerContent.getImageForShow()){
+                case "ScaredChild":
+                    binding.imageForShow.setImageResource(R.drawable.scared_child);
+                    break;
+                case "rectangle":
+                    binding.imageForShow.setImageResource(R.drawable.orange_rectangle);
+
+                    break;
+                case "circle":
+                    binding.imageForShow.setImageResource(R.drawable.large_circle);
+
+                    break;
+            }
+
         }
 
 
+    }
+
+    private void showDragContent(AnswerContent answerContent) {
+        String phaseJson = "";
+
+        if (phase != null) {
+            phase = realm.copyFromRealm(phase);
+            phaseJson = gson.toJson(phase);
+        }
+        robotController.sendMessageForStudent(phaseJson);
     }
 
     private void showSelectContent(AnswerContent answerContent) {
@@ -192,4 +224,9 @@ public class AnswerContentFragment extends Fragment {
     }
 
 
+    @Override
+    public void onClick(View view) {
+
+
+    }
 }

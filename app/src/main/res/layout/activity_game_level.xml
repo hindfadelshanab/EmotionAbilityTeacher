@@ -1,24 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:fillViewport="true"
     android:background="@drawable/background"
+
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".view.GameLevelActivity">
+   >
 
-
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/exit"
+        android:textSize="@dimen/_8ssp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_gravity="end"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="@drawable/exit_button"
+        android:layout_marginStart="@dimen/_12ssp"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="@dimen/_32sdp"
         android:layout_marginEnd="@dimen/_32sdp"
         android:orientation="horizontal"
-        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_4sdp"
         android:padding="@dimen/_6sdp">
 
         <androidx.appcompat.widget.AppCompatButton
@@ -27,7 +47,7 @@
             android:layout_gravity="center"
             android:background="@drawable/button_purple"
             android:padding="@dimen/_6sdp"
-            android:text="MODULE"
+            android:text="@string/module"
             android:textColor="@color/white"
             android:textColorHint="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/imageView2"
@@ -46,7 +66,6 @@
             android:text="@string/select_term"
             android:textColor="@color/white"
             android:background="@drawable/spinner__background"
-
             android:textColorHint="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +92,7 @@
             android:layout_gravity="center"
             android:background="@drawable/button_purple"
             android:padding="@dimen/_6sdp"
-            android:text="Unit"
+            android:text="@string/unit"
             android:textColor="@color/white"
             android:textColorHint="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/imageView2"
@@ -117,7 +136,7 @@
             android:layout_gravity="center"
             android:background="@drawable/button_purple"
             android:padding="@dimen/_6sdp"
-            android:text="Level"
+            android:text="@string/level"
             android:textColor="@color/white"
             android:textColorHint="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/imageView2"
@@ -172,15 +191,16 @@
         android:background="@drawable/button_orange"
 
         android:layout_gravity="bottom|end"
-        android:padding="@dimen/_8sdp"
+        android:padding="@dimen/_4sdp"
         android:text="@string/start"
         android:textColor="@color/white"
-        android:textSize="@dimen/_14ssp"
         android:layout_marginBottom="@dimen/_12sdp"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintHorizontal_bias="0.49"
         android:layout_marginEnd="@dimen/_16sdp"
 
       />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -189,9 +209,9 @@
         app:layout_constraintStart_toStartOf="parent"
         android:visibility="gone"
         android:layout_marginStart="@dimen/_12sdp"
-        android:layout_marginBottom="@dimen/_12sdp"
 
 
         />
 
 </LinearLayout>
+</ScrollView>

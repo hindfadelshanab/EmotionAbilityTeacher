@@ -1,9 +1,9 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">EmotionalAbility</string>
     <string name="log_in_as_therapist">LOG-IN AS THERAPIST</string>
     <string name="log_in_as_a_student">LOG-IN AS A STUDENT</string>
     <string name="select_patient">Select Patient</string>
-    <string name="select_term">Select Term</string>
+    <string name="select_term">Term</string>
     <string name="first_term">First Term</string>
     <string name="skills">Skills</string>
     <string name="log_out">Log Out</string>
@@ -18,4 +18,36 @@
     <string name="emotion_imitation">EMOTION IMITATION</string>
     <string name="game">Game!</string>
     <string name="previous">PREVIOUS</string>
+    <string name="you_can_do_it">You can do it</string>
+    <string name="you_are_a_star">You are a star</string>
+    <string name="well_done">well Done</string>
+    <string name="communication">Communication</string>
+    <string name="cognition">Cognition</string>
+    <string name="social">Social</string>
+    <string name="emotional">Emotional</string>
+    <string name="physical">Physical</string>
+    <string name="curriculum">CURRICULUM</string>
+    <string name="module">MODULE</string>
+    <string name="area_of_specialization">AREA OF SPECIALIZATION</string>
+    <string name="objectives">OBJECTIVES</string>
+    <string name="qlickhealth_lesson_generator">QLICKHEALTH LESSON GENERATOR</string>
+    <string name="dr_subhi">Dr.Subhi</string>
+    <string name="sign_in">Sign In</string>
+    <string name="unit">Unit</string>
+    <string name="level">Level</string>
+    <string name="the_child_was_not_able_to_show_face_doesn_t_have_any_response_at_all">The child was NOT able to show face/ doesn’t have any response at all.</string>
+    <string name="the_child_was_able_to_show_the_correct_face">The child was able to show the correct face.</string>
+    <string name="choose_langouge">Choose Langouge</string>
+    <string name="choose_language" tools:ignore="MissingTranslation">Choose Language</string>
+    <string name="tablet">Tablet</string>
+    <string name="kibbi">Kibbi</string>
+    <string name="vr">VR</string>
+    <string name="change_language">Change Language</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="home">Home</string>
+    <string name="choose_language_ar">أختر لغة</string>
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
+    <string name="send_response_in_robot">Send Response in Robot</string>
 </resources>

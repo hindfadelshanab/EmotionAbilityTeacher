@@ -1,9 +1,11 @@
 package com.nuwa.robot.r2022.emotionalability.utils;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 
-public class PreferenceManager {
+public class PreferenceManager  {
     private final SharedPreferences sharedPreferences;
     public static final String KEY_PREFERENCE_NAME = "sharedPreference";
 
@@ -47,5 +49,6 @@ public class PreferenceManager {
     public synchronized Integer getInt(String key) {
         return sharedPreferences.getInt(key ,0);
     }
+
 
 }

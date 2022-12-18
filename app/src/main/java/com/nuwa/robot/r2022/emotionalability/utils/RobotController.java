@@ -65,6 +65,12 @@ public class RobotController {
         Log.d("TAG", "sendMessageForRobot serverIp: " + serverIp);
 
     }
-
+    public void sendCloseMessage(String message) {
+        if (teacherClient.isOpen()) {
+            message = "{\"close\":" + message + "}";
+            teacherClient.send(message);
+            Log.d("TAG", "sendMessageForTeacher: 77" + message);
+        }
+    }
 
 }

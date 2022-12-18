@@ -2,6 +2,7 @@ package com.nuwa.robot.r2022.emotionalability.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.util.Log;
 import com.nuwa.robot.r2022.emotionalability.databinding.ActivityStartLevelBinding;
 import com.nuwa.robot.r2022.emotionalability.model.Level;
 import com.nuwa.robot.r2022.emotionalability.utils.Constants;
+import com.nuwa.robot.r2022.emotionalability.utils.LocaleHelper;
 
 import io.realm.Realm;
 
@@ -29,6 +31,7 @@ public class StartLevelActivity extends AppCompatActivity {
 
         int levelId = getIntent().getIntExtra(Constants.LEVEL_ID_Key, 0);
         int unitId = getIntent().getIntExtra(Constants.UNIT_ID_KEY, 0);
+        int moduleId = getIntent().getIntExtra(Constants.MODULE_ID_KEY, 0);
 
 
         Level level = realm.where(Level.class).equalTo("idLevel", levelId).equalTo("unitId", unitId).findFirst();
@@ -53,5 +56,8 @@ public class StartLevelActivity extends AppCompatActivity {
 
 
     }
-
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
 }

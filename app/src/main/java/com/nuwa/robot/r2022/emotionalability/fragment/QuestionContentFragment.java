@@ -1,5 +1,12 @@
 package com.nuwa.robot.r2022.emotionalability.fragment;
 
+import static com.nuwa.robot.r2022.emotionalability.utils.Constants.ARABIC;
+import static com.nuwa.robot.r2022.emotionalability.utils.Constants.ENGLISH;
+import static com.nuwa.robot.r2022.emotionalability.utils.Constants.LANGUAGE;
+
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,9 +19,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gson.Gson;
+import com.nuwa.robot.r2022.emotionalability.R;
 import com.nuwa.robot.r2022.emotionalability.databinding.FragmentQuestionContentBinding;
 import com.nuwa.robot.r2022.emotionalability.model.Message;
 import com.nuwa.robot.r2022.emotionalability.utils.Constants;
+import com.nuwa.robot.r2022.emotionalability.utils.LocaleHelper;
+import com.nuwa.robot.r2022.emotionalability.utils.PreferenceManager;
 import com.nuwa.robot.r2022.emotionalability.utils.RobotController;
 import com.nuwa.robot.r2022.emotionalability.viewModel.GameViewModel;
 
@@ -28,6 +38,7 @@ public class QuestionContentFragment extends Fragment {
     RobotController robotController ;
     GameViewModel gameViewModel;
     FragmentActivity fragmentActivity ;
+    PreferenceManager preferenceManager;
 
     public QuestionContentFragment(String gameName, int position ,FragmentActivity fragmentActivity ) {
         // Required empty public constructor
@@ -39,6 +50,7 @@ public class QuestionContentFragment extends Fragment {
     @Override
     public void setMenuVisibility(boolean menuVisible) {
         super.setMenuVisibility(menuVisible);
+
         gameViewModel = new ViewModelProvider(fragmentActivity).get(GameViewModel.class);
         if (menuVisible){
             sendMessageToRobot(position ,content);
@@ -56,6 +68,7 @@ public class QuestionContentFragment extends Fragment {
         Log.d("TAG", "createFragment:content " + content);
         robotController = new RobotController(getContext() );
         gson = new Gson();
+        preferenceManager = new PreferenceManager(fragmentActivity);
 
         if (content != null) {
 
@@ -89,34 +102,61 @@ public class QuestionContentFragment extends Fragment {
     }
 
     private void handleLetISBegin() {
-        binding.txtIntro.setText("Let’s");
+        if (preferenceManager.getString(LANGUAGE)!=null) {
+            Log.d("TAG", "handleLetISBegin:preferenceManager.getString(LANGUAGE) "+ preferenceManager.getString(LANGUAGE));
+            if (preferenceManager.getString(LANGUAGE).equals(Constants.ENGLISH)) {
+
+//                binding.btnStart.setText(resources.getString(R.string.start));
+                binding.txtIntro.setText("Let’s");
+                binding.txtQuestionTitle.setText("Begin !");
+
+
+            } else if (preferenceManager.getString(LANGUAGE).equals(Constants.ARABIC)) {
+
+                binding.txtIntro.setText("هيا");
+                binding.txtQuestionTitle.setText("بنا نبدأ");
+            }
+
+        }
         binding.txtGameDesc2.setVisibility(View.GONE);
-        binding.txtGame.setVisibility(View.GONE);
-        binding.txtQuestionTitle.setText("Begin !");
+//        binding.txtGame.setVisibility(View.GONE);
     }
 
     private void handleGameDesc(String content) {
         String gameIntro =content.substring(0 ,content.indexOf("?"));
         String gameDesc =content.substring(content.indexOf("?")+1 ,content.lastIndexOf("*"));
         String gameDesc2 =content.substring(content.indexOf("*") +1);
-        binding.txtGame.setVisibility(View.GONE);
+//        binding.txtGame.setVisibility(View.GONE);
         binding.txtGameDesc2.setVisibility(View.VISIBLE);
 
         binding.txtIntro.setText(gameIntro);
         binding.txtQuestionTitle.setText(gameDesc);
         binding.txtGameDesc2.setText(gameDesc2);
+        Log.d("TAG8", "handleGameDesc 0" +content.charAt(0));
+        Log.d("TAG8", "handleGameDesc 1 " +content.charAt(1));
+        Log.d("TAG8", "handleGameDesc 2 " +content.charAt(2));
+        Log.d("TAG8", "handleGameDesc 5" +content.charAt(5));
+        Log.d("TAG8", "handleGameDesc 20" +content.charAt(20));
+        Log.d("TAG8", "handleGameDesc 30 " +content.charAt(30));
+        Log.d("TAG8", "handleGameDesc content.indexOf(\"?\") " +content.indexOf("?"));
+        Log.d("TAG8", "handleGameDesc content.indexOf(\"*\") " +content.indexOf("*"));
+        Log.d("TAG8", "handleGameDesc content.indexOf(\"*\") " +content.lastIndexOf("?"));
 
     }
 
     private void handleGameName(String content) {
-     String gameName =content.substring(content.indexOf("?")+1 ,content.lastIndexOf("?"));
+        String gameName =content.substring((content.indexOf("?")+1)  ,content.lastIndexOf("?"));
         binding.txtQuestionTitle.setText(gameName);
+
         binding.txtGameDesc2.setVisibility(View.GONE);
 
 
-        Log.d("TAG", "handleGameName content.indexOf(\"?\"): " +content.indexOf("?"));
-        Log.d("TAG", "handleGameName content.indexOf(\"?\"): " +content.indexOf("?"));
-        Log.d("TAG", "handleGameName content.indexOf(\"?\"): " +gameName);
+        Log.d("TAG8", "handleGameName content.indexOf(\"?\"): " +content.indexOf("?"));
+        Log.d("TAG8", "handleGameName content.lasttindexOf(\"?\"): " +content.lastIndexOf("?"));
+        Log.d("TAG8", "handleGameName content.indexOf(\"?\"): " +content.indexOf("?"));
+        Log.d("TAG8", "pppppp " +preferenceManager.getString(LANGUAGE));
+//        Log.d("TAG8", "handleGameName content.indexOf(\"?\"): " +gameName);
+//        Log.d("TAG8", "gamwnamme 2 : " +gameName2);
 
     }
 }

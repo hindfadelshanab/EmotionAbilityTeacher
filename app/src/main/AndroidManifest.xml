@@ -6,48 +6,65 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".utils.RealmDb"
         android:allowBackup="true"
+        android:configChanges="locale"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
+        android:hardwareAccelerated="false"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".utils.RealmDb"
         android:theme="@style/Theme.EmotionalAbility"
         tools:targetApi="31">
         <activity
+            android:name=".view.ChangeLanguageActivity"
+            android:screenOrientation="landscape"
+            android:exported="false" />
+        <activity
+            android:name=".view.BeginningActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"
+           />
+        <activity
             android:name=".view.MakeConnectionWithRobotActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".view.GameActivity"
+            android:configChanges="locale"
             android:exported="false"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".view.StartLevelActivity"
+            android:configChanges="locale"
             android:exported="false"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".view.GameLevelActivity"
+            android:configChanges="locale"
             android:exported="false"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".view.StartGameActivity"
+            android:configChanges="locale"
             android:exported="false"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            />
         <activity
             android:name=".view.SignInActivity"
+            android:configChanges="locale"
             android:exported="true"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".view.WelcomActivity"
+            android:configChanges="locale"
             android:exported="true"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
@@ -59,12 +76,10 @@
         </activity>
         <activity
             android:name=".view.MainActivity"
+            android:configChanges="locale"
             android:exported="true"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" >
-
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
     </application>
 
 </manifest>

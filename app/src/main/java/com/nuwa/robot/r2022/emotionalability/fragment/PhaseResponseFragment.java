@@ -1,5 +1,6 @@
 package com.nuwa.robot.r2022.emotionalability.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gson.Gson;
+import com.nuwa.robot.r2022.emotionalability.R;
 import com.nuwa.robot.r2022.emotionalability.databinding.FragmentResponsBinding;
 import com.nuwa.robot.r2022.emotionalability.listener.OnStudentAnsweredListener;
 import com.nuwa.robot.r2022.emotionalability.model.Message;
@@ -24,6 +26,7 @@ import com.nuwa.robot.r2022.emotionalability.model.PhaseAnswered;
 import com.nuwa.robot.r2022.emotionalability.model.PhaseAnsweredLiveData;
 import com.nuwa.robot.r2022.emotionalability.model.StudentAnsweredLiveData;
 import com.nuwa.robot.r2022.emotionalability.utils.Constants;
+import com.nuwa.robot.r2022.emotionalability.utils.PreferenceManager;
 import com.nuwa.robot.r2022.emotionalability.utils.RobotController;
 import com.nuwa.robot.r2022.emotionalability.utils.StateData;
 import com.nuwa.robot.r2022.emotionalability.viewModel.GameViewModel;
@@ -31,7 +34,7 @@ import com.nuwa.robot.r2022.emotionalability.viewModel.GameViewModel;
 import io.realm.Realm;
 
 
-public class PhaseResponseFragment extends Fragment   {
+public class PhaseResponseFragment extends Fragment {
 
 
     FragmentResponsBinding binding;
@@ -41,11 +44,14 @@ public class PhaseResponseFragment extends Fragment   {
     GameViewModel gameViewModel;
     Realm realm;
     Gson gson;
-    RobotController robotController ;
-    int position ;
-   public static int  isFragmentVisible =0 ;
-   public static  boolean isStudentAnswered ;
-    public PhaseResponseFragment(Phase phase, FragmentActivity fragmentActivity , int position) {
+    RobotController robotController;
+    int position;
+    public static int isFragmentVisible = 0;
+    public static boolean isStudentAnswered;
+    public static boolean isTrue_FalseAnswered;
+    private PreferenceManager preferenceManager;
+
+    public PhaseResponseFragment(Phase phase, FragmentActivity fragmentActivity, int position) {
         this.phase = phase;
         this.fragmentActivity = fragmentActivity;
         this.position = position;
@@ -56,9 +62,9 @@ public class PhaseResponseFragment extends Fragment   {
     public void setMenuVisibility(boolean menuVisible) {
         super.setMenuVisibility(menuVisible);
 
-        if (menuVisible){
-            Log.d("TAG2", " Phase6ResponseFragment fragment is  visible " +menuVisible);
-        }else {
+        if (menuVisible) {
+            Log.d("TAG2", " Phase6ResponseFragment fragment is  visible " + menuVisible);
+        } else {
             Log.d("TAG2", " Phase6ResponseFragment fragment is not visible ");
         }
     }
@@ -67,24 +73,26 @@ public class PhaseResponseFragment extends Fragment   {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentResponsBinding.inflate(inflater, container, false);
-        Log.d("TAG2", "onCreateView: isFragmentVisible "+isFragmentVisible);
+        Log.d("TAG2", "onCreateView: isFragmentVisible " + isFragmentVisible);
+        preferenceManager = new PreferenceManager(fragmentActivity);
+
         initialization();
 
         return binding.getRoot();
     }
 
 
-
-    private void initialization(){
+    private void initialization() {
         gameViewModel = new ViewModelProvider(fragmentActivity).get(GameViewModel.class);
         realm = Realm.getDefaultInstance();
-        robotController = new RobotController(getContext() );
+        robotController = new RobotController(getContext());
         gson = new Gson();
         answerListener();
 
 
     }
-    public  void answerListener(){
+
+    public void answerListener() {
         Log.d("TAG2", "answerListener: ");
 
         if (phase.getAnswerContent().getAnswerWay() == Constants.ANSWERED_WAY_SELECT_FROM_TABLE) {
@@ -93,98 +101,134 @@ public class PhaseResponseFragment extends Fragment   {
                 if (stringStateData.getData() != null) {
 
                     binding.txtQuestionTitle.setText(stringStateData.getData());
-                    sendMessageToRobot(stringStateData.getData());
+                    sendMessageToRobot(10, stringStateData.getData());
                 } else {
                     handleWrongRespond();
-                    sendMessageToRobot(Constants.LET_IS_TRY_AGAIN);
+                    sendMessageToRobot(10, Constants.LET_IS_TRY_AGAIN);
 
                 }
             });
         }
         if (phase != null) {
             PhaseAnsweredLiveData.get().observe((LifecycleOwner) fragmentActivity, phaseAnsweredStateData -> {
-                Log.d("TAG2", "answerListener:     PhaseAnsweredLiveData.get().get()" );
+                Log.d("TAG2", "answerListener:     PhaseAnsweredLiveData.get().get()");
 
                 PhaseAnswered phaseAnswered = phaseAnsweredStateData.getData();
                 if ((phaseAnswered.getPhaseId() == phase.getId() && phaseAnswered.isAnswered())) {
+                    isTrue_FalseAnswered = true;
                     handleRightRespond(phase.getResponse());
-                    sendMessageToRobot(phase.getResponse());
+//                    sendMessageToRobot(8,phase.getResponse());
 
                 } else if ((phaseAnswered.getPhaseId() == phase.getId() && !phaseAnswered.isAnswered())) {
-                    handleWrongRespond();
-                    sendMessageToRobot(Constants.LET_IS_TRY_AGAIN);
+                    isTrue_FalseAnswered = false;
 
+                    handleWrongRespond();
+//                    sendMessageToRobot(8,Constants.LET_IS_TRY_AGAIN);
                 }
             });
 
 
-                Log.d("TAG2", "answerListener: btnSendResponseToRobot isClickable");
-                    StudentAnsweredLiveData.get().observe(fragmentActivity, booleanStateData -> {
-                        binding.btnSendResponseToRobot.setVisibility(View.VISIBLE);
+            Log.d("TAG2", "answerListener: btnSendResponseToRobot isClickable");
+            StudentAnsweredLiveData.get().observe(fragmentActivity, booleanStateData -> {
+                binding.btnSendResponseToRobot.setVisibility(View.VISIBLE);
 
-                        boolean isAnswered = booleanStateData.getData();
-                        Log.d("TAG2", "answerListener:    StudentAnsweredLiveData.get()" +isAnswered);
-                        isStudentAnswered =isAnswered ;
-                        if (booleanStateData.getData()) {
+                boolean isAnswered = booleanStateData.getData();
+                Log.d("TAG2", "answerListener:    StudentAnsweredLiveData.get()" + isAnswered);
+                isStudentAnswered = isAnswered;
+                if (booleanStateData.getData()) {
 
-                            handleRightRespond(phase.getResponse());
-                        } else if (!isAnswered) {
-                            handleWrongRespond();
-                        }
-                    });
+                    handleRightRespond(phase.getResponse());
+                } else if (!isAnswered) {
+                    handleWrongRespond();
+                }
+            });
+            if (phase.getAnswerContent().getAnswerWay() == Constants.ANSWERED_WAY_SELECT || phase.getAnswerContent().getAnswerWay() == Constants.ANSWERED_WAY_TRU_FALSE) {
+                binding.btnSendResponseToRobot.setVisibility(View.VISIBLE);
+            }
 
-          binding.btnSendResponseToRobot.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                  Log.d("TAG2", "onClick: isStudentAnswered"+isStudentAnswered);
-                  if (isStudentAnswered){
-                      sendMessageToRobot(phase.getResponse());
+            binding.btnSendResponseToRobot.setOnClickListener(view -> {
+                Log.d("TAG2", "onClick: isStudentAnswered" + isStudentAnswered);
 
-                  }else {
-                      sendMessageToRobot(Constants.LET_IS_TRY_AGAIN);
 
-                  }
-              }
-          });
+                if (phase.getAnswerContent().getAnswerWay() == Constants.ANSWERED_WAY_SELECT) {
+                    if (isStudentAnswered) {
+                        sendMessageToRobot(8, phase.getResponse());
+
+                    } else {
+                        sendMessageToRobot(8, Constants.LET_IS_TRY_AGAIN);
+                    }
+                } else if (phase.getAnswerContent().getAnswerWay() == Constants.ANSWERED_WAY_TRU_FALSE) {
+
+                    if (isTrue_FalseAnswered) {
+                        sendMessageToRobot(8, phase.getResponse());
+                    } else {
+                        sendMessageToRobot(8, Constants.LET_IS_TRY_AGAIN);
+                    }
+                }
+
+            });
+            binding.btnSendResponseWellDone.setOnClickListener(view -> {
+
+                Log.d("TAGkk", "answerListener: " + this.getResources().getString(R.string.well_done));
+                sendMessageToRobot(15, "well Done");
+
+            });
+            binding.btnSendResponseYouAreAStar.setOnClickListener(view -> {
+
+                sendMessageToRobot(8, "You are a star");
+
+            });
+            binding.btnSendResponseYoCanDoIt.setOnClickListener(view -> {
+
+                sendMessageToRobot(11, "You can do it");
+
+            });
 
 
         }
     }
 
 
-
-
-
+    @SuppressLint("SetTextI18n")
     private void handleWrongRespond() {
-        binding.txtIntro.setText("Let’s");
-        binding.txtQuestionTitle.setText("try again.");
+
+        if (preferenceManager.getString(Constants.LANGUAGE) != null) {
+            if (preferenceManager.getString(Constants.LANGUAGE).equals(Constants.ENGLISH)) {
+                binding.txtIntro.setText("Let’s");
+                binding.txtQuestionTitle.setText("try again");
+            } else if (preferenceManager.getString(Constants.LANGUAGE).equals(Constants.ARABIC)) {
+                binding.txtIntro.setText("هيَا");
+                binding.txtQuestionTitle.setText("حاول مرة أخرى");
+            }
+        } else {
+            binding.txtIntro.setText("Let’s");
+            binding.txtQuestionTitle.setText("try again");
+        }
+
 
     }
 
-    private void handleRightRespond(String phaseResponse){
-        String responseIntro = phaseResponse.substring(0, phaseResponse.indexOf("!"));
-        String response = phaseResponse.substring(phaseResponse.indexOf("!") + 1);
-        binding.txtIntro.setText(responseIntro);
-        binding.txtQuestionTitle.setText(response);
+    private void handleRightRespond(String phaseResponse) {
+        try {
+            String responseIntro = phaseResponse.substring(0, phaseResponse.indexOf("!"));
+            String response = phaseResponse.substring(phaseResponse.indexOf("!") + 1);
+            binding.txtIntro.setText(responseIntro);
+            binding.txtQuestionTitle.setText(response);
+        } catch (Exception e) {
+            Log.d(TAG, "handleRightRespond: error" + e.getMessage());
+        }
+
     }
 
 
-    private void sendMessageToRobot(String content) {
-        Log.d("TAG2", "sendMessageToRobot:isFragmentVisible " +content);
-        Message message = new Message(8,Constants.MESSAGE_FOR_KEBHI_SPECK, content);
-        String messageJSon = gson.toJson(message) ;
+    private void sendMessageToRobot(int id, String content) {
+        Log.d("TAG2", "sendMessageToRobot:isFragmentVisible " + content);
+        Message message = new Message(id, Constants.MESSAGE_FOR_KEBHI_SPECK, content);
+        String messageJSon = gson.toJson(message);
         messageJSon = "{\"message\":" + messageJSon + "}";
-        Log.d("TAG", "sendMessageToRobot:messageJSon " +messageJSon);
+        Log.d("TAG", "sendMessageToRobot:messageJSon " + messageJSon);
         robotController.sendMessageForRobot(messageJSon);
     }
 
-//    @Override
-//    public void OnStudentAnswered(boolean answered) {
-//        Log.d("TAG2", "OnStudentAnswered: answered "+answered);
-//        if (answered) {
-//            handleRightRespond(phase.getResponse());
-//        } else {
-//            handleWrongRespond();
-//        }
-//    }
+
 }

@@ -8,7 +8,7 @@
     android:layout_marginEnd="@dimen/_8sdp"
     android:background="@drawable/board_background"
     android:orientation="vertical"
-    app:layout_constraintBottom_toTopOf="@+id/btnPrevious"
+    app:layout_constraintBottom_toTopOf="@+id/btnSelect"
     app:layout_constraintEnd_toStartOf="@id/imageView"
     app:layout_constraintStart_toStartOf="parent"
 

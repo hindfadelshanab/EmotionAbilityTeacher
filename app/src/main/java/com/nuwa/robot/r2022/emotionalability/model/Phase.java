@@ -16,33 +16,57 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 
-public class Phase extends RealmObject   {
+public class Phase extends RealmObject {
 
 
     @PrimaryKey
-    private int id ;
+    private int id;
 
-    private int levelId ;
-    private int unitId ;
-    private  QuestionContent questioncontent ;
-    private AnswerContent answerContent ;
-    private int point ;
-    private String response ;
-    private boolean isAnswered ;
+    private int levelId;
+    private int unitId;
+    private int moduleId;
+    private QuestionContent questioncontent;
+    private AnswerContent answerContent;
+    private int point;
+    private String response;
+    private boolean isAnswered;
 
     public Phase() {
     }
 
-    public Phase(int id, int levelId, int unitId,
-                 QuestionContent questioncontent, AnswerContent answerContent, int point, String response, boolean isAnswered) {
+    public Phase(int id, int levelId, int unitId, int moduleId,
+                 QuestionContent questioncontent,
+                 AnswerContent answerContent,
+                 int point, String response, boolean isAnswered) {
         this.id = id;
         this.levelId = levelId;
         this.unitId = unitId;
+        this.moduleId = moduleId;
         this.questioncontent = questioncontent;
         this.answerContent = answerContent;
         this.point = point;
         this.response = response;
         this.isAnswered = isAnswered;
+    }
+//    public Phase(int id, int levelId, int unitId,
+//                 QuestionContent questioncontent, AnswerContent answerContent, int point, String response, boolean isAnswered) {
+//        this.id = id;
+//        this.levelId = levelId;
+//        this.unitId = unitId;
+//        this.questioncontent = questioncontent;
+//        this.answerContent = answerContent;
+//        this.point = point;
+//        this.response = response;
+//        this.isAnswered = isAnswered;
+//    }
+
+
+    public int getModuleId() {
+        return moduleId;
+    }
+
+    public void setModuleId(int moduleId) {
+        this.moduleId = moduleId;
     }
 
     public boolean isAnswered() {
@@ -68,7 +92,6 @@ public class Phase extends RealmObject   {
     public void setResponse(String response) {
         this.response = response;
     }
-
 
 
     public int getId() {
@@ -133,8 +156,8 @@ public class Phase extends RealmObject   {
     }
 
 
-    public Phase clone()  {
-        return new Phase(id, levelId, unitId ,questioncontent, answerContent ,point ,response , isAnswered);
+    public Phase clone() {
+        return new Phase(id, levelId, unitId,moduleId, questioncontent, answerContent, point, response, isAnswered);
 
     }
 

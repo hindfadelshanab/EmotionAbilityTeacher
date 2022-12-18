@@ -13,15 +13,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.nuwa.robot.r2022.emotionalability.adapter.PhaseAdapter;
 import com.nuwa.robot.r2022.emotionalability.databinding.FragmentPhaseBinding;
 import com.nuwa.robot.r2022.emotionalability.listener.OnStudentAnsweredListener;
+import com.nuwa.robot.r2022.emotionalability.model.BaselineResultInfo;
 import com.nuwa.robot.r2022.emotionalability.model.MessageExpression;
 import com.nuwa.robot.r2022.emotionalability.model.Phase;
 import com.nuwa.robot.r2022.emotionalability.model.PhaseAnswered;
 import com.nuwa.robot.r2022.emotionalability.model.PhaseAnsweredLiveData;
+import com.nuwa.robot.r2022.emotionalability.model.ResultInfo;
 import com.nuwa.robot.r2022.emotionalability.model.StudentAnsweredLiveData;
 import com.nuwa.robot.r2022.emotionalability.networking.TeacherSocketClient;
 import com.nuwa.robot.r2022.emotionalability.utils.Constants;
@@ -68,7 +71,6 @@ public class PhaseFragment extends Fragment implements TeacherSocketClient.IOnMe
         this.levelID = levelID;
         this.context = context;
     }
-
 
 
     @Override
@@ -141,15 +143,26 @@ public class PhaseFragment extends Fragment implements TeacherSocketClient.IOnMe
         if (phase2.isAnswered()) {
             if (phaseListPosition == phaseList.size() - 1) {
                 context.startActivity(new Intent(context, GameLevelActivity.class));
+//                preferenceManager.putInt(Constants.LEVEL_ENDED_ID_Key, phaseList.get(phaseListPosition).getLevelId());
+//                preferenceManager.putInt(Constants.UNIT_ENDED_ID_KEY, phase2.getUnitId());
+//                preferenceManager.putInt(Constants.MODULE_ENDED_ID_Key, phase2.getUnitId());
+//                preferenceManager.putInt(Constants.MODULE_ENDED_ID_Key , phase2.getModuleId());
+
                 preferenceManager.putInt(Constants.LEVEL_ENDED_ID_Key, phaseList.get(phaseListPosition).getLevelId());
                 preferenceManager.putInt(Constants.UNIT_ENDED_ID_KEY, phase2.getUnitId());
+                gameViewModel.sendAnswerResult("25" ,"7","1" ,"1","1","1",
+                        "1","2022-12-13","1","2022-12-13 10:30:33").observe(this, new Observer<StateData<ResultInfo>>() {
+                    @Override
+                    public void onChanged(StateData<ResultInfo> resultInfoStateData) {
+
+                    }
+                });
             } else {
                 phaseListPosition++;
                 lunchPhase(phaseList, phaseListPosition);
             }
         } else {
             lunchPhase(phaseList, phaseListPosition);
-
         }
 
     }
@@ -179,6 +192,7 @@ public class PhaseFragment extends Fragment implements TeacherSocketClient.IOnMe
 
 
     public void lunchPhase(List<Phase> phases, int phaseListPosition) {
+        Log.d("TAG8", "lunchPhase: " +phases.get(phaseListPosition));
         phaseAdapter = new PhaseAdapter(phases.get(phaseListPosition), context);
         binding.phaseViewPager.setAdapter(phaseAdapter);
 
@@ -244,11 +258,11 @@ public class PhaseFragment extends Fragment implements TeacherSocketClient.IOnMe
     private void handlePhaseAnsweredMessage(PhaseAnswered phaseAnswered) {
 
         if (phaseAnswered != null) {
-            Log.d(TAG, "handlePhaseAnsweredMessage:  StudentAnsweredLiveData.get().postSuccess(phaseAnswered.isAnswered());" +phaseAnswered.toString());
-//            gameViewModel.setStudentAnsweredPhase(phaseAnswered.isAnswered());
+            Log.d("TAG8", "handlePhaseAnsweredMessage:  StudentAnsweredLiveData.get().postSuccess(phaseAnswered.isAnswered());" +phaseAnswered.toString());
             StudentAnsweredLiveData.get().postSuccess(phaseAnswered.isAnswered());
-            Log.d("TAG2", "handlePhaseAnsweredMessage: " +phaseAnswered.isAnswered());
-//            onStudentAnsweredListeners.forEach( i -> i.OnStudentAnswered(phaseAnswered.isAnswered()));
+            int pagerAdapterPosition = binding.phaseViewPager.getCurrentItem();
+            goNextPosition(binding.phaseViewPager, pagerAdapterPosition);
+            Log.d("TAG8", "handlePhaseAnsweredMessage: " +phaseAnswered.isAnswered());
         }
 
         if (phaseAnswered.isAnswered()) {

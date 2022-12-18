@@ -9,7 +9,6 @@ import androidx.room.Transaction;
 
 import com.nuwa.robot.r2022.emotionalability.model.Module;
 import com.nuwa.robot.r2022.emotionalability.model.Phase;
-import com.nuwa.robot.r2022.emotionalability.model.relation.FilterPhase;
 
 import java.util.List;
 

@@ -11,46 +11,46 @@
     <LinearLayout
         android:id="@+id/layoutLevelName"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_90sdp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_32sdp"
+        android:paddingStart="@dimen/_16sdp"
+        android:paddingEnd="@dimen/_16sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        android:paddingTop="@dimen/_16sdp"
         android:layout_marginTop="@dimen/_16sdp"
         android:layout_marginEnd="@dimen/_32sdp"
         android:background="@drawable/board_background"
         android:orientation="horizontal"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:paddingBottom="@dimen/_12sdp"
         app:layout_constraintTop_toTopOf="parent"
 
         android:gravity="center"
 
-        app:layout_goneMarginEnd="@dimen/_12sdp"
-        app:layout_goneMarginStart="@dimen/_12sdp">
-
+>
 
 
         <TextView
-        android:id="@+id/txtLevelName"
+            android:id="@+id/txtLevelName"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="M2 U2 Find The Right Emotion "
-        android:textColor="@color/purpleColor"
-        android:textSize="@dimen/_22ssp"
-        android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M2 U2 Find The Right Emotion "
+            android:textColor="@color/purpleColor"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold"
 
-        />
+            />
+
         <TextView
             android:id="@+id/txtLevelNum"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
             android:text="(Level1)"
             android:textColor="@color/orangeColor"
-            android:textSize="@dimen/_24ssp"
+            android:textSize="@dimen/_22ssp"
             android:textStyle="bold"
 
             />
@@ -74,7 +74,7 @@
 
         android:textColor="@color/blueColor"
 
-        android:textSize="@dimen/_14ssp"
+        android:textSize="@dimen/_12ssp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@id/layoutLevelName"
@@ -115,24 +115,24 @@
         android:layout_marginTop="@dimen/_16sdp"
         android:background="@drawable/button_orange"
         android:padding="@dimen/_6sdp"
-        android:text="NEXT"
+        android:text="@string/next"
         android:textColor="@color/white"
         android:textSize="@dimen/_16ssp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/imageView"
-        app:layout_constraintStart_toEndOf="@id/btnPrevious"
+        app:layout_constraintStart_toEndOf="@id/btnSelect"
         android:layout_marginBottom="@dimen/_12sdp"
         app:layout_constraintTop_toBottomOf="@id/txtLevelObjective"
         app:layout_constraintVertical_bias="0.78" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnPrevious"
+        android:id="@+id/btnSelect"
         android:layout_width="@dimen/_120sdp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
         android:background="@drawable/button_purple"
         android:padding="@dimen/_6sdp"
-        android:text="PREVIOUS"
+        android:text="@string/previous"
         android:textColor="@color/white"
 
         android:textSize="@dimen/_16ssp"

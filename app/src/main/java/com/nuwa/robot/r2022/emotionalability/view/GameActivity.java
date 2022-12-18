@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,7 @@ import com.nuwa.robot.r2022.emotionalability.model.PhaseAnsweredLiveData;
 import com.nuwa.robot.r2022.emotionalability.networking.TeacherClient;
 import com.nuwa.robot.r2022.emotionalability.networking.TeacherSocketClient;
 import com.nuwa.robot.r2022.emotionalability.utils.Constants;
+import com.nuwa.robot.r2022.emotionalability.utils.LocaleHelper;
 import com.nuwa.robot.r2022.emotionalability.utils.PreferenceManager;
 import com.nuwa.robot.r2022.emotionalability.utils.StateData;
 import com.nuwa.robot.r2022.emotionalability.viewModel.GameViewModel;
@@ -126,6 +128,7 @@ public class GameActivity extends AppCompatActivity implements TeacherSocketClie
         binding.sViewPager.setAdapter(questionAdapter);
 
 
+
     }
 
 
@@ -152,6 +155,8 @@ public class GameActivity extends AppCompatActivity implements TeacherSocketClie
                 }
             }
         });
+
+
 
     }
 
@@ -195,5 +200,9 @@ public class GameActivity extends AppCompatActivity implements TeacherSocketClie
 
     @Override
     public void onError(Exception ex) {
+    }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
     }
 }

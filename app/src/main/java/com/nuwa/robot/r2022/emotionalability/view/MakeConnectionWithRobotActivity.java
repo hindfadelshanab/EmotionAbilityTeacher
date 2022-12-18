@@ -96,7 +96,7 @@ public class MakeConnectionWithRobotActivity extends AppCompatActivity {
                             @Override
                             public void run() {
 
-                                Intent intent =new Intent(MakeConnectionWithRobotActivity.this , MainActivity.class);
+                                Intent intent =new Intent(MakeConnectionWithRobotActivity.this , SignInActivity.class);
                                 intent.putExtra("ip" ,SERVER_IP) ;
                                 preferenceManager.putString(Constants.IPKEY,SERVER_IP);
                                 startActivity(intent);

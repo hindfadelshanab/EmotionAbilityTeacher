@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable-ar/ic_baseline_keyboard_arrow_left_24.xml" value="0.15" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable-ar/right_arrow.xml" value="0.15" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable-v24/level_background_red.xml" value="0.1" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable-v24/wrong_red.xml" value="0.1" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable/board_background.xml" value="0.1505" />
@@ -19,6 +21,7 @@
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable/button_purple.xml" value="0.1505" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable/button_purple_border.xml" value="0.1255" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.1" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable/ic_baseline_keyboard_arrow_left_24.xml" value="0.15" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable/image_option_item.xml" value="0.1" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable/image_option_rectangle_background.xml" value="0.1" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable/input_sign_background.xml" value="0.1545" />
@@ -28,13 +31,15 @@
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable/paient_name_background.xml" value="0.1415" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable/patient_image_background.xml" value="0.1545" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/drawable/patient_skils_background.xml" value="0.1415" />
-        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_game.xml" value="0.10208333333333333" />
-        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_game_level.xml" value="0.18" />
-        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_beginning.xml" value="0.10208333333333333" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_change_language.xml" value="0.16131687242798354" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_game.xml" value="0.13776041666666666" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_game_level.xml" value="0.10208333333333333" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_main.xml" value="0.16131687242798354" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_make_connection_with_robot.xml" value="0.10208333333333333" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_sign_in.xml" value="0.10208333333333333" />
-        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_start_game.xml" value="0.1" />
-        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_start_level.xml" value="0.1" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_start_game.xml" value="0.16131687242798354" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_start_level.xml" value="0.16131687242798354" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/activity_welcom.xml" value="0.10208333333333333" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/custom_spinner.xml" value="0.1015625" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/fragment_answer_content.xml" value="0.12" />
@@ -45,8 +50,12 @@
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/image_option_item.xml" value="0.1" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/item_emotion.xml" value="0.10208333333333333" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/level_item.xml" value="0.10208333333333333" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/menu_item_home.xml" value="0.10208333333333333" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/menu_item_language.xml" value="0.1015625" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/nav_header.xml" value="0.10208333333333333" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/question_content_item.xml" value="0.1" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/layout/testt.xml" value="0.18" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/EmotionalAbility/app/src/main/res/menu/navigation_menu.xml" value="0.203125" />
       </map>
     </option>
   </component>

@@ -9,7 +9,7 @@
     android:background="@drawable/board_background"
     android:gravity="center"
     android:orientation="vertical"
-    app:layout_constraintBottom_toTopOf="@+id/btnPrevious"
+    app:layout_constraintBottom_toTopOf="@+id/btnSelect"
 
     app:layout_constraintEnd_toStartOf="@id/imageView"
 
@@ -67,17 +67,17 @@
 
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/txtGame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_2sdp"
-            android:text="@string/game"
-            android:textColor="@color/purpleColor"
-            android:textSize="@dimen/_16ssp"
-            android:textStyle="bold"
+<!--        <TextView-->
+<!--            android:id="@+id/txtGame"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="@dimen/_2sdp"-->
+<!--            android:text="@string/game"-->
+<!--            android:textColor="@color/purpleColor"-->
+<!--            android:textSize="@dimen/_16ssp"-->
+<!--            android:textStyle="bold"-->
 
-            />
+<!--            />-->
 
     </LinearLayout>
 

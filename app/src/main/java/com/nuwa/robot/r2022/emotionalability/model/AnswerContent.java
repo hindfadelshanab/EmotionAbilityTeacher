@@ -11,11 +11,11 @@ import io.realm.RealmObject;
 public class AnswerContent extends RealmObject {
 
     private int answerWay; // true/false - select - drag - select character , selectEmotionTable(5)
-    private int dragBy; // size - kind - steps
+    private int dragBy; // size(1) - kind(2) - steps(3) -letters(4) -kind according to Function(5) - what next(6)
 
     private boolean isHaveImageForShow;
     private String ImageForShow;
-    private Kind kind;
+    private RealmList<Kind>  kinds;
     private RealmList<ImageOption> imageOptions;
 
     protected AnswerContent(Parcel in) {
@@ -25,6 +25,7 @@ public class AnswerContent extends RealmObject {
         isHaveImageForShow = in.readByte() != 0;
         ImageForShow = in.readString();
         in.readList(imageOptions, ImageOption.class.getClassLoader());
+        in.readList(kinds, Kind.class.getClassLoader());
 //        kind =  in.readParcelable(Kind.class.getClassLoader());
 
 
@@ -58,12 +59,12 @@ public class AnswerContent extends RealmObject {
         ImageForShow = imageForShow;
     }
 
-    public Kind getKind() {
-        return kind;
+    public List<Kind> getKind() {
+        return kinds;
     }
 
-    public void setKind(Kind kind) {
-        this.kind = kind;
+    public void setKind(RealmList<Kind> kind) {
+        this.kinds = kind;
     }
 
     public List<ImageOption> getImageOptions() {
