@@ -40,6 +40,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
 
+
         app:layout_constraintTop_toTopOf="parent">
 
     </androidx.viewpager2.widget.ViewPager2>
@@ -79,12 +80,15 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="@dimen/_150sdp"
+        android:layout_width="@dimen/_120sdp"
         android:layout_height="@dimen/_150sdp"
         android:src="@drawable/main_kebbi_shape"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/_12sdp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/sViewPager"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.20" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

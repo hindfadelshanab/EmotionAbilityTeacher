@@ -1,5 +1,7 @@
 package com.nuwa.robot.r2022.emotionalability.fragment;
 
+import static com.nuwa.robot.r2022.emotionalability.utils.StateData.DataStatus.SUCCESS;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
@@ -47,8 +49,9 @@ public class PhaseResponseFragment extends Fragment {
     RobotController robotController;
     int position;
     public static int isFragmentVisible = 0;
-    public static boolean isStudentAnswered;
+    public static int isStudentAnswered;
     public static boolean isTrue_FalseAnswered;
+    public static boolean isRobotAnswered;
     private PreferenceManager preferenceManager;
 
     public PhaseResponseFragment(Phase phase, FragmentActivity fragmentActivity, int position) {
@@ -92,9 +95,28 @@ public class PhaseResponseFragment extends Fragment {
 
     }
 
+
+
     public void answerListener() {
         Log.d("TAG2", "answerListener: ");
 
+
+        binding.btnSendResponseWellDone.setOnClickListener(view -> {
+
+            Log.d("TAGkk", "answerListener: " + this.getResources().getString(R.string.well_done));
+            sendMessageToRobot(15, "well Done");
+
+        });
+        binding.btnSendResponseYouAreAStar.setOnClickListener(view -> {
+
+            sendMessageToRobot(8, "You are a star");
+
+        });
+        binding.btnSendResponseYoCanDoIt.setOnClickListener(view -> {
+
+            sendMessageToRobot(11, "You can do it");
+
+        });
         if (phase.getAnswerContent().getAnswerWay() == Constants.ANSWERED_WAY_SELECT_FROM_TABLE) {
             Log.d("TAG2", "answerListener== " + phase.getAnswerContent().getAnswerWay());
             gameViewModel.getIsRobotAnsweredEmotion().observe(fragmentActivity, stringStateData -> {
@@ -102,93 +124,98 @@ public class PhaseResponseFragment extends Fragment {
 
                     binding.txtQuestionTitle.setText(stringStateData.getData());
                     sendMessageToRobot(10, stringStateData.getData());
+                    showWellDone();
                 } else {
+                    isRobotAnswered =false;
                     handleWrongRespond();
                     sendMessageToRobot(10, Constants.LET_IS_TRY_AGAIN);
 
+                    showYouCanDoIt();
                 }
             });
-        }
-        if (phase != null) {
+        } else if (phase.getAnswerContent().getAnswerWay() == Constants.ANSWERED_WAY_TRU_FALSE) {
             PhaseAnsweredLiveData.get().observe((LifecycleOwner) fragmentActivity, phaseAnsweredStateData -> {
-                Log.d("TAG2", "answerListener:     PhaseAnsweredLiveData.get().get()");
+                if (phaseAnsweredStateData.getStatus()== SUCCESS) {
+                    Log.d("TAG2", "answerListener:     PhaseAnsweredLiveData.get().get()");
+                    Log.d("TAG9", "phaseAnsweredStateData:" + phaseAnsweredStateData.getData());
+//                if (phaseAnsweredStateData!=null) {
+                    PhaseAnswered phaseAnswered = phaseAnsweredStateData.getData();
+                    if (phaseAnswered != null){
 
-                PhaseAnswered phaseAnswered = phaseAnsweredStateData.getData();
-                if ((phaseAnswered.getPhaseId() == phase.getId() && phaseAnswered.isAnswered())) {
-                    isTrue_FalseAnswered = true;
-                    handleRightRespond(phase.getResponse());
-//                    sendMessageToRobot(8,phase.getResponse());
+                        if ((phaseAnswered.getPhaseId() == phase.getId() && phaseAnswered.isAnswered() == Constants.PHASE_ANSWERED_TRUE)) {
+                            isTrue_FalseAnswered = true;
+                            handleRightRespond(phase.getResponse());
+                            sendMessageToRobot(8, phase.getResponse());
+                            showWellDone();
 
-                } else if ((phaseAnswered.getPhaseId() == phase.getId() && !phaseAnswered.isAnswered())) {
-                    isTrue_FalseAnswered = false;
-
-                    handleWrongRespond();
-//                    sendMessageToRobot(8,Constants.LET_IS_TRY_AGAIN);
+                        } else if ((phaseAnswered.getPhaseId() == phase.getId() && phaseAnswered.isAnswered() == Constants.PHASE_ANSWERED_FALSE)) {
+                            isTrue_FalseAnswered = false;
+                            sendMessageToRobot(8, Constants.LET_IS_TRY_AGAIN);
+                            handleWrongRespond();
+                            showYouCanDoIt();
+                        }
                 }
-            });
-
-
-            Log.d("TAG2", "answerListener: btnSendResponseToRobot isClickable");
-            StudentAnsweredLiveData.get().observe(fragmentActivity, booleanStateData -> {
-                binding.btnSendResponseToRobot.setVisibility(View.VISIBLE);
-
-                boolean isAnswered = booleanStateData.getData();
-                Log.d("TAG2", "answerListener:    StudentAnsweredLiveData.get()" + isAnswered);
-                isStudentAnswered = isAnswered;
-                if (booleanStateData.getData()) {
-
-                    handleRightRespond(phase.getResponse());
-                } else if (!isAnswered) {
-                    handleWrongRespond();
-                }
-            });
-            if (phase.getAnswerContent().getAnswerWay() == Constants.ANSWERED_WAY_SELECT || phase.getAnswerContent().getAnswerWay() == Constants.ANSWERED_WAY_TRU_FALSE) {
-                binding.btnSendResponseToRobot.setVisibility(View.VISIBLE);
             }
-
-            binding.btnSendResponseToRobot.setOnClickListener(view -> {
-                Log.d("TAG2", "onClick: isStudentAnswered" + isStudentAnswered);
+            });
 
 
-                if (phase.getAnswerContent().getAnswerWay() == Constants.ANSWERED_WAY_SELECT) {
-                    if (isStudentAnswered) {
-                        sendMessageToRobot(8, phase.getResponse());
 
-                    } else {
-                        sendMessageToRobot(8, Constants.LET_IS_TRY_AGAIN);
-                    }
-                } else if (phase.getAnswerContent().getAnswerWay() == Constants.ANSWERED_WAY_TRU_FALSE) {
+        } else if (phase.getAnswerContent().getAnswerWay() == Constants.ANSWERED_WAY_SELECT){
+            Log.d("TAG2", "answerListener: btnSendResponseToRobot isClickable");
 
-                    if (isTrue_FalseAnswered) {
-                        sendMessageToRobot(8, phase.getResponse());
-                    } else {
-                        sendMessageToRobot(8, Constants.LET_IS_TRY_AGAIN);
+            StudentAnsweredLiveData.get().observe(fragmentActivity, new Observer<StateData<Integer>>() {
+                @Override
+                public void onChanged(StateData<Integer> integerStateData) {
+                    Log.d("TAG2", "answerListener: btnSendResponseToRobot "+integerStateData.getData());
+                    Log.d("TAG2", "answerListener: btnSendResponseToRobot "+integerStateData.getStatus());
+
+                    if (integerStateData.getStatus() ==SUCCESS){
+                        if (integerStateData.getData()==Constants.PHASE_ANSWERED_TRUE) {
+
+                            handleRightRespond(phase.getResponse());
+                            sendMessageToRobot(8, phase.getResponse());
+                            showWellDone();
+                        } else if (integerStateData.getData()==Constants.PHASE_ANSWERED_FALSE) {
+                            handleWrongRespond();
+                            sendMessageToRobot(8, Constants.LET_IS_TRY_AGAIN);
+                            showYouCanDoIt();
+                        }
                     }
                 }
-
             });
-            binding.btnSendResponseWellDone.setOnClickListener(view -> {
-
-                Log.d("TAGkk", "answerListener: " + this.getResources().getString(R.string.well_done));
-                sendMessageToRobot(15, "well Done");
-
-            });
-            binding.btnSendResponseYouAreAStar.setOnClickListener(view -> {
-
-                sendMessageToRobot(8, "You are a star");
-
-            });
-            binding.btnSendResponseYoCanDoIt.setOnClickListener(view -> {
-
-                sendMessageToRobot(11, "You can do it");
-
-            });
+//            StudentAnsweredLiveData.get().observe(fragmentActivity, new Observer<StateData<Integer>>() {
+//                @Override
+//                public void onChanged(StateData<Integer> integerStateData) {
+//
+//
+//                    int isAnswered = integerStateData.getData();
+//                    Log.d("TAG2", "answerListener:    StudentAnsweredLiveData.get()" + isAnswered);
+//                    isStudentAnswered = isAnswered;
+//                    if (integerStateData.getData()==Constants.PHASE_ANSWERED_TRUE) {
+//
+//                        handleRightRespond(phase.getResponse());
+//                        sendMessageToRobot(8, phase.getResponse());
+//                        showWellDone();
+//                    } else if (integerStateData.getData()==Constants.PHASE_ANSWERED_FALSE) {
+//                        handleWrongRespond();
+//                        sendMessageToRobot(8, Constants.LET_IS_TRY_AGAIN);
+//                        showYouCanDoIt();
+//                    }
+//                }
+//            });
 
 
         }
     }
 
-
+    private void showWellDone(){
+        binding.btnSendResponseWellDone.setVisibility(View.VISIBLE);
+        binding.btnSendResponseYoCanDoIt.setVisibility(View.GONE);
+    }
+    private void showYouCanDoIt(){
+        binding.btnSendResponseWellDone.setVisibility(View.GONE);
+        binding.btnSendResponseYoCanDoIt.setVisibility(View.VISIBLE);
+    }
     @SuppressLint("SetTextI18n")
     private void handleWrongRespond() {
 
@@ -232,3 +259,28 @@ public class PhaseResponseFragment extends Fragment {
 
 
 }
+//            if (phase.getAnswerContent().getAnswerWay() == Constants.ANSWERED_WAY_SELECT || phase.getAnswerContent().getAnswerWay() == Constants.ANSWERED_WAY_TRU_FALSE) {
+//                binding.btnSendResponseToRobot.setVisibility(View.VISIBLE);
+//            }
+//
+//            binding.btnSendResponseToRobot.setOnClickListener(view -> {
+//                Log.d("TAG2", "onClick: isStudentAnswered" + isStudentAnswered);
+//
+//
+//                if (phase.getAnswerContent().getAnswerWay() == Constants.ANSWERED_WAY_SELECT) {
+//                    if (isStudentAnswered==Constants.PHASE_ANSWERED_TRUE) {
+//                        sendMessageToRobot(8, phase.getResponse());
+//
+//                    } else {
+//                        sendMessageToRobot(8, Constants.LET_IS_TRY_AGAIN);
+//                    }
+//                } else if (phase.getAnswerContent().getAnswerWay() == Constants.ANSWERED_WAY_TRU_FALSE) {
+//
+//                    if (isTrue_FalseAnswered) {
+//                        sendMessageToRobot(8, phase.getResponse());
+//                    } else {
+//                        sendMessageToRobot(8, Constants.LET_IS_TRY_AGAIN);
+//                    }
+//                }
+//
+//            });

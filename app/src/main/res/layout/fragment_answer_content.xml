@@ -10,34 +10,34 @@
         android:id="@+id/layoutCorrectAnswer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_4sdp"
-        android:visibility="gone"
 
-        >
+        android:padding="@dimen/_4sdp"
+        android:visibility="invisible">
+
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
-            android:src="@drawable/ic_baseline_check_24"
-            android:padding="@dimen/_8sdp"
             android:background="@drawable/right_tick"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_baseline_check_24"
 
             />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/txtCorrect"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-
             android:layout_gravity="center"
+
             android:layout_marginStart="@dimen/_8sdp"
+            android:layout_weight="3"
             android:background="@drawable/button_purple"
             android:padding="@dimen/_6sdp"
-            android:textSize="@dimen/_12ssp"
+            android:text="@string/the_child_was_able_to_show_the_correct_face"
             android:textColor="@color/white"
 
 
-            android:text="@string/the_child_was_able_to_show_the_correct_face"
-            />
+            android:textSize="@dimen/_12ssp" />
 
     </LinearLayout>
 
@@ -45,34 +45,35 @@
     <LinearLayout
         android:id="@+id/layoutWrongAnswer"
         android:layout_width="match_parent"
-        android:visibility="gone"
         android:layout_height="wrap_content"
+        android:clickable="true"
         android:padding="@dimen/_4sdp"
 
-        >
+        android:visibility="gone">
+
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
-            android:padding="@dimen/_8sdp"
             android:background="@drawable/wrong_box"
+            android:padding="@dimen/_8sdp"
 
             />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/txtWrong"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-
             android:layout_gravity="center"
+
             android:layout_marginStart="@dimen/_8sdp"
+            android:layout_weight="3"
             android:background="@drawable/button_orange"
             android:padding="@dimen/_6sdp"
-            android:textSize="@dimen/_12ssp"
+            android:text="@string/the_child_was_not_able_to_show_face_doesn_t_have_any_response_at_all"
             android:textColor="@color/white"
 
 
-            android:text="@string/the_child_was_not_able_to_show_face_doesn_t_have_any_response_at_all"
-            />
+            android:textSize="@dimen/_12ssp" />
 
     </LinearLayout>
 
@@ -80,28 +81,28 @@
         android:id="@+id/imageForShow"
         android:layout_width="@dimen/_80sdp"
         android:layout_height="@dimen/_80sdp"
-        tools:src="@drawable/scared_child"
-        android:background="@drawable/board_background"
-        android:padding="@dimen/_12sdp"
-        android:visibility="gone"
-
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/_4sdp"
+        android:background="@drawable/board_background"
+        android:padding="@dimen/_12sdp"
+
+        android:visibility="gone"
+        tools:src="@drawable/scared_child"
 
         />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/imageList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        android:visibility="gone"
-        android:paddingStart="@dimen/_24sdp"
-        android:paddingEnd="@dimen/_16sdp"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/_12sdp"
-        android:layout_marginEnd="@dimen/_12sdp"
         android:layout_marginTop="@dimen/_4sdp"
-
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:paddingStart="@dimen/_24sdp"
+        android:paddingEnd="@dimen/_16sdp"
+        android:visibility="gone"
 
 
         />

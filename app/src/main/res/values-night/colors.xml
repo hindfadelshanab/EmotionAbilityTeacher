@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00F44336</color>
+    <color name="green_hover">#E8F5E9</color>
+    <color name="red_hover">#FCE4EC</color>
+</resources>

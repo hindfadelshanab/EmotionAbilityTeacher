@@ -5,16 +5,9 @@ public class PhaseAnswered {
     private int phaseId;
     private int levelId;
     private int unitId;
-    private boolean isAnswered;
+    private int isAnswered;
 
     public PhaseAnswered() {
-    }
-
-    public PhaseAnswered(int phaseId, int levelId, int unitId, boolean isAnswered) {
-        this.phaseId = phaseId;
-        this.levelId = levelId;
-        this.unitId = unitId;
-        this.isAnswered = isAnswered;
     }
 
 
@@ -43,11 +36,11 @@ public class PhaseAnswered {
         this.unitId = unitId;
     }
 
-    public boolean isAnswered() {
+    public int isAnswered() {
         return isAnswered;
     }
 
-    public void setAnswered(boolean answered) {
+    public void setAnswered(int answered) {
         isAnswered = answered;
     }
 

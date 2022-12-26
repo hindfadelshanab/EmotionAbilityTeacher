@@ -135,8 +135,6 @@ public class GameViewModel extends AndroidViewModel {
                 Created);
     }
 
-    public StateLiveData<BaselineResultInfo> getAutismBaseline(String language){
-        return gameRepository.getAutismBaseline(language);
-    }
+
 }
 

@@ -23,11 +23,10 @@ android {
 
     defaultConfig {
         applicationId "com.nuwa.robot.r2022.emotionalability"
-        minSdk 24
+        minSdk 27
         targetSdk 32
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

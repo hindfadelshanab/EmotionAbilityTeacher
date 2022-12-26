@@ -12,6 +12,7 @@
     <color name="ligh_blue">#3cb4d8</color>
     <color name="dark_blue">#008eb2</color>
     <color name="grey">#d9d9d9</color>
+    <color name="grey2">#EDE9E9</color>
 
     <color name="redBar">#ff0000</color>
     <color name="blueBar">#42b0ff</color>
@@ -32,6 +33,9 @@
     <color name="greenColor">#01b59a</color>
     <color name="pinkColor">#ff6968</color>
     <color name="purpleColor">#a882bb</color>
+    <color name="transparent">#00F44336</color>
+    <color name="green_hover">#E8F5E9</color>
+    <color name="red_hover">#FCE4EC</color>
 
 
 </resources>

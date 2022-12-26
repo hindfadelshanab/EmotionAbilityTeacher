@@ -12,17 +12,24 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import com.nuwa.robot.r2022.emotionalability.adapter.BaseLineSpinnerAdapter;
 import com.nuwa.robot.r2022.emotionalability.adapter.LevelAdapter;
 import com.nuwa.robot.r2022.emotionalability.adapter.LevelSpinnerAdapter;
 import com.nuwa.robot.r2022.emotionalability.adapter.ModuleSpinnerAdapter;
+import com.nuwa.robot.r2022.emotionalability.adapter.PatientSpinnerAdapter;
 import com.nuwa.robot.r2022.emotionalability.adapter.UnitSpinnerAdapter;
 import com.nuwa.robot.r2022.emotionalability.databinding.ActivityGameLevelBinding;
+import com.nuwa.robot.r2022.emotionalability.model.Baseline;
+import com.nuwa.robot.r2022.emotionalability.model.BaselineResultInfo;
 import com.nuwa.robot.r2022.emotionalability.model.Level;
 import com.nuwa.robot.r2022.emotionalability.model.Module;
+import com.nuwa.robot.r2022.emotionalability.model.Patient;
+import com.nuwa.robot.r2022.emotionalability.model.PatientInfo;
 import com.nuwa.robot.r2022.emotionalability.model.Unit;
 import com.nuwa.robot.r2022.emotionalability.utils.Constants;
 import com.nuwa.robot.r2022.emotionalability.utils.PreferenceManager;
 import com.nuwa.robot.r2022.emotionalability.utils.StateData;
+import com.nuwa.robot.r2022.emotionalability.viewModel.GameViewModel;
 import com.nuwa.robot.r2022.emotionalability.viewModel.LevelViewModel;
 
 import java.util.ArrayList;
@@ -36,8 +43,7 @@ public class GameLevelActivity extends AppCompatActivity {
 
     private LevelViewModel levelViewModel;
     private ActivityGameLevelBinding binding;
-    private LevelAdapter levelAdapter;
-
+    BaseLineSpinnerAdapter baseLineSpinnerAdapter;
     private int selectedUnitId = 0;
     private int selectedLevelId = 0;
     private PreferenceManager preferenceManager;
@@ -45,6 +51,7 @@ public class GameLevelActivity extends AppCompatActivity {
     LevelSpinnerAdapter levelSpinnerAdapter;
     int endedLevel;
     int endedUnit;
+    private GameViewModel gameViewModel ;
 
     private Realm realm;
     List<Level> levels  = new ArrayList<>();
@@ -55,6 +62,7 @@ public class GameLevelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityGameLevelBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        gameViewModel = new ViewModelProvider(this).get(GameViewModel.class);
 
         Constants.LEVEL_ID_AND_POSITION_HASH_MAP.put(1, 0);
         Constants.LEVEL_ID_AND_POSITION_HASH_MAP.put(2, 0);
@@ -72,12 +80,15 @@ public class GameLevelActivity extends AppCompatActivity {
         Constants.UNIT_ID_AND_POSITION_HASH_MAP.put(2 ,2);
         Constants.UNIT_ID_AND_POSITION_HASH_MAP.put(3 ,3);
         Constants.UNIT_ID_AND_POSITION_HASH_MAP.put(4 ,4);
-//        Constants.UNIT_ID_AND_POSITION_HASH_MAP.put(5 ,0);
+
+
+
         init();
 
 
         getModule();
         getUnit();
+//        getAutismBaseline();
 
 
     }
@@ -231,8 +242,6 @@ public class GameLevelActivity extends AppCompatActivity {
         });
 
     }
-
-
     private void initUnitSpinner(int moduleId, int unitPosition , int endedLevelPosition) {
 
         Log.d("TAG2", "initUnitSpinner:unitPosition "+unitPosition);
@@ -265,10 +274,11 @@ public class GameLevelActivity extends AppCompatActivity {
         binding.unitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+                Log.d("TAG2", " 2onItemSelected:  " +i);
                 if (i==1){
                     Unit selectedUnit = (Unit) binding.unitSpinner.getItemAtPosition(i);
-//                 binding.unitSpinner.setSelection(i, true);
+                    Log.d("TAG2", " i==1:  " +i);
+                  binding.unitSpinner.setSelection(i, true);
                     preferenceManager.putInt(Constants.LEVEL_ENDED_ID_Key, 0);
                     preferenceManager.putInt(Constants.UNIT_ENDED_ID_KEY, 0);
                     initLevelSpinner(selectedUnit.getIdUnit(), 0);
@@ -287,8 +297,6 @@ public class GameLevelActivity extends AppCompatActivity {
             }
         });
     }
-
-
     private void initLevelSpinner(int idUnit, int levelIndex) {
 
         Log.d("TAG2", "initLevelSpinner:idUnit "+idUnit);
@@ -338,4 +346,39 @@ public class GameLevelActivity extends AppCompatActivity {
         });
     }
 
+
+//    private void  getAutismBaseline(){
+//        if (preferenceManager.getString(Constants.LANGUAGE_SIGN_IN)!=null){
+//           gameViewModel.getAutismBaseline(preferenceManager.getString(Constants.LANGUAGE_SIGN_IN)).observe(this, new Observer<StateData<BaselineResultInfo>>() {
+//               @Override
+//               public void onChanged(StateData<BaselineResultInfo> baselineResultInfoStateData) {
+//                   if (baselineResultInfoStateData.getStatus() == StateData.DataStatus.SUCCESS) {
+//                       BaselineResultInfo baselineResultInfo = baselineResultInfoStateData.getData();
+//
+//                       List<Baseline> baselines = baselineResultInfo.getDetails();
+////                       patient = patients.get(0);
+////                       Log.d("main", "onChanged: patient " + patients.toString());
+//                       baseLineSpinnerAdapter = new BaseLineSpinnerAdapter(GameLevelActivity.this, baselines);
+//                       binding.baseLineSpinner.setAdapter(baseLineSpinnerAdapter);
+//                   }
+//               }
+//           });
+//
+//        }
+//        binding.baseLineSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                Baseline baseline = (Baseline) binding.baseLineSpinner.getSelectedItem();
+////                Log.d("TAG6", "onItemSelected: baseline "+baseline.toString());
+//
+//                preferenceManager.putString(Constants.BASELINE_ID, baseline.getId());
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
+//
+//    }
 }

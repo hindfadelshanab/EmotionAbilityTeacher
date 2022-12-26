@@ -1,6 +1,7 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginStart="@dimen/_8sdp"
     android:layout_marginTop="@dimen/_16sdp"
 
@@ -54,7 +55,7 @@
             android:id="@+id/txtQuestionTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/emotion_imitation"
+            tools:text="@string/emotion_imitation"
             android:textColor="@color/orangeColor"
             android:textSize="@dimen/_16ssp"
             android:textStyle="bold" />
@@ -83,10 +84,11 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_orange"
         android:text="@string/send_response_in_robot"
+        android:visibility="gone"
         android:layout_gravity="end"
         android:textColor="@color/white"
         android:padding="@dimen/_4sdp"
-        android:visibility="gone"
+
 
         android:layout_marginEnd="@dimen/_8sdp"
         />
@@ -98,6 +100,7 @@
         android:text="@string/well_done"
         android:paddingStart="@dimen/_4sdp"
         android:paddingEnd="@dimen/_4sdp"
+        android:visibility="gone"
         android:layout_gravity="end"
         android:textColor="@color/white"
         android:padding="@dimen/_4sdp"
@@ -126,7 +129,7 @@
         android:layout_gravity="end"
         android:textColor="@color/white"
         android:padding="@dimen/_4sdp"
-
+        android:visibility="gone"
         android:layout_marginEnd="@dimen/_4sdp"
         />
     <androidx.appcompat.widget.AppCompatButton
@@ -138,7 +141,7 @@
         android:layout_gravity="end"
         android:textColor="@color/white"
         android:padding="@dimen/_4sdp"
-
+        android:visibility="gone"
         android:layout_marginEnd="@dimen/_4sdp"
         />
 

@@ -1,11 +1,16 @@
 package com.nuwa.robot.r2022.emotionalability.fragment;
 
+import static com.nuwa.robot.r2022.emotionalability.utils.Constants.PHASE_ANSWERED_FALSE;
+import static com.nuwa.robot.r2022.emotionalability.utils.Constants.PHASE_ANSWERED_TRUE;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,9 +33,11 @@ import com.nuwa.robot.r2022.emotionalability.model.MessageExpression;
 import com.nuwa.robot.r2022.emotionalability.model.Phase;
 import com.nuwa.robot.r2022.emotionalability.model.PhaseAnswered;
 import com.nuwa.robot.r2022.emotionalability.model.PhaseAnsweredLiveData;
+import com.nuwa.robot.r2022.emotionalability.model.StudentAnsweredLiveData;
 import com.nuwa.robot.r2022.emotionalability.utils.Constants;
 import com.nuwa.robot.r2022.emotionalability.utils.PreferenceManager;
 import com.nuwa.robot.r2022.emotionalability.utils.RobotController;
+import com.nuwa.robot.r2022.emotionalability.utils.StateData;
 import com.nuwa.robot.r2022.emotionalability.viewModel.GameViewModel;
 
 import io.realm.Realm;
@@ -46,6 +53,8 @@ public class AnswerContentFragment extends Fragment implements View.OnClickListe
     private FragmentActivity fragmentActivity;
     private ImageOptionAdapter imageOptionAdapter;
 
+   public static  IButtonClicked iButtonClicked ;
+
     public AnswerContentFragment(Phase phase, FragmentActivity fragmentActivity) {
         this.phase = phase;
         this.fragmentActivity = fragmentActivity;
@@ -53,16 +62,30 @@ public class AnswerContentFragment extends Fragment implements View.OnClickListe
     }
 
     @Override
+    public void setMenuVisibility(boolean menuVisible) {
+        super.setMenuVisibility(menuVisible);
+
+        if (menuVisible) {
+            Log.d("TAG2", " Phase6ResponseFragment fragment is  visible " + menuVisible);
+
+
+        } else {
+            Log.d("TAG2", " Phase6ResponseFragment fragment is not visible ");
+        }
+    }
+
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentAnswerContentBinding.inflate(inflater, container, false);
+
 
         try {
             initialization();
         }catch (Exception e){
             Log.d("TAG8", "onCreateView:  Exception "+e.getMessage());
         }
-
 
         return binding.getRoot();
     }
@@ -76,6 +99,12 @@ public class AnswerContentFragment extends Fragment implements View.OnClickListe
         if (phase != null) {
             showAnswerContent(phase.getAnswerContent());
         }
+        PhaseAnsweredLiveData.get().postValue( PhaseAnsweredLiveData.get().getValue().success(new
+                PhaseAnswered()));
+
+//
+//
+        Log.d("TAG10", "initialization: anserw content" +  StudentAnsweredLiveData.get().getValue().getData());
     }
 
 
@@ -153,6 +182,7 @@ public class AnswerContentFragment extends Fragment implements View.OnClickListe
         binding.imageList.setAdapter(imageOptionAdapter);
     }
 
+    @SuppressLint("ResourceAsColor")
     private void showTrueFalseAnswerContent() {
 
 
@@ -162,17 +192,35 @@ public class AnswerContentFragment extends Fragment implements View.OnClickListe
         phaseAnswered.setUnitId(phase.getUnitId());
         binding.layoutCorrectAnswer.setVisibility(View.VISIBLE);
         binding.layoutWrongAnswer.setVisibility(View.VISIBLE);
+        phaseAnswered.setAnswered(0);
+        Log.d("TAG9", "PhaseAnswered:" +phaseAnswered);
 
+//        PhaseAnsweredLiveData.get().postValue(phaseAnswered);
+//        PhaseAnsweredLiveData.get().getValue();
+
+//        PhaseAnsweredLiveData.get().postValue( PhaseAnsweredLiveData.get().getValue().success(phaseAnswered));
+
+
+        Log.d("TAG9", "phaseAnsweredStateData:" +phaseAnswered.isAnswered());
 
         binding.txtCorrect.setOnClickListener(view -> {
             updatePhase( true);
-            phaseAnswered.setAnswered(true);
+            phaseAnswered.setAnswered(PHASE_ANSWERED_TRUE);
             PhaseAnsweredLiveData.get().postSuccess(phaseAnswered);
+            if (iButtonClicked != null){
+                iButtonClicked.onTureClicked();
+            }
+
         });
+
+
         binding.txtWrong.setOnClickListener(view -> {
-            phaseAnswered.setAnswered(false);
+            phaseAnswered.setAnswered(PHASE_ANSWERED_FALSE);
             PhaseAnsweredLiveData.get().postSuccess(phaseAnswered);
             updatePhase( false);
+            if (iButtonClicked != null){
+                iButtonClicked.onWrongClicked();
+            }
         });
 
     }
@@ -224,9 +272,18 @@ public class AnswerContentFragment extends Fragment implements View.OnClickListe
     }
 
 
+    public interface IButtonClicked{
+        void onWrongClicked();
+        void onTureClicked();
+    }
+
+
     @Override
     public void onClick(View view) {
 
 
+    }
+    public static void  setIButtonClickedItem(IButtonClicked i){
+        iButtonClicked = i ;
     }
 }

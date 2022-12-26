@@ -1,0 +1,551 @@
+[
+  {
+    "id": 1,
+    "moduleName": "القدرة العاطفية",
+    "moduleNumber": "الوحدة 1",
+    "curriculum": "القدرة العاطفية",
+    "areaOfSpecialization": "التعامل مع العواطف ",
+    "objectives": "تعرف على أنواع المشاعر المختلفة",
+    "units": [
+      {
+        "idUnit": 1,
+        "unitName": "تقليد العاطفة",
+        "moduleId": 1,
+        "levels": [
+          {
+            "idLevel": 1,
+            "color": "#62c879",
+            "image": "",
+            "moduleId": 1 ,
+            "name": "القدرة العاطفية? المستوى 1",
+            "objective": "تقليد تعابير الوجه: ممارسة تقليد تعبيرات الوجه عن الانفعالات ، والاهتمام المشترك باتباع التوجيهات ، وممارسة اللغة المستقبلة المتعلقة بالعواطف.",
+            "gameName": "? لعبة تقليد المشاعر ? هيا بنا نلعب",
+            "gameDescription": "سترى صوراً ? لتعبيرات الوجه المختلفة * انسخ المشاعر التي تراها في الصورة",
+
+            "phases": [
+              {
+                "id": 1,
+                "levelId": 1,
+                "unitId": 1,
+                "moduleId": 1,
+                "questioncontent": {
+                  "title": "أرِنِي ? وجه سعيد ?",
+                  "image": "HappyFace",
+                  "faceExpression": "",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 1,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kinds": [],
+                  "imageOptions": []
+                },
+                "point": 1,
+                "response": "هذا رائع! إنه وجه سعيد"
+              }
+            ],
+            "unitId": 1
+          }
+        ]
+      },
+      {
+        "idUnit": 2,
+        "unitName": "ابحث عن المشاعر الصحيحة",
+        "moduleId": 1,
+        "levels": [
+          {
+            "idLevel": 2,
+            "color": "#62c879",
+            "image": "",
+            "moduleId": 1 ,
+            "name": " ابحث عن المشاعر الصحيحة? المستوى 1",
+            "objective": "التعرف على المشاعر الأساسية: ممارسة التعرف على المشاعر الأساسية (سعيدة ، حزينة ، غاضبة وخائفة) من الوجوه الضاحكة ، وممارسة لغة تقبل المشاعر",
+            "gameName": "? لعبة البحث عن المشاعر ? هيا بنا نلعب",
+            "gameDescription": "انظر إلى الصور بعناية ? انقر فوق المشاعر الصحيحة * نحن نبحث عنها",
+            "phases": [
+              {
+                "id": 2,
+                "levelId": 2,
+                "unitId": 2,
+                "moduleId": 1,
+                "questioncontent": {
+                  "title": "أين ? الوجه الحزين ?",
+                  "image": "",
+                  "faceExpression": "",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 2,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kinds": [],
+                  "imageOptions": [
+                    {
+                      "image": "AngryFace",
+                      "isCorrect": 0,
+                      "description": ""
+                    },
+                    {
+                      "image": "SadFace",
+                      "isCorrect": 1,
+                      "description": ""
+                    }
+                  ]
+                },
+                "point": 1,
+                "response": "أنت على حق!إنه وجه حزين"
+              }
+            ],
+            "unitId": 2
+          },
+          {
+            "idLevel": 3,
+            "color": "#62c879",
+            "image": "",
+            "moduleId": 1 ,
+            "name": " ابحث عن المشاعر الصحيحة? المستوى 2",
+            "objective": "التعرف على المشاعر الأساسية: ممارسة التعرف على المشاعر الأساسية (سعيدة ، حزينة ، غاضبة وخائفة) من الوجوه الضاحكة ، وممارسة لغة تقبل المشاعر",
+            "gameName": "? لعبة البحث عن المشاعر ? هيا بنا نلعب",
+            "gameDescription": "انظر إلى الصور بعناية ? انقر فوق المشاعر الصحيحة * نحن نبحث عنها",
+            "phases": [
+              {
+                "id": 3,
+                "levelId": 3,
+                "unitId": 2,
+                "moduleId": 1,
+                "questioncontent": {
+                  "title": "أين? الوجه السعيد?",
+                  "image": "",
+                  "faceExpression": "",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 2,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kinds": [],
+                  "imageOptions": [
+                    {
+                      "image": "HappyBoy",
+                      "isCorrect": 1,
+                      "description": ""
+                    },
+                    {
+                      "image": "SadBoy",
+                      "isCorrect": 0,
+                      "description": ""
+                    }
+                  ]
+                },
+                "point": 1,
+                "response": "أنت على حق !إنه وجه سعيد"
+              }
+            ],
+            "unitId": 2
+          },
+          {
+            "idLevel": 4,
+            "color": "#62c879",
+            "image": "",
+            "moduleId": 1 ,
+            "name": " ابحث عن المشاعر الصحيحة? المستوى 3",
+            "objective": "التعرف على المشاعر الأساسية: ممارسة التعرف على المشاعر الأساسية (سعيدة ، حزينة ، غاضبة وخائفة) من الوجوه الضاحكة ، وممارسة لغة تقبل المشاعر",
+            "gameName": "? لعبة البحث عن المشاعر ? هيا بنا نلعب",
+            "gameDescription": "انظر إلى الصور بعناية ? انقر فوق المشاعر التي * يشعر بها الطفل ",
+            "phases": [
+              {
+                "id": 4,
+                "levelId": 4,
+                "unitId": 2,
+                "moduleId": 1,
+                "questioncontent": {
+                  "title": "كيف ? يشعر الطفل  ?",
+
+                  "image": "",
+                  "faceExpression": "",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 2,
+                  "dragBy": 0,
+                  "isHaveImageForShow": true,
+                  "ImageForShow": "ScaredChild",
+                  "kinds": [],
+                  "imageOptions": [
+                    {
+                      "image": "ScaredBoy",
+                      "isCorrect": 1,
+                      "description": "خائف"
+                    },
+                    {
+                      "image": "AngryBoy",
+                      "isCorrect": 0,
+                      "description": "غاضب"
+                    },
+                    {
+                      "image": "HappyBoy",
+                      "isCorrect": 0,
+                      "description": "سعيد"
+                    }
+                  ]
+                },
+                "point": 1,
+                "response": "أنت على حق ! الطفل يشعر بالخوف"
+              }
+            ],
+            "unitId": 2
+          }
+        ]
+      },
+      {
+        "idUnit": 3,
+        "unitName": "توليد المشاعر",
+        "moduleId": 1,
+        "levels": [
+          {
+            "idLevel": 5,
+            "color": "#62c879",
+            "image": "",
+            "moduleId": 1 ,
+            "name": " توليد المشاعر ? المستوى 1 ",
+            "objective": "تخمين تعبيرات الوجه",
+            "gameName": "? تخمين  تعبيرات الوجه ? هيا بنا نلعب",
+            "gameDescription": "سنتاوب في ? تخمين تعبيرات الوجه * التي سيفعلها كل منا ",
+            "phases": [
+              {
+                "id": 5,
+                "levelId": 5,
+                "unitId": 3,
+                "moduleId": 1,
+
+                "questioncontent": {
+                  "title": "ماهو ? هذا الشعور ?",
+                  "image": "",
+                  "faceExpression": "666_EM_Fear02",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 1,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kinds": [],
+                  "imageOptions": []
+                },
+                "point": 1,
+                "response": "صحيح ! كان خائفا"
+              },
+              {
+                "id": 6,
+                "levelId": 5,
+                "unitId": 3,
+                "moduleId": 1,
+                "questioncontent": {
+                  "title": "الآن حان دورك ? أرني نوع من المشاعر ?",
+                  "image": "",
+                  "faceExpression": "",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 5,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kinds": [],
+                  "imageOptions": [
+                    {
+                      "image": "happy or \nexcited\n",
+                      "isCorrect": 0,
+                      "description": "سعيد"
+                    },
+                    {
+                      "image": "proud",
+                      "isCorrect": 0,
+                      "description": "فخور"
+                    },
+                    {
+                      "image": "sad",
+                      "isCorrect": 0,
+                      "description": "حزين"
+                    },
+                    {
+                      "image": "confused",
+                      "isCorrect": 0,
+                      "description": "خجول"
+                    },
+                    {
+                      "image": "angry",
+                      "isCorrect": 0,
+                      "description": "غاضب"
+                    },
+                    {
+                      "image": "worried",
+                      "isCorrect": 0,
+                      "description": "قلق"
+                    },
+                    {
+                      "image": "scared",
+                      "isCorrect": 0,
+                      "description": "خائف"
+                    },
+                    {
+                      "image": "surprised",
+                      "isCorrect": 0,
+                      "description": "متفاجئ"
+                    },
+                    {
+                      "image": "shy",
+                      "isCorrect": 0,
+                      "description": "خجول"
+                    },
+                    {
+                      "image": "tired or \nsleepy\n",
+                      "isCorrect": 0,
+                      "description": "متعب"
+                    }
+                  ]
+                },
+                "point": 1,
+                "response": "أنت"
+              } ,
+              {
+                "id": 7,
+                "levelId": 5,
+                "unitId": 3,
+                "moduleId": 1,
+                "questioncontent": {
+                  "title": "ماهو ? هذا الشعور ?",
+                  "image": "",
+                  "faceExpression": "666_EM_Happy01",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 1,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kinds": [],
+                  "imageOptions": []
+                },
+                "point": 1,
+                "response": "صحيح ! كان سعيد"
+              } ,
+              {
+                "id": 8,
+                "levelId": 5,
+                "unitId": 3,
+                "moduleId": 1,
+
+                "questioncontent": {
+                  "title": "الآن حان دورك ? أرني نوع من المشاعر ?",
+                  "image": "",
+                  "faceExpression": "",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 5,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kinds": [],
+                  "imageOptions": [
+                    {
+                      "image": "happy or \nexcited\n",
+                      "isCorrect": 0,
+                      "description": "سعيد"
+                    },
+                    {
+                      "image": "proud",
+                      "isCorrect": 0,
+                      "description": "فخور"
+                    },
+                    {
+                      "image": "sad",
+                      "isCorrect": 0,
+                      "description": "حزين"
+                    },
+                    {
+                      "image": "confused",
+                      "isCorrect": 0,
+                      "description": "مرتبك"
+                    },
+                    {
+                      "image": "angry",
+                      "isCorrect": 0,
+                      "description": "غاضب"
+                    },
+                    {
+                      "image": "worried",
+                      "isCorrect": 0,
+                      "description": "قلق"
+                    },
+                    {
+                      "image": "scared",
+                      "isCorrect": 0,
+                      "description": "خائف"
+                    },
+                    {
+                      "image": "surprised",
+                      "isCorrect": 0,
+                      "description": "متفاجئ"
+                    },
+                    {
+                      "image": "shy",
+                      "isCorrect": 0,
+                      "description": "خجول"
+                    },
+                    {
+                      "image": "tired or \nsleepy\n",
+                      "isCorrect": 0,
+                      "description": "متعب"
+                    }
+                  ]
+                },
+                "point": 1,
+                "response": "أنت"
+              }
+            ],
+            "unitId": 3
+          },
+          {
+            "idLevel": 6,
+            "color": "#62c879",
+            "image": "",
+            "moduleId": 1 ,
+            "name": "جيل لغة الجسد ?المستوى 1",
+            "objective": "لعبة الحزورات (تخمين المشاعر)",
+            "gameName": "? لعبة الحزورات ? هيا بنا نلعب",
+            "gameDescription": "سنتاوب في تخمين ?  تعبيرات الوجه بلغة الجسد * التي سيفعلها كل منا  ",
+            "phases": [
+              {
+                "id": 9,
+                "levelId": 6,
+                "unitId": 3,
+                "moduleId": 1,
+                "questioncontent": {
+                  "title": "ماهو ? هذا الشعور ?",
+                  "image": "",
+                  "faceExpression": "666_EM_Mad02",
+                  "bodyMotion": "666_EM_Mad02"
+                },
+                "answerContent": {
+                  "answerWay": 1,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kinds": [],
+                  "imageOptions": []
+                },
+                "point": 1,
+                "response": "صحيحً ! أنا كنت غاضبا"
+              },
+              {
+                "id": 10,
+                "levelId": 6,
+                "unitId": 3,
+                "moduleId": 1,
+
+                "questioncontent": {
+                  "title": "الآن حان دورك ? أرني نوع من المشاعر ?",
+                  "image": "",
+                  "faceExpression": "",
+                  "bodyMotion": ""
+                },
+                "answerContent": {
+                  "answerWay": 5,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kinds": [],
+                  "imageOptions": [
+                    {
+                      "image": "happy or \nexcited\n",
+                      "isCorrect": 0,
+                      "description": "سعيد"
+                    },
+                    {
+                      "image": "proud",
+                      "isCorrect": 0,
+                      "description": "فخور"
+                    },
+                    {
+                      "image": "sad",
+                      "isCorrect": 0,
+                      "description": "حزين"
+                    },
+                    {
+                      "image": "confused",
+                      "isCorrect": 0,
+                      "description": "خجول"
+                    },
+                    {
+                      "image": "angry",
+                      "isCorrect": 0,
+                      "description": "غاضب"
+                    },
+                    {
+                      "image": "worried",
+                      "isCorrect": 0,
+                      "description": "قلق"
+                    },
+                    {
+                      "image": "scared",
+                      "isCorrect": 0,
+                      "description": "خائف"
+                    },
+                    {
+                      "image": "surprised",
+                      "isCorrect": 0,
+                      "description": "متفاجئ"
+                    },
+                    {
+                      "image": "shy",
+                      "isCorrect": 0,
+                      "description": "خجول"
+                    },
+                    {
+                      "image": "tired or \nsleepy\n",
+                      "isCorrect": 0,
+                      "description": "متعب"
+                    }
+                  ]
+                },
+                "point": 1,
+                "response": "أنت"
+              } ,
+              {
+                "id": 11,
+                "levelId": 6,
+                "unitId": 3,
+                "moduleId": 1,
+
+                "questioncontent": {
+                  "title": "هذا الشعور ? ماهو ?",
+                  "image": "",
+                  "faceExpression": "666_DA_Applaud",
+                  "bodyMotion": "666_DA_Applaud"
+                },
+                "answerContent": {
+                  "answerWay": 1,
+                  "dragBy": 0,
+                  "isHaveImageForShow": false,
+                  "ImageForShow": "",
+                  "kinds": [],
+                  "imageOptions": []
+                },
+                "point": 1,
+                "response": "صحيح ! أنا كنت متفاجئ"
+              }
+            ],
+            "unitId": 3
+          }
+        ]
+      }
+    ]
+  }
+
+  ]

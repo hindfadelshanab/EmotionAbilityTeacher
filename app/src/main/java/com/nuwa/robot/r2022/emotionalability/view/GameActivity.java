@@ -71,6 +71,7 @@ public class GameActivity extends AppCompatActivity implements TeacherSocketClie
             }
         });
 
+
         gameViewModel.getPreviousButtonClickedLiveData().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
@@ -127,6 +128,18 @@ public class GameActivity extends AppCompatActivity implements TeacherSocketClie
         questionAdapter = new QuestionAdapter(this ,level);
         binding.sViewPager.setAdapter(questionAdapter);
 
+        gameViewModel.getISFirstItemInPhase().observe(this, new Observer<StateData<Boolean>>() {
+            @Override
+            public void onChanged(StateData<Boolean> booleanStateData) {
+                if (booleanStateData.getData()!=null){
+                    if (booleanStateData.getData()){
+                        binding.btnGamePrevious.setVisibility(View.GONE);
+                    }
+
+                }
+            }
+        });
+
 
 
     }
@@ -172,6 +185,7 @@ public class GameActivity extends AppCompatActivity implements TeacherSocketClie
                goPosition(viewPager, position - 1);
 
            }
+           Log.d("TAG6", "last:isFirst  "+isFirst);
        }
     }
 

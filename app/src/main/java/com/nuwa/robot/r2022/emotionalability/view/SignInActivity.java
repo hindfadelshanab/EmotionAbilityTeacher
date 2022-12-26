@@ -76,7 +76,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                             signInViewModel.addSignedDoctor(doctor.getDetails());
                             preferenceManager.putString(Constants.DOCTOR_ID , doctor.getDetails().getId());
                             preferenceManager.putString(Constants.LANGUAGE_SIGN_IN , doctor.getDetails().getLanguage());
-                            Toast.makeText(SignInActivity.this, " langg :::"+ preferenceManager.getString(Constants.LANGUAGE_SIGN_IN), Toast.LENGTH_SHORT).show();
+                            preferenceManager.putString(Constants.DOCTOR_NAME , doctor.getDetails().getDoctor_Name());
+//                            Toast.makeText(SignInActivity.this, " langg :::"+ preferenceManager.getString(Constants.LANGUAGE_SIGN_IN), Toast.LENGTH_SHORT).show();
                             changeLanguage(doctor.getDetails().getLanguage());
                             startActivity(new Intent(SignInActivity.this, BeginningActivity.class ));
                         }
@@ -95,13 +96,13 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             context = LocaleHelper.setLocale(SignInActivity.this, "en");
             resource = context.getResources();
             preferenceManager.putString(LANGUAGE, Constants.ENGLISH);
-            recreate();
+
         }else if (language.equals("ar")){
             context = LocaleHelper.setLocale(SignInActivity.this, "ar");
             resource = context.getResources();
             recreate();
             preferenceManager.putString(LANGUAGE, Constants.ARABIC);
-            recreate();
+
         }
     }
 }

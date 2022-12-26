@@ -151,36 +151,56 @@ public class ImageOptionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         public void setEmotionData(ImageOption imageOption) {
 
             itemEmotionBinding.emotionName.setText(imageOption.getDescription());
-            switch (imageOption.getImage()) {
+            Log.d("TAG8", "setEmotionData: imageOption.getImage() "+imageOption.getImage());
+            Log.d("TAG8", imageOption.getImage());
+
+            switch (imageOption.getDescription()) {
                 case "happy":
                     itemEmotionBinding.emotionImage.setImageResource(R.drawable.happy);
+                    itemEmotionBinding.mainLayout.setBackgroundResource(R.drawable.button_purple);
                     break;
                 case "proud":
                     itemEmotionBinding.emotionImage.setImageResource(R.drawable.proud);
+                    itemEmotionBinding.mainLayout.setBackgroundResource(R.drawable.button_orange);
+
                     break;
                 case "sad":
                     itemEmotionBinding.emotionImage.setImageResource(R.drawable.sad);
+                    itemEmotionBinding.mainLayout.setBackgroundResource(R.drawable.button_green);
                     break;
                 case "confused":
                     itemEmotionBinding.emotionImage.setImageResource(R.drawable.confused);
+                    itemEmotionBinding.mainLayout.setBackgroundResource(R.drawable.button_blue);
                     break;
                 case "angry":
                     itemEmotionBinding.emotionImage.setImageResource(R.drawable.angry);
+                    itemEmotionBinding.mainLayout.setBackgroundResource(R.drawable.button_dark_purple);
+
                     break;
                 case "worried":
                     itemEmotionBinding.emotionImage.setImageResource(R.drawable.worried);
+                    itemEmotionBinding.mainLayout.setBackgroundResource(R.drawable.button_pink);
+
                     break;
                 case "scared":
                     itemEmotionBinding.emotionImage.setImageResource(R.drawable.scared);
+                    itemEmotionBinding.mainLayout.setBackgroundResource(R.drawable.button_light_green);
+
                     break;
                 case "surprised":
                     itemEmotionBinding.emotionImage.setImageResource(R.drawable.surprised);
+                    itemEmotionBinding.mainLayout.setBackgroundResource(R.drawable.button_purple);
+
                     break;
                 case "shy":
                     itemEmotionBinding.emotionImage.setImageResource(R.drawable.shy);
+                    itemEmotionBinding.mainLayout.setBackgroundResource(R.drawable.button_dark_purple);
+
                     break;
                 case "tired":
                     itemEmotionBinding.emotionImage.setImageResource(R.drawable.tired);
+                    itemEmotionBinding.mainLayout.setBackgroundResource(R.drawable.button_green);
+
                     break;
 
 

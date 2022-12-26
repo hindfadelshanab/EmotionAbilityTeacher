@@ -18,12 +18,9 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.nuwa.robot.r2022.emotionalability.adapter.PhaseAdapter;
 import com.nuwa.robot.r2022.emotionalability.databinding.FragmentPhaseBinding;
-import com.nuwa.robot.r2022.emotionalability.listener.OnStudentAnsweredListener;
-import com.nuwa.robot.r2022.emotionalability.model.BaselineResultInfo;
 import com.nuwa.robot.r2022.emotionalability.model.MessageExpression;
 import com.nuwa.robot.r2022.emotionalability.model.Phase;
 import com.nuwa.robot.r2022.emotionalability.model.PhaseAnswered;
-import com.nuwa.robot.r2022.emotionalability.model.PhaseAnsweredLiveData;
 import com.nuwa.robot.r2022.emotionalability.model.ResultInfo;
 import com.nuwa.robot.r2022.emotionalability.model.StudentAnsweredLiveData;
 import com.nuwa.robot.r2022.emotionalability.networking.TeacherSocketClient;
@@ -32,6 +29,7 @@ import com.nuwa.robot.r2022.emotionalability.utils.PreferenceManager;
 import com.nuwa.robot.r2022.emotionalability.utils.RobotController;
 import com.nuwa.robot.r2022.emotionalability.utils.StateData;
 import com.nuwa.robot.r2022.emotionalability.view.GameLevelActivity;
+import com.nuwa.robot.r2022.emotionalability.view.MainActivity;
 import com.nuwa.robot.r2022.emotionalability.viewModel.GameViewModel;
 
 import org.json.JSONException;
@@ -40,12 +38,16 @@ import org.json.JSONObject;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import io.realm.Realm;
 
-public class PhaseFragment extends Fragment implements TeacherSocketClient.IOnMessageListener {
+public class PhaseFragment extends Fragment implements TeacherSocketClient.IOnMessageListener , AnswerContentFragment.IButtonClicked
+        {
 
     private final String TAG = "PhaseFragment";
     FragmentPhaseBinding binding;
@@ -80,6 +82,9 @@ public class PhaseFragment extends Fragment implements TeacherSocketClient.IOnMe
 
         if (menuVisible) {
             gameViewModel.setIsFirstItemInPhase(true);
+            StudentAnsweredLiveData.get().postLoading();
+            StudentAnsweredLiveData.get().postSuccess(0);
+
         } else {
             gameViewModel.setIsFirstItemInPhase(false);
         }
@@ -97,6 +102,7 @@ public class PhaseFragment extends Fragment implements TeacherSocketClient.IOnMe
 
         gameViewModel.getPhaseCompletedLiveData().postValue(0);
         getPhaseList();
+        AnswerContentFragment.setIButtonClickedItem(this);
         return binding.getRoot();
 
     }
@@ -108,6 +114,8 @@ public class PhaseFragment extends Fragment implements TeacherSocketClient.IOnMe
         preferenceManager = new PreferenceManager(getContext());
         gameViewModel = new ViewModelProvider(context).get(GameViewModel.class);
         realm = Realm.getDefaultInstance();
+
+
         gameViewModel.getNextButtonClickedLiveData().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
@@ -133,30 +141,54 @@ public class PhaseFragment extends Fragment implements TeacherSocketClient.IOnMe
 
         }
 
+
+    }
+
+    private String getCurrentDate() {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", new Locale("en"));
+        String strDate = sdf.format(cal.getTime());
+
+        System.out.println("getCurrentDate Format: " + strDate);
+        Log.d("TAG6", "getCurrentDate:  strDate : " + strDate);
+        return strDate;
+
+    }
+
+    private String getCurrentDateANDTime() {
+        Calendar cal = Calendar.getInstance();
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", new Locale("en"));
+        //2022-12-13 10:30:33
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", new Locale("en"));
+        String strDate = sdf.format(cal.getTime());
+
+        System.out.println("Current date in String Format: " + strDate);
+        Log.d("TAG6", "getCurrentDate:  strDate : " + strDate);
+        return strDate;
+
     }
 
     private void backToHome() {
+        getCurrentDate();
         Phase phase2 = realm.where(Phase.class).equalTo("id", phaseList.get(phaseListPosition).getId())
                 .equalTo("levelId", phaseList.get(phaseListPosition).getLevelId())
                 .equalTo("unitId", phaseList.get(phaseListPosition).getUnitId())
                 .findFirst();
         if (phase2.isAnswered()) {
             if (phaseListPosition == phaseList.size() - 1) {
-                context.startActivity(new Intent(context, GameLevelActivity.class));
-//                preferenceManager.putInt(Constants.LEVEL_ENDED_ID_Key, phaseList.get(phaseListPosition).getLevelId());
-//                preferenceManager.putInt(Constants.UNIT_ENDED_ID_KEY, phase2.getUnitId());
-//                preferenceManager.putInt(Constants.MODULE_ENDED_ID_Key, phase2.getUnitId());
-//                preferenceManager.putInt(Constants.MODULE_ENDED_ID_Key , phase2.getModuleId());
+
+                preferenceManager.putInt(Constants.MODULE_ENDED_ID_Key, phase2.getModuleId());
 
                 preferenceManager.putInt(Constants.LEVEL_ENDED_ID_Key, phaseList.get(phaseListPosition).getLevelId());
                 preferenceManager.putInt(Constants.UNIT_ENDED_ID_KEY, phase2.getUnitId());
-                gameViewModel.sendAnswerResult("25" ,"7","1" ,"1","1","1",
-                        "1","2022-12-13","1","2022-12-13 10:30:33").observe(this, new Observer<StateData<ResultInfo>>() {
-                    @Override
-                    public void onChanged(StateData<ResultInfo> resultInfoStateData) {
 
-                    }
-                });
+                if (preferenceManager.getString(Constants.DOCTOR_ID) != null) {
+                    sendAnsweredResult();
+                }
+                context.startActivity(new Intent(context, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                this.getActivity().finish();
+
+
             } else {
                 phaseListPosition++;
                 lunchPhase(phaseList, phaseListPosition);
@@ -165,6 +197,51 @@ public class PhaseFragment extends Fragment implements TeacherSocketClient.IOnMe
             lunchPhase(phaseList, phaseListPosition);
         }
 
+    }
+
+    private void sendAnsweredResult() {
+        String doctorId = preferenceManager.getString(Constants.DOCTOR_ID);
+        String patientId = preferenceManager.getString(Constants.PATIENT_ID);
+        String termId = preferenceManager.getString(Constants.TERM_ID);
+        String baseLineId = preferenceManager.getString(Constants.BASELINE_ID);
+        String curriculumId = preferenceManager.getString(Constants.CURRICULUM_ID);
+        String moduleId = preferenceManager.getString(Constants.MODULE_ID);
+        String objectivesId = preferenceManager.getString(Constants.OBJECTIVES_ID);
+        String specializationId = preferenceManager.getString(Constants.SPECIALIZATION_ID);
+//
+//
+//        Log.d("TAG6", "sendAnsweredResult: doctorId " + doctorId);
+//        Log.d("TAG6", "sendAnsweredResult: patientId " + patientId);
+//        Log.d("TAG6", "sendAnsweredResult: termId " + termId);
+//        Log.d("TAG6", "sendAnsweredResult: baseLineId " + baseLineId);
+        if (patientId != null && termId != null && baseLineId != null && specializationId != null && curriculumId != null
+                && moduleId != null && objectivesId!=null) {
+            gameViewModel.sendAnswerResult(patientId, doctorId, curriculumId, moduleId, objectivesId, specializationId,
+                    termId, getCurrentDate(), baseLineId, getCurrentDateANDTime()).observe(this, new Observer<StateData<ResultInfo>>() {
+                @Override
+                public void onChanged(StateData<ResultInfo> resultInfoStateData) {
+                    Log.d("TAG6", "onChanged: sendAnswerResult success " + resultInfoStateData.getData().getMessage());
+                    Log.d("TAG6", "onChanged: sendAnswerResult success " + resultInfoStateData.getData().getMessage());
+
+                    Log.d("TAG6", "sendAnsweredResult: doctorId " + doctorId);
+                    Log.d("TAG6", "sendAnsweredResult: patientId " + patientId);
+                    Log.d("TAG6", "sendAnsweredResult: termId " + termId);
+                    Log.d("TAG6", "sendAnsweredResult: curriculumId " + curriculumId);
+                    Log.d("TAG6", "sendAnsweredResult: moduleId " + moduleId);
+                    Log.d("TAG6", "sendAnsweredResult: objectivesId " + objectivesId);
+                    Log.d("TAG6", "sendAnsweredResult: specializationId " + specializationId);
+                    Log.d("TAG6", "sendAnsweredResult: baseLineId " + baseLineId);
+                    Log.d("TAG6", "sendAnsweredResult: getCurrentDate " + getCurrentDate());
+                    Log.d("TAG6", "sendAnsweredResult: getCurrentDate " + getCurrentDateANDTime());
+                    if (resultInfoStateData.getStatus() == StateData.DataStatus.SUCCESS) {
+                        Log.d("TAG6", "onChanged: sendAnswerResult success " + resultInfoStateData.getData().getMessage());
+                        Toast.makeText(context, "sendAnswerResult success", Toast.LENGTH_SHORT).show();
+                    } else if (resultInfoStateData.getStatus() == StateData.DataStatus.ERROR) {
+                        Log.d("TAG6", "onChanged: error " + resultInfoStateData.getError());
+                    }
+                }
+            });
+        }
     }
 
 
@@ -192,7 +269,7 @@ public class PhaseFragment extends Fragment implements TeacherSocketClient.IOnMe
 
 
     public void lunchPhase(List<Phase> phases, int phaseListPosition) {
-        Log.d("TAG8", "lunchPhase: " +phases.get(phaseListPosition));
+        Log.d("TAG8", "lunchPhase: " + phases.get(phaseListPosition));
         phaseAdapter = new PhaseAdapter(phases.get(phaseListPosition), context);
         binding.phaseViewPager.setAdapter(phaseAdapter);
 
@@ -258,14 +335,14 @@ public class PhaseFragment extends Fragment implements TeacherSocketClient.IOnMe
     private void handlePhaseAnsweredMessage(PhaseAnswered phaseAnswered) {
 
         if (phaseAnswered != null) {
-            Log.d("TAG8", "handlePhaseAnsweredMessage:  StudentAnsweredLiveData.get().postSuccess(phaseAnswered.isAnswered());" +phaseAnswered.toString());
+            Log.d("TAG8", "handlePhaseAnsweredMessage:  StudentAnsweredLiveData.get().postSuccess(phaseAnswered.isAnswered());" + phaseAnswered.toString());
             StudentAnsweredLiveData.get().postSuccess(phaseAnswered.isAnswered());
             int pagerAdapterPosition = binding.phaseViewPager.getCurrentItem();
             goNextPosition(binding.phaseViewPager, pagerAdapterPosition);
-            Log.d("TAG8", "handlePhaseAnsweredMessage: " +phaseAnswered.isAnswered());
+            Log.d("TAG8", "handlePhaseAnsweredMessage: " + phaseAnswered.isAnswered());
         }
 
-        if (phaseAnswered.isAnswered()) {
+        if (phaseAnswered.isAnswered() == Constants.PHASE_ANSWERED_TRUE) {
 
             gameViewModel.updatePhase(phaseAnswered.getPhaseId(),
                     phaseAnswered.getLevelId(), phaseAnswered.getUnitId(), true).observe(this, new Observer<StateData<Phase>>() {
@@ -304,5 +381,15 @@ public class PhaseFragment extends Fragment implements TeacherSocketClient.IOnMe
         super.onDestroy();
         TeacherSocketClient.removeIOnMessageListener(this);
 
+    }
+
+    @Override
+    public void onWrongClicked() {
+        next();
+    }
+
+    @Override
+    public void onTureClicked() {
+        next();
     }
 }

@@ -107,8 +107,8 @@ public class PhaseAdapter extends FragmentStateAdapter {
                 public void onClick(View view) {
                     Toast.makeText(fragmentActivity, "Correct clicked", Toast.LENGTH_SHORT).show();
                     updatePhase(phase.getId(), phase.getLevelId(), phase.getUnitId(), true);
-
-                    phaseAnswered.setAnswered(true);
+//
+//                    phaseAnswered.setAnswered(true);
                     PhaseAnsweredLiveData.get().postSuccess(phaseAnswered);
 
                 }
@@ -117,8 +117,8 @@ public class PhaseAdapter extends FragmentStateAdapter {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(fragmentActivity, "Wrong clicked", Toast.LENGTH_SHORT).show();
-
-                    phaseAnswered.setAnswered(false);
+//
+//                    phaseAnswered.setAnswered(false);
                     PhaseAnsweredLiveData.get().postSuccess(phaseAnswered);
                     updatePhase(phase.getId(), phase.getLevelId(), phase.getUnitId(), false);
 

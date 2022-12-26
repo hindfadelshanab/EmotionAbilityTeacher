@@ -202,23 +202,5 @@ public class GameRepository {
         return data;
     }
 
-    public StateLiveData<BaselineResultInfo> getAutismBaseline(String language){
-        StateLiveData<BaselineResultInfo> data = new StateLiveData<>();
-        clientApi.getApiInterface().getAutismBaseline(language).enqueue(new Callback<BaselineResultInfo>() {
-            @Override
-            public void onResponse(Call<BaselineResultInfo> call, Response<BaselineResultInfo> response) {
-            if (response.body()!=null)
-                data.postSuccess(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<BaselineResultInfo> call, Throwable t) {
-
-                data.postError(t);
-            }
-        });
-
-        return data;
-    }
 
 }

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".view.ChangeLanguageActivity">
+
+    <LinearLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_22sdp"
+
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:background="@drawable/board_background"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+
+
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:gravity="center"
+
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_8sdp"
+
+                android:src="@drawable/main_arrow_orange" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:text="@string/choose_language"
+                android:textColor="@color/purpleColor"
+                android:textSize="@dimen/_16ssp"
+
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:background="@drawable/button_purple_border"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="@dimen/_4sdp">
+
+            <TextView
+                android:id="@+id/txtModuleName"
+                android:layout_width="wrap_content"
+
+
+                android:layout_height="wrap_content"
+                android:text="@string/choose_language_ar"
+                android:textColor="@color/orangeColor"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold" />
+
+            <!--            <TextView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="@dimen/_2sdp"-->
+            <!--                android:text="@string/game"-->
+            <!--                android:textColor="@color/purpleColor"-->
+            <!--                android:textSize="@dimen/_16ssp"-->
+            <!--                android:textStyle="bold"-->
+
+            <!--                />-->
+
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:src="@drawable/main_kebbi_shape"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <RadioGroup
+        android:id="@+id/languageRadioGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/mainLayout"
+        app:layout_constraintStart_toStartOf="@id/mainLayout"
+        app:layout_constraintTop_toBottomOf="@id/mainLayout"
+        app:layout_constraintVertical_bias="0.29000002">
+
+        <RadioButton
+            android:id="@+id/englishRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_22sdp"
+            android:button="@null"
+            android:checked="false"
+            android:drawableStart="@drawable/main_arrow_orange"
+            android:drawablePadding="@dimen/_8sdp"
+
+            android:orientation='horizontal'
+            android:scrollIndicators="bottom"
+            android:text="@string/english"
+            android:textColor="@color/greenColor"
+            android:textSize="@dimen/_16ssp" />
+
+        <RadioButton
+            android:id="@+id/arabicRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="false"
+            android:drawableStart="@drawable/main_arrow_orange"
+            android:drawablePadding="@dimen/_8sdp"
+            android:text="@string/arabic"
+            android:textColor="@color/greenColor"
+            android:textSize="@dimen/_16ssp" />
+    </RadioGroup>
+
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSelect"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_purple"
+        android:drawableEnd="@drawable/right_arrow"
+        android:text="Select"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/languageRadioGroup" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBack"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_orange"
+        android:drawableEnd="@drawable/right_arrow"
+        android:text="Back"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp"
+        android:visibility="gone"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnSelect"
+        app:layout_constraintTop_toBottomOf="@+id/languageRadioGroup" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

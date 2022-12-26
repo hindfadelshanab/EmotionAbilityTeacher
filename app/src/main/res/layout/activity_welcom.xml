@@ -53,6 +53,7 @@
         android:text="@string/choose_langouge"
         app:layout_constraintBottom_toTopOf="@id/btnLogInAsStudent"
         android:textColor="@color/black"
+        android:visibility="gone"
         android:background="@drawable/spinner__background"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"

@@ -50,4 +50,7 @@
     <string name="english">English</string>
     <string name="arabic">Arabic</string>
     <string name="send_response_in_robot">Send Response in Robot</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="remember_me">remember me</string>
 </resources>

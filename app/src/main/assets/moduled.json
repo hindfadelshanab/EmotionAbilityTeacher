@@ -16,12 +16,11 @@
             "idLevel": 1,
             "color": "#62c879",
             "image": "",
-            "moduleId": 1 ,
+            "moduleId": 1,
             "name": "EMOTIONS IMITATION ? LEVEL 1",
             "objective": "Imitation of Facial Expressions: Practicing imitation of facial expressions of emotions, Joint attention  following directions, and practicing receptive language related to emotions",
             "gameName": "Let is play the ? EMOTION IMITATION ? Game!",
             "gameDescription": "You will see pictures of different ? facial expressions * Copy the emotion you see from the picture",
-
             "phases": [
               {
                 "id": 1,
@@ -59,8 +58,9 @@
             "idLevel": 2,
             "color": "#62c879",
             "image": "",
-            "moduleId": 1 ,
-            "name": "EMOTIONS IMITATION ? LEVEL 2",
+            "moduleId": 1,
+
+            "name": "Recognition of Basic Emotion ? Level 1",
             "objective": " Recognition of Basic Emotion: Practicing recognition of basic emotions (happy, sad, angry & scared) from smileys, practicing the receptive language of emotions.",
             "gameName": "Let is play the ? Find the Right Emotion ?",
             "gameDescription": "Look at the pictures carefully Tap the ? correct emotion * we are looking for ",
@@ -105,8 +105,9 @@
             "idLevel": 3,
             "color": "#62c879",
             "image": "",
-            "moduleId": 1 ,
-            "name": " EMOTIONS IMITATION ? LEVEL 3",
+            "moduleId": 1,
+            "name": "Recognition of Basic Emotion ? Level 2",
+
             "objective": "Recognition of Basic Emotion: Practicing recognition of basic emotions (happy, sad, angry & scared) from smileys, practicing the receptive language of emotions.",
             "gameName": "Let is play the ? Find the Right Emotion ?",
             "gameDescription": "Look at the pictures carefully Tap the ? correct emotion * we are looking for. ",
@@ -151,8 +152,9 @@
             "idLevel": 4,
             "color": "#62c879",
             "image": "",
-            "moduleId": 1 ,
-            "name": "FIND THE RIGHT EMOTION ? LEVEL 1",
+            "moduleId": 1,
+            "name": "Recognition of Basic Emotion ? Level 3",
+
             "objective": "Recognition of Basic Emotion:\nPracticing recognition of basic emotions (happy, sad, angry & scared) from smileys, practicing the receptive language of emotions.",
             "gameName": "Let is play the ? Find the Right Emotion Game?!",
             "gameDescription": "Look at the pictures carefully Tap the ? correct emotion * we are looking for ",
@@ -209,7 +211,7 @@
             "idLevel": 5,
             "color": "#62c879",
             "image": "",
-            "moduleId": 1 ,
+            "moduleId": 1,
             "name": "GUESS THE FACIAL EXPRESSION ? LEVEL 1",
             "objective": " Guess the Facial Expression",
             "gameName": "Let is play ? Guess the Facial Expression ?",
@@ -220,7 +222,6 @@
                 "levelId": 5,
                 "unitId": 3,
                 "moduleId": 1,
-
                 "questioncontent": {
                   "title": "What ? emotion is this?",
                   "image": "",
@@ -310,23 +311,10 @@
                 },
                 "point": 1,
                 "response": "You are "
-              }
-            ],
-            "unitId": 3
-          },
-          {
-            "idLevel": 6,
-            "color": "#62c879",
-            "image": "",
-            "moduleId": 1 ,
-            "name": "GUESS THE FACIAL EXPRESSION ? LEVEL 2",
-            "objective": " Guess the Facial Expression",
-            "gameName": "Let is play ? Guess the Facial Expression ?",
-            "gameDescription": " We will take turns in guessing the ? facial expression * each of us will do",
-            "phases": [
+              },
               {
                 "id": 7,
-                "levelId": 6,
+                "levelId": 5,
                 "unitId": 3,
                 "moduleId": 1,
                 "questioncontent": {
@@ -348,10 +336,9 @@
               },
               {
                 "id": 8,
-                "levelId": 6,
+                "levelId": 5,
                 "unitId": 3,
                 "moduleId": 1,
-
                 "questioncontent": {
                   "title": "Now it is your turn ? Do an emotion ?",
                   "image": "",
@@ -422,19 +409,12 @@
               }
             ],
             "unitId": 3
-          }
-        ]
-      },
-      {
-        "idUnit": 4,
-        "unitName": "GENERATION OF BODY LANGUAGE",
-        "moduleId": 1,
-        "levels": [
+          },
           {
-            "idLevel": 7,
+            "idLevel": 6,
             "color": "#62c879",
             "image": "",
-            "moduleId": 1 ,
+            "moduleId": 1,
             "name": "CHARADES GAME ? LEVEL 1",
             "objective": "Charades Game (Guess the Emotion)",
             "gameName": "Let is play ? Charades! ?",
@@ -442,8 +422,8 @@
             "phases": [
               {
                 "id": 9,
-                "levelId": 7,
-                "unitId": 4,
+                "levelId": 6,
+                "unitId": 3,
                 "moduleId": 1,
                 "questioncontent": {
                   "title": "What ? emotion is this?",
@@ -464,10 +444,9 @@
               },
               {
                 "id": 10,
-                "levelId": 7,
-                "unitId": 4,
+                "levelId": 6,
+                "unitId": 3,
                 "moduleId": 1,
-
                 "questioncontent": {
                   "title": "Now it is your turn ? Do an emotion ?",
                   "image": "",
@@ -535,26 +514,12 @@
                 },
                 "point": 1,
                 "response": "You are "
-              }
-            ],
-            "unitId": 4
-          },
-          {
-            "idLevel": 8,
-            "color": "#62c879",
-            "image": "",
-            "moduleId": 1 ,
-            "name": "CHARADES GAME ? LEVEL 2",
-            "objective": " Charades Game (Guess the Emotion)",
-            "gameName": "Let is play ? Charades! ?",
-            "gameDescription": " We will take turns in guessing the ? the facial expression with body language * each of us will do",
-            "phases": [
+              },
               {
                 "id": 11,
-                "levelId": 8,
-                "unitId": 4,
+                "levelId": 6,
+                "unitId": 3,
                 "moduleId": 1,
-
                 "questioncontent": {
                   "title": "What ? emotion is this?",
                   "image": "",
@@ -573,11 +538,10 @@
                 "response": "You are right ! I was surprised."
               }
             ],
-            "unitId": 4
+            "unitId": 3
           }
         ]
       }
     ]
   }
-
-  ]
+]

@@ -7,6 +7,10 @@ import com.google.gson.reflect.TypeToken;
 import com.nuwa.robot.r2022.emotionalability.api.ClientApi;
 import com.nuwa.robot.r2022.emotionalability.model.AutismCurriculum;
 import com.nuwa.robot.r2022.emotionalability.model.AutismCurriculumInfo;
+import com.nuwa.robot.r2022.emotionalability.model.AutismModuleInfo;
+import com.nuwa.robot.r2022.emotionalability.model.AutismObjectivesInfo;
+import com.nuwa.robot.r2022.emotionalability.model.AutismSpecializationInfo;
+import com.nuwa.robot.r2022.emotionalability.model.BaselineResultInfo;
 import com.nuwa.robot.r2022.emotionalability.model.Module;
 import com.nuwa.robot.r2022.emotionalability.model.PatientInfo;
 import com.nuwa.robot.r2022.emotionalability.model.Unit;
@@ -91,8 +95,83 @@ public class MainRepository {
                 data.postError(t);
             }
         });
-        return stateLiveDataAutismCurriculum;
+        return data;
     }
+    public StateLiveData<AutismModuleInfo> getAutismModule(String language, String Curriculum_Id) {
+
+        final StateLiveData<AutismModuleInfo> data = new StateLiveData<>();
+        clientApi.getApiInterface().getAutismModule(language, Curriculum_Id)
+                .enqueue(new Callback<AutismModuleInfo>() {
+            @Override
+            public void onResponse(Call<AutismModuleInfo> call, Response<AutismModuleInfo> response) {
+                if (response.body() != null)
+                    data.postSuccess(response.body());
+            }
+            @Override
+            public void onFailure(Call<AutismModuleInfo> call, Throwable t) {
+                data.postError(t);
+            }
+        });
+        return data;
+    }
+    public StateLiveData<AutismSpecializationInfo> getAutismSpecialization(String language, String module_Id) {
+
+        final StateLiveData<AutismSpecializationInfo> data = new StateLiveData<>();
+        clientApi.getApiInterface().getAutismSpecialization(language, module_Id)
+                .enqueue(new Callback<AutismSpecializationInfo>() {
+            @Override
+            public void onResponse(Call<AutismSpecializationInfo> call, Response<AutismSpecializationInfo> response) {
+                if (response.body() != null)
+                    data.postSuccess(response.body());
+            }
+            @Override
+            public void onFailure(Call<AutismSpecializationInfo> call, Throwable t) {
+                data.postError(t);
+            }
+        });
+        return data;
+    }
+
+    public StateLiveData<AutismObjectivesInfo> getAutismObjectives(String language, String Specialization_Id) {
+
+        final StateLiveData<AutismObjectivesInfo> data = new StateLiveData<>();
+        clientApi.getApiInterface().getAutismObjectives(language, Specialization_Id)
+                .enqueue(new Callback<AutismObjectivesInfo>() {
+            @Override
+            public void onResponse(Call<AutismObjectivesInfo> call, Response<AutismObjectivesInfo> response) {
+                if (response.body() != null)
+                    data.postSuccess(response.body());
+            }
+            @Override
+            public void onFailure(Call<AutismObjectivesInfo> call, Throwable t) {
+                data.postError(t);
+            }
+        });
+        return data;
+    }
+
+
+    public StateLiveData<BaselineResultInfo> getAutismBaseline(String language){
+        StateLiveData<BaselineResultInfo> data = new StateLiveData<>();
+        clientApi.getApiInterface().getAutismBaseline(language).enqueue(new Callback<BaselineResultInfo>() {
+            @Override
+            public void onResponse(Call<BaselineResultInfo> call, Response<BaselineResultInfo> response) {
+                if (response.body()!=null)
+                    data.postSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<BaselineResultInfo> call, Throwable t) {
+
+                data.postError(t);
+            }
+        });
+
+        return data;
+    }
+
+
+
 
     public StateLiveData<PatientInfo> getPatientList(String doctorID) {
         final StateLiveData<PatientInfo> data = new StateLiveData<>();

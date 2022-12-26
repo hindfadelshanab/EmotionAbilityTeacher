@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 
 
+import androidx.appcompat.app.AppCompatDelegate;
+
 import java.util.Locale;
 
 import io.realm.Realm;
@@ -23,17 +25,14 @@ private static Context context ;
         Realm.init(this);
         context = getBaseContext();
          preferenceManager = new PreferenceManager(context);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-//        LocaleHelper.setLocale(context , preferenceManager.getString(Constants.LANGUAGE) );
 
-        // on below line we are setting realm configuration
         RealmConfiguration config =
                 new RealmConfiguration.Builder()
-                        // below line is to allow write
-                        // data to database on ui thread.
+
                         .allowWritesOnUiThread(true)
-                        // below line is to delete realm
-                        // if migration is needed.
+
                         .deleteRealmIfMigrationNeeded()
                         // at last we are calling a method to build.
                         .build();

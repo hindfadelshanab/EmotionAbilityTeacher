@@ -96,7 +96,7 @@ public class MakeConnectionWithRobotActivity extends AppCompatActivity {
                             @Override
                             public void run() {
 
-                                Intent intent =new Intent(MakeConnectionWithRobotActivity.this , SignInActivity.class);
+                                Intent intent =new Intent(MakeConnectionWithRobotActivity.this , SignAsActivity.class);
                                 intent.putExtra("ip" ,SERVER_IP) ;
                                 preferenceManager.putString(Constants.IPKEY,SERVER_IP);
                                 startActivity(intent);
@@ -110,7 +110,7 @@ public class MakeConnectionWithRobotActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    public static String getMyIPAddress() {//P.S there might be better way to get your IP address (NetworkInfo) could do it.
+    public static String getMyIPAddress() {
         String myIP = null;
         try {
             List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());

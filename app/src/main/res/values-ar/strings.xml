@@ -1,0 +1,54 @@
+<resources>
+    <string name="log_in_as_therapist">تسجيل الدخول كمدرب</string>
+    <string name="log_in_as_a_student">LOG-IN AS A STUDENT</string>
+    <string name="select_patient">اختر طالب</string>
+    <string name="select_term">المنهاج</string>
+    <string name="first_term">الفصل</string>
+    <string name="skills">المهارات</string>
+    <string name="log_out">Log Out</string>
+    <string name="start">ابدأ</string>
+    <string name="emotional_ability_curriculum">Emotional Ability \n Curriculum</string>
+    <string name="level_desc">Imitation of Facial Expressions: Practicing imitation of facial expressions of emotions, Joint attention, following directions</string>
+    <string name="next">التالي</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="exit">خروج</string>
+    <string name="let_s_play_the">هيا بنا نلعب</string>
+    <string name="emotion_imitation">EMOTION IMITATION</string>
+    <string name="game">Game!</string>
+    <string name="previous">السابق</string>
+    <string name="you_can_do_it">يمكنك فعلها</string>
+    <string name="you_are_a_star">أنت نجم</string>
+    <string name="well_done">أحسنت صنعاً</string>
+
+    <string name="communication">المهارات التواصلية</string>
+    <string name="cognition">المهارات الادراكية</string>
+    <string name="social">المهارات الاجتماعية</string>
+    <string name="emotional">المهارات العاطفية</string>
+    <string name="physical">المهارات البدنية</string>
+
+    <string name="curriculum">المنهاج</string>
+    <string name="module">الفصل</string>
+    <string name="area_of_specialization">النشاط</string>
+    <string name="objectives">الأهداف</string>
+    <string name="qlickhealth_lesson_generator" >برنامج كليكهيلث التعليمي</string>
+    <string name="dr_subhi">د.صبحي</string>
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="unit">الوحدة</string>
+    <string name="level">المستوى</string>
+    <string name="the_child_was_not_able_to_show_face_doesn_t_have_any_response_at_all">لم يكن الطفل قادراً على إظهار الوجه الصحيح / ليس لديه أي رد على الإطلاق</string>
+    <string name="the_child_was_able_to_show_the_correct_face">كان الطفل قادراً على إظهار الوجه الصحيح</string>
+    <string name="choose_langouge">أختر لغة</string>
+    <string name="tablet">الجهاز اللوحي</string>
+    <string name="vr">الواقع الافتراضي</string>
+    <string name="change_language">تغيير اللغة</string>
+    <string name="kibbi">كيبي</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="home">الرئيسية</string>
+    <string name="send_response_in_robot">أرسل الاجابة الى الروبوت</string>
+    <string name="enter_password">كلمة المرور</string>
+    <string name="enter_email">البريد الالكتروني</string>
+    <string name="remember_me">تذكرني</string>
+
+</resources>
